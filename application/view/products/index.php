@@ -13,7 +13,7 @@
             <input type='text' name='stock_qty' id='stock_qty' value="" required />
             <label for='category_id' >Category ID<span style="color:red">*</span>: </label>
             <input type='text' name='category_id' id='category_id' value="" required/><br><br>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form action="<?php echo URL; ?>upload.php" method="post" enctype="multipart/form-data">
             Select image to upload:
             <input type="file" name="fileToUpload" id="fileToUpload">
             <input type="submit" value="Upload Image" name="submit">
