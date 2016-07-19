@@ -10,7 +10,13 @@ class Controller
     /**
      * @var null Model
      */
-    public $model = null;
+    public $cartmodel = null;
+    public $customermodel = null;
+    public $homemodel = null;
+    public $productsmodel = null;
+    public $searchproductsmodel = null;
+    public $siginmodel = null;
+    public $sortmodel = null;
 
     /**
      * Whenever controller is created, open a database connection too and load "the model".
@@ -18,7 +24,13 @@ class Controller
     function __construct()
     {
         $this->openDatabaseConnection();
-        $this->loadModel();
+        $this->loadCartModel();
+        $this->loadCustomerModel();
+        $this->loadhomeModel();
+        $this->loadproductsModel();
+        $this->loadsearchproductsModel();
+        $this->loadsigninModel();
+        $this->loadsortModel();
     }
 
     /**
@@ -41,10 +53,47 @@ class Controller
      * Loads the "model".
      * @return object model
      */
-    public function loadModel()
+    
+    public function loadCartModel()
     {
-        require APP . 'model/model.php';
+        require APP . 'model/cart.php';
         // create new "model" (and pass the database connection)
-        $this->model = new Model($this->db);
+        $this->cartmodel = new CartModel($this->db);
+    }
+    public function loadcustomerModel()
+    {
+        require APP . 'model/customers.php';
+        // create new "model" (and pass the database connection)
+        $this->customermodel = new CustomerModel($this->db);
+    }
+    public function loadhomeModel()
+    {
+        require APP . 'model/home.php';
+        // create new "model" (and pass the database connection)
+        $this->homemodel = new HomeModel($this->db);
+    }
+    public function loadproductsModel()
+    {
+        require APP . 'model/products.php';
+        // create new "model" (and pass the database connection)
+        $this->productsmodel = new ProductsModel($this->db);
+    }
+    public function loadsearchproductsModel()
+    {
+        require APP . 'model/searchproducts.php';
+        // create new "model" (and pass the database connection)
+        $this->searchproductsmodel = new SearchProductsModel($this->db);
+    }
+    public function loadsigninModel()
+    {
+        require APP . 'model/signin.php';
+        // create new "model" (and pass the database connection)
+        $this->signinmodel = new SigninModel($this->db);
+    }
+    public function loadsortModel()
+    {
+        require APP . 'model/sort.php';
+        // create new "model" (and pass the database connection)
+        $this->sortmodel = new SortModel($this->db);
     }
 }

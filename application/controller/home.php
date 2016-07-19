@@ -16,7 +16,7 @@ class Home extends Controller
      */
     public function index()
     {
-        $products = $this->model->getAllProducts();    
+        $products = $this->homemodel->getAllProducts();    
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
@@ -24,14 +24,14 @@ class Home extends Controller
     }
     public function sortbypriceAsc()
     {
-        $products = $this->model->sortbyPriceAsc();
+        $products = $this->homemodel->sortbyPriceAsc();
         require APP . 'view/_templates/header.php';
         require APP . 'view/sort/index.php';
         require APP . 'view/_templates/footer.php';
     }
     public function sortbypriceDesc()
     {
-        $products = $this->model->sortbyPriceDesc();
+        $products = $this->homemodel->sortbyPriceDesc();
         require APP . 'view/_templates/header.php';
         require APP . 'view/sort/index.php';
         require APP . 'view/_templates/footer.php';

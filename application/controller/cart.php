@@ -29,8 +29,8 @@ class Cart extends Controller {
     public function index() {
         
         // getting all songs and amount of songs
-        $cart_items = $this->model->getCartItems("666"); //$cid Hardcoded to 666
-        //$amount_of_items = $this->model->getAmountOfItems();
+        $cart_items = $this->cartmodel->getCartItems("666"); //$cid Hardcoded to 666
+        //$amount_of_items = $this->cartmodel->getAmountOfItems();
         
         require APP . 'view/_templates/header.php';
         require APP . 'view/cart/index.php';
@@ -39,7 +39,7 @@ class Cart extends Controller {
 
     public function addItem() {
         if (isset($_POST["submit_add_item"])) {
-            $this->model->addCartItem($_POST["cid"], $_POST["pid"],  $_POST["qty"]);
+            $this->cartmodel->addCartItem($_POST["cid"], $_POST["pid"],  $_POST["qty"]);
         }
 
         // where to go after song has been added
@@ -50,8 +50,8 @@ class Cart extends Controller {
     public function removeItem() {
         // if we have an id of a song that should be deleted
         if (isset($_POST["submit_delete_item"])) {
-            // do deleteSong() in model/model.php
-            $this->model->deleteCartItem($_POST["cid"], $_POST["pid"]);
+            // do deleteSong() in model/cartModel.php
+            $this->cartmodel->deleteCartItem($_POST["cid"], $_POST["pid"]);
         }
 
         // where to go after song has been deleted

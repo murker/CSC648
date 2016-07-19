@@ -29,7 +29,7 @@ class SignIn extends Controller {
         if (isset($_POST["signincustomer"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
-            $match = $this->model->signinCustomer($email, $password);
+            $match = $this->signinmodel->signinCustomer($email, $password);
 
             // if user fails to login, send them to sign in page
             if ($match->email == $email) {
