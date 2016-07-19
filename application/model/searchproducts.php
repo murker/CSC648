@@ -17,7 +17,7 @@ class SearchProductsModel
    
     public function searchProduct($searchword)
     {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id FROM product WHERE (name like :searchword or description like :searchword)";
+        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE (name like :searchword or description like :searchword)";
         $query = $this->db->prepare($sql);
         $parameters = array(':searchword' =>  $searchword);
         $query->execute($parameters);
