@@ -16,7 +16,7 @@ class Searchproducts extends Controller
      */
     public function index()
     {
-        $products = $this->model->searchProduct('%'. $_POST["searchinput"] . '%');
+        $products = $this->searchproductsmodel->searchProduct('%'. $_POST["searchinput"] . '%');
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/searchproducts/index.php';
@@ -25,14 +25,14 @@ class Searchproducts extends Controller
     
     public function sortbypriceAsc()
     {
-        $products = $this->model->sortbyPriceAsc();
+        $products = $this->searchproductsmodel->sortbyPriceAsc();
         require APP . 'view/_templates/header.php';
         require APP . 'view/sort/index.php';
         require APP . 'view/_templates/footer.php';
     }
     public function sortbypriceDesc()
     {
-        $products = $this->model->sortbyPriceDesc();
+        $products = $this->searchproductsmodel->sortbyPriceDesc();
         require APP . 'view/_templates/header.php';
         require APP . 'view/sort/index.php';
         require APP . 'view/_templates/footer.php';

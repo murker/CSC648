@@ -17,8 +17,8 @@ class Customers extends Controller
     public function index()
     {
         // getting all customers and amount of customers
-        $customers = $this->model->getAllcustomers();
-        $amount_of_customers = $this->model->getAmountOfCustomers();
+        $customers = $this->customermodel->getAllcustomers();
+        $amount_of_customers = $this->customermodel->getAmountOfCustomers();
 
        // load views. within the views we can echo out $customers and $amount_of_customers easily
         require APP . 'view/_templates/header.php';
@@ -38,8 +38,8 @@ class Customers extends Controller
     {
         // if we have POST data to create a new customer entry
         if (isset($_POST["submit_add_customer"])) {
-            // do addCustomer() in model/model.php
-            $this->model->addCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["password"], $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"]);
+            // do addCustomer() in model/customerModel.php
+            $this->customermodel->addCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["password"], $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"]);
         }
 
         // where to go after customer has been added
@@ -59,8 +59,8 @@ class Customers extends Controller
     {
         // if we have an id of a customer that should be deleted
         if (isset($customer_id)) {
-            // do deleteCustomer() in model/model.php
-            $this->model->deleteCustomer($customer_id);
+            // do deleteCustomer() in model/customerModel.php
+            $this->customermodel->deleteCustomer($customer_id);
         }
 
         // where to go after customer has been deleted
@@ -76,8 +76,8 @@ class Customers extends Controller
     {
         // if we have an id of a customer that should be edited
         if (isset($customer_id)) {
-            // do getCustomer() in model/model.php
-            $customer = $this->model->getCustomer($customer_id);
+            // do getCustomer() in model/customerModel.php
+            $customer = $this->customermodel->getCustomer($customer_id);
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
@@ -104,8 +104,8 @@ class Customers extends Controller
     {
         // if we have POST data to create a new Customer entry
         if (isset($_POST["submit_update_customer"])) {
-            // do updateCustomer() from model/model.php
-            $this->model->updateCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["password"], $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"], $_POST["customer_id"]);
+            // do updateCustomer() from model/customerModel.php
+            $this->customermodel->updateCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["password"], $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"], $_POST["customer_id"]);
         }
 
         // where to go after customer has been added
@@ -118,7 +118,7 @@ class Customers extends Controller
      */
     public function ajaxGetStats()
     {
-        $amount_of_customers = $this->model->getAmountOfCustomers();
+        $amount_of_customers = $this->customermodel->getAmountOfCustomers();
 
         // simply echo out something. A supersimple API would be possible by echoing JSON here
         echo $amount_of_customers;
