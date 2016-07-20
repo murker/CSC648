@@ -17,7 +17,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; BooksandTutors 2016</p>
+                    <p>Copyright &copy; Books and Tutors 2016</p>
                 </div>
             </div>
         </footer>
