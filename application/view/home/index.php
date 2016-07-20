@@ -1,18 +1,31 @@
 <!-- Page Content -->
 <div class="container">
-
     <div class="row">
 
         <div class="col-md-3">
             <p class="lead">Category</p>
-            <div class="list-group">
-                <a href="#" class="list-group-item">Books</a>
-                <a href="#" class="list-group-item">Tutors</a>
-                <a href="#" class="list-group-item">Electronics</a>
-                <a href="#" class="list-group-item">Entertainment</a>
-                <a href="#" class="list-group-item">Clothing</a>
-                <a href="#" class="list-group-item">Furniture</a>
-                <a href="#" class="list-group-item">Other</a>
+            <div class="list-group">   
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                <input type='submit' class="list-group-item" name='submit_sortbyBooks' value="Books" />
+                </form>
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">                  
+                <input type='submit' class="list-group-item" name='submit_sortbyTutors' value="Tutors" />
+                </form>
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">                    
+                <input type='submit' class="list-group-item" name='submit_sortbyElectronics' value="Electronics" />
+                </form>
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                <input type='submit' class="list-group-item" name='submit_sortbyEntertainment' value="Entertainment" />
+                </form>
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                <input type='submit' class="list-group-item" name='submit_sortbyClothing' value="Clothing" />
+                </form>
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                <input type='submit' class="list-group-item" name='submit_sortbyFurniture' value="Furniture" />
+                </form>
+                <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                <input type='submit' class="list-group-item" name='submit_sortbyOther' value="Other" />
+                </form>
             </div>
         </div>
 
