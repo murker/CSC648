@@ -21,17 +21,22 @@ body {
 }
 .header-search{
     position:inherit;
-    margin-top:-20px;
-    padding-left:15px;
+    margin-top:-15px;
+    padding-left:12px;
 }
 .header-search input{
-    height:50px;
-}
-.header-search input[type="text"]{
-    width:300px;
-    padding-left:10px;
+    height:40px;
+    border-radius: 5px;
     font-size:12pt;
     font-weight: bold;
+}
+.header-search input[type="text"]{
+    min-width:285px;
+    padding-left:10px;
+}
+.header-search input[type="submit"]{
+    background:#fff;
+
 }
 
 .item-listing{
