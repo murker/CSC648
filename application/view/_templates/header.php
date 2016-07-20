@@ -25,6 +25,7 @@
     <body>
         <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="student-warning">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</div>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -53,10 +54,10 @@
                     </li>
                 </ul>
             </div>
-            <div class="searchDiv">
+            <div class="search-bar">
                 <form action="<?php echo URL; ?>searchproducts/index" method="POST">
                     <input type="text" name='searchinput' placeholder="Search for books, tutors and more!" required>
-                    <input type="submit" name='submit_search_product' value="Search" class="searchButton" class="navigation">
+                    <input type="submit" name='submit_search_product' value="Search">
                 </form>
                 </div>
             </div>
@@ -64,3 +65,4 @@
         </div>
         <!-- /.container -->
     </nav>
+        
