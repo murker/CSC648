@@ -5,10 +5,28 @@
 
             <div class="col-md-3">
                 <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
+                <div class="list-group">   
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                    <input type='submit' class="list-group-item" name='submit_sortbyBooks' value="Books" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">                  
+                    <input type='submit' class="list-group-item" name='submit_sortbyTutors' value="Tutors" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">                    
+                    <input type='submit' class="list-group-item" name='submit_sortbyElectronics' value="Electronics" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                    <input type='submit' class="list-group-item" name='submit_sortbyEntertainment' value="Entertainment" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                    <input type='submit' class="list-group-item" name='submit_sortbyClothing' value="Clothing" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                    <input type='submit' class="list-group-item" name='submit_sortbyFurniture' value="Furniture" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="POST">
+                    <input type='submit' class="list-group-item" name='submit_sortbyMisc' value="Misc" />
+                    </form>
                 </div>
             </div>
 

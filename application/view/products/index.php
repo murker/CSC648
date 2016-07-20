@@ -11,8 +11,16 @@
 	    <input type='text' name='price' id='price' value="" required /><br><br>
             <label for='stock_qty' >Stock Quantity<span style="color:red">*</span>: </label>
             <input type='text' name='stock_qty' id='stock_qty' value="" required />
-            <label for='category_id' >Category ID<span style="color:red">*</span>: </label>
-            <input type='text' name='category_id' id='category_id' value="" required/><br><br>
+            <label for='category_id' >Category<span style="color:red">*</span>: </label>
+            <select name='category_id' required>
+            <option value="1">Books</option>
+            <option value="2">Tutors</option>
+            <option value="3">Electronics</option>
+            <option value="4">Entertainment</option>
+            <option value="5">Clothing</option>
+            <option value="6">Furniture</option>
+            <option value="7">Misc</option>
+            </select><br>   
             <label for='image1' >Image 1<span style="color:red">*</span>: </label>
             <input type="file" name="imageToUpload1" id="imageToUpload1" required />
             <label for='image2' >Image 2: </label>

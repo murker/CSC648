@@ -36,4 +36,35 @@ class Home extends Controller
         require APP . 'view/sort/index.php';
         require APP . 'view/_templates/footer.php';
     }
+    public function sortbyCategory()
+    {
+        $category = 1;
+        if (isset($_POST["submit_sortbyCategory"])) {
+            if (isset($_POST["submit_sortbyBooks"])){
+            $category = 1;
+            }
+            if (isset($_POST["submit_sortbyTutors"])){
+            $category = 2;
+            }
+            if (isset($_POST["submit_sortbyElectronics"])){
+            $category = 3;
+            }
+            if (isset($_POST["submit_sortbyEntertainment"])){
+            $category = 4;
+            }
+            if (isset($_POST["submit_sortbyClothing"])){
+            $category = 5;
+            }
+            if (isset($_POST["submit_sortbyFurniture"])){
+            $category = 6;
+            }
+            if (isset($_POST["submit_sortbyMisc"])){
+            $category = 7;
+            }
+        }
+        $products = $this->homemodel->sortbyCategory($category);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/sort/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
 }
