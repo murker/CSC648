@@ -14,9 +14,36 @@ body {
     padding-left:2em;
     white-space: nowrap;
 }
-.search-bar{
-    
+.header-logo{
+    position: absolute;
 }
+.header-buttons{
+}
+.header-search{
+    position:inherit;
+    margin-top:-20px;
+    padding-left:15px;
+}
+.header-search input{
+    height:50px;
+}
+.header-search input[type="text"]{
+    width:300px;
+    padding-left:10px;
+    font-size:12pt;
+    font-weight: bold;
+}
+
+.item-listing{
+    padding: 4px;
+    margin-bottom: 20px;
+}
+.search-image{
+    float:left;
+    width:125px;
+    padding-right:10px;
+}
+
 .slide-image {
     width: 100%;
 }
