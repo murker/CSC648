@@ -1,6 +1,6 @@
 <div class="container">
     <h2>ADD ITEM</h2>
-	    <!-- add product form -->                  
+    <!-- add product form -->                  
     <div class="box">         
         <form action="<?php echo URL; ?>products/addproduct" method="POST" enctype="multipart/form-data">
             <label for='name' >Item<span style="color:red">*</span>: </label>
@@ -14,7 +14,7 @@
             <label for='category_id' >Category ID<span style="color:red">*</span>: </label>
             <input type='text' name='category_id' id='category_id' value="" required/><br><br>
             <label for='image1' >Image 1<span style="color:red">*</span>: </label>
-            <input type="file" name="imageToUpload" id="imageToUpload">
+            <input type="file" name="imageToUpload1" id="imageToUpload1" required />
             <label for='image2' >Image 2: </label>
             <input type="file" name="imageToUpload2" id="imageToUpload2">
             <label for='image3' >Image 3: </label>
@@ -48,10 +48,10 @@
             <tbody>
             <?php foreach ($products as $product) { ?>
                 <tr>
-                    <td><?php if (isset($product->img1)) echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img1).'"  height="42" width="42" />'; ?></td>
-                    <td><?php if (isset($product->img2)) echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img2).'"  height="42" width="42" />'; ?></td>
-                    <td><?php if (isset($product->img3)) echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img3).'"  height="42" width="42" />'; ?></td>
-                    <td><?php if (isset($product->img4)) echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img4).'"  height="42" width="42" />'; ?></td>
+                    <td><?php if (isset($product->img1) && $product->img1 != "") echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img1).'"  height="42" width="42" />'; ?></td>
+                    <td><?php if (isset($product->img2) && $product->img2 != "") echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img2).'"  height="42" width="42" />'; ?></td>
+                    <td><?php if (isset($product->img3) && $product->img3 != "") echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img3).'"  height="42" width="42" />'; ?></td>
+                    <td><?php if (isset($product->img4) && $product->img4 != "") echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img4).'"  height="42" width="42" />'; ?></td>
                     <td><?php if (isset($product->id)) echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?></td>
 		    <td><?php if (isset($product->name)) echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></td>

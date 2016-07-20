@@ -15,7 +15,7 @@ class HomeModel
     }
     public function getAllProducts()
     {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id FROM product";
+        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -27,7 +27,7 @@ class HomeModel
     }
      public function sortbyPriceAsc()
     {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id FROM product ORDER BY price ASC";
+        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product ORDER BY price ASC";
         $query = $this->db->prepare($sql);
         $query->execute();
 
@@ -40,7 +40,7 @@ class HomeModel
     }
     public function sortbyPriceDesc()
     {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id FROM product ORDER BY price DESC";
+        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product ORDER BY price DESC";
         $query = $this->db->prepare($sql);
         $query->execute();
 

@@ -38,11 +38,11 @@ class Products extends Controller
         // if we have POST data to create a new product entry
         if (isset($_POST["submit_add_product"])) {
             // do addProduct() in model/model.php
-            $image = file_get_contents($_FILES['imageToUpload']['tmp_name']);
-            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name1']);
-            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name2']);
-            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name3']);
-            $this->productsmodel->addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image, $image2, $image3, $image4);
+            $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
+            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
+            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
+            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
+            $this->productsmodel->addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image1, $image2, $image3, $image4);
         }
 
         // where to go after product has been added
@@ -107,8 +107,11 @@ class Products extends Controller
     {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_product"])) {
-            // do updateProduct() from model/model.php
-            $this->productsmodel->updateProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $_POST["product_id"]);
+            $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
+            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
+            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
+            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
+            $this->productsmodel->updateProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $_POST["product_id"], $image1, $image2, $image3, $image4);
         }
 
         // where to go after product has been added
