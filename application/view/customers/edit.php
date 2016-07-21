@@ -11,7 +11,7 @@
             <label>email</label>
             <input type="text" name="email" value="<?php echo htmlspecialchars($customer->email, ENT_QUOTES, 'UTF-8'); ?>" />
             <label>password</label>
-            <input type="text" name="password" value="<?php echo htmlspecialchars($customer->password, ENT_QUOTES, 'UTF-8'); ?>" required />
+            <input type="password" name="password" value="<?php echo htmlspecialchars($customer->password, ENT_QUOTES, 'UTF-8'); ?>" required />
             <label>phone</label>
             <input type="text" name="phone" value="<?php echo htmlspecialchars($customer->phone, ENT_QUOTES, 'UTF-8'); ?>" required />
             <label>street</label>

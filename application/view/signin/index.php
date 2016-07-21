@@ -6,7 +6,7 @@
             <label for='email' >Email Address*:</label>
             <input type='text' name='email' id='email' value="" required />
             <label for='password' >Password*: </label>
-            <input type='text' name='password' id='password' value="" required />
+            <input type='password' name='password' id='password' value="" required />
             <input type='submit' name='signincustomer' value='Submit' />
             <br>
             <?php if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
