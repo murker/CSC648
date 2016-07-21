@@ -63,12 +63,7 @@ if (!isset($_SESSION)) {
                             
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
-                                    <a href="<?php echo URL; ?>home">sign out</a>
-                                    <?php
-                                    // deletes the current session
-                                    session_unset();
-                                    session_destroy();
-                                    ?>
+                                    <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
                                 </li>
                             <?php else : ?>
                                 <li>
