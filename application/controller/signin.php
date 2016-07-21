@@ -1,3 +1,11 @@
+<!-- Every page will need to start a session to know the user's state 
+     The session variable is: $_SESSION['CurrentUser'] -->
+<?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <?php
 
 /**
@@ -25,7 +33,7 @@ class SignIn extends Controller {
      * ACTION: signinCustomer
      * This method handles what happens when customer signs in
      */
-    public function signinCustomer() {
+public function signinCustomer() {
         if (isset($_POST["signincustomer"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
@@ -33,9 +41,11 @@ class SignIn extends Controller {
 
             // if user fails to login, send them to sign in page
             if ($match->email == $email) {
-                header('location: ' . URL . 'home/index');
+                $_SESSION['CurrentUser'] = $email;  // create session for user             
+                header('location: ' . URL . 'home');
             } else {
-                header('location: ' . URL . 'signin/index');
+                echo "Wrong credentials"; // still doesnt work. may need to create a js script for alert message
+                header('location: ' . URL . 'signin');
             }
         }
     }

@@ -1,3 +1,11 @@
+<!-- Every page will need to start a session to know the user's state 
+     The session variable is: $_SESSION['CurrentUser'] -->
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,20 +50,33 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="header-buttons">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="<?php echo URL; ?>products">sell an item</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>cart">cart</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>customers">register</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>signin">sign in</a>
-                        </li>
-                    </ul>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="<?php echo URL; ?>products">sell an item</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo URL; ?>cart">cart</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo URL; ?>customers">register</a>
+                            </li>
+                            
+                            <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                                <li>
+                                    <a href="<?php echo URL; ?>home">sign out</a>
+                                    <?php
+                                    // deletes the current session
+                                    session_unset();
+                                    session_destroy();
+                                    ?>
+                                </li>
+                            <?php else : ?>
+                                <li>
+                                    <a href="<?php echo URL; ?>signin">sign in</a>
+                                </li>
+                            <?php endif; ?>
+
+                        </ul>
                     </div>
                     <br /><br /><br />
                     <div class="navbar-nav header-search">
