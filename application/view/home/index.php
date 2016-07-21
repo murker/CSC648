@@ -33,19 +33,16 @@
             <div class="row">
                 <?php foreach ($products as $product) { ?>
                     <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-                    <div class="thumbnail">
-                        <!--                            
-                        <?php
-                        if (isset($product->img1))
-                            echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '"  height="320" width="150" />';
-                        else
-                            echo '<img src="<' . URL . '/img/logo.png" />';
-                        ?>
-                        -->
+                    <div class="thumbnail">                                                                          
                         <div class="caption">
                             <h4>
                                 <div class="search-image">
-                                    <img src="<?php echo URL . '/img/imagenotfound.png' ?>" />
+                                    <?php
+                                    if (isset($product->img1))  
+                                    echo '<img src="data:image/jpeg;base64,'.base64_encode($product->img1).'" />';
+                                    else
+                                    echo '<img src="<' . URL . '/img/imagenotfound.png" />';                   
+                                    ?>                                   
                                 </div>
                                 <a href="#"><?php
                                     if (isset($product->name))
