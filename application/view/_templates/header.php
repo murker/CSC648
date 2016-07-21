@@ -64,8 +64,7 @@ if (!isset($_SESSION)) {
 
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
-                                    <!-- Need to terminate session when user clicks "sign out" instead of going to home page -->
-                                    <a href="<?php echo URL; ?>home">sign out</a>
+                                    <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
                                 </li>
                             <?php else : ?>
                                 <li>

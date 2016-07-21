@@ -18,7 +18,7 @@ if(!isset($_SESSION)) {
  *
  */
 class SignIn extends Controller {
-
+    
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/customers/index
@@ -33,19 +33,19 @@ class SignIn extends Controller {
      * ACTION: signinCustomer
      * This method handles what happens when customer signs in
      */
-public function signinCustomer() {
+    public function signinCustomer() {
+        
         if (isset($_POST["signincustomer"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
             $match = $this->signinmodel->signinCustomer($email, $password);
-
             // if user fails to login, send them to sign in page
             if ($match->email == $email) {
                 $_SESSION['CurrentUser'] = $email;  // create session for user             
-                header('location: ' . URL . 'home');
-            } else {
-                echo "Wrong credentials"; // still doesnt work. may need to create a js script for alert message
-                header('location: ' . URL . 'signin');
+                header('location: ' . URL . 'home');   
+            } 
+            if ($match->email != $email){
+                header('location: ' . URL . 'signin?msg=failed');     
             }
         }
         
@@ -55,6 +55,4 @@ public function signinCustomer() {
             session_destroy();
         }
     }
-
 }
-?>
