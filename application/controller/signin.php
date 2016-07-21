@@ -48,11 +48,5 @@ class SignIn extends Controller {
                 header('location: ' . URL . 'signin?msg=failed');     
             }
         }
-        
-        // i want to call this to terminate session
-        if(isset($_GET['logout'])) {
-            session_unset();
-            session_destroy();
-        }
     }
 }
