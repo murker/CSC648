@@ -117,5 +117,49 @@ class Products extends Controller
         // where to go after product has been added
         header('location: ' . URL . 'products/index');
     }
+    public function updateProductImg1()
+    {
+        // if we have POST data to create a new Product entry
+        if (isset($_POST["submit_update_productImg1"])) {
+            $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);           
+            $this->productsmodel->updateProductImg1($_POST["product_id"], $image4);
+        }
+
+        // where to go after product has been added
+        header('location: ' . URL . 'products/index');
+    }
+    public function updateProductImg2()
+    {
+        // if we have POST data to create a new Product entry
+        if (isset($_POST["submit_update_productImg2"])) {
+            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);          
+            $this->productsmodel->updateProductImg2($_POST["product_id"], $image2);
+        }
+
+        // where to go after product has been added
+        header('location: ' . URL . 'products/index');
+    }
+    public function updateProductImg3()
+    {
+        // if we have POST data to create a new Product entry
+        if (isset($_POST["submit_update_productImg3"])) {      
+            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
+            $this->productsmodel->updateProductImg3($_POST["product_id"], $image3);
+        }
+
+        // where to go after product has been added
+        header('location: ' . URL . 'products/index');
+    }
+    public function updateProductImg4()
+    {
+        // if we have POST data to create a new Product entry
+        if (isset($_POST["submit_update_productImg4"])) {
+            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
+            $this->productsmodel->updateProductImg4($_POST["product_id"], $image4);
+        }
+
+        // where to go after product has been added
+        header('location: ' . URL . 'products/index');
+    }
 
 }
