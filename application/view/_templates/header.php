@@ -60,21 +60,19 @@ if (!isset($_SESSION)) {
                             <li>
                                 <a href="<?php echo URL; ?>customers">register</a>
                             </li>
-                            
+
+
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
+                                    <!-- Need to terminate session when user clicks "sign out" instead of going to home page -->
                                     <a href="<?php echo URL; ?>home">sign out</a>
-                                    <?php
-                                    // deletes the current session
-                                    session_unset();
-                                    session_destroy();
-                                    ?>
                                 </li>
                             <?php else : ?>
                                 <li>
                                     <a href="<?php echo URL; ?>signin">sign in</a>
                                 </li>
-                            <?php endif; ?>
+                            <?php endif; ?> 
+
 
                         </ul>
                     </div>

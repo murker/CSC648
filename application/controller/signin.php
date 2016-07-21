@@ -48,6 +48,12 @@ public function signinCustomer() {
                 header('location: ' . URL . 'signin');
             }
         }
+        
+        // i want to call this to terminate session
+        if(isset($_GET['logout'])) {
+            session_unset();
+            session_destroy();
+        }
     }
 
 }
