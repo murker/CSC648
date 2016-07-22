@@ -161,5 +161,4 @@ class Products extends Controller
         // where to go after product has been added
         header('location: ' . URL . 'products/index');
     }
-
 }

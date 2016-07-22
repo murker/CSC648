@@ -36,7 +36,7 @@
                     <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
                     <div class="thumbnail">                                                                          
                         <div class="caption">
-                            <a href="#">
+                            <a href="<?php echo URL; ?>item">                            
                             <div class="search-image">
                                 <?php
                                 if (isset($product->img1))
