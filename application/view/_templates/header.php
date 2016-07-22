@@ -60,7 +60,8 @@ if (!isset($_SESSION)) {
                             <li>
                                 <a href="<?php echo URL; ?>customers">register</a>
                             </li>
-                            
+
+
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
                                     <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
@@ -69,7 +70,8 @@ if (!isset($_SESSION)) {
                                 <li>
                                     <a href="<?php echo URL; ?>signin">sign in</a>
                                 </li>
-                            <?php endif; ?>
+                            <?php endif; ?> 
+
 
                         </ul>
                     </div>

@@ -39,9 +39,10 @@ class SignIn extends Controller {
             $email = $_POST["email"];
             $password = $_POST["password"];
             $match = $this->signinmodel->signinCustomer($email, $password);
-            // if user fails to login, send them to sign in page
+            
+            // if user fails to login, show error message
             if ($match->email == $email) {
-                $_SESSION['CurrentUser'] = $email;  // create session for user             
+                $_SESSION['CurrentUser'] = $match->id;  // create session for user             
                 header('location: ' . URL . 'home');   
             } 
             if ($match->email != $email){
