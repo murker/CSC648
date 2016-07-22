@@ -5,7 +5,7 @@
  */
 
 body {
-    padding-top: 150px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    /*padding-top: 150px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 .nav{
     font-size: 12pt;
@@ -57,11 +57,25 @@ body {
     margin-bottom: 20px;
 }
 .search-image{
-    float:left;
-    width:125px;
-    padding-right:10px;
+    position:absolute;
+    text-align: center;
+    margin-top:10px;
+    width:160px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
 }
-
+.search-image img{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.search-data{
+    margin-left: 175px;
+}
 .slide-image {
     width: 100%;
 }
@@ -76,16 +90,21 @@ body {
 }
 
 .caption {
-    height: 130px;
+    height: 200px;
     overflow: hidden;
 }
 
 .caption h4 {
     white-space: nowrap;
 }
+.caption img{
+    width:auto;
+    height:auto;
+    max-width:150px;
+    max-height:150px;
+}
 
 .thumbnail img {
-    width: 100%;
 }
 
 .ratings {
@@ -96,6 +115,16 @@ body {
 
 .thumbnail {
     padding: 0;
+    margin-bottom: 0px;
+    border: 2px solid #ddd;
+    border-right-style:hidden;
+    border-left-style:hidden;
+    border-top-style:hidden;
+    border-radius: 0px;
+}
+.thumbnail h5{
+    font-size: 12pt;
+    color:#333;
 }
 
 .thumbnail .caption-full {

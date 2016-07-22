@@ -10,7 +10,7 @@
             <label for='email' >Email Address*:</label>
 	    <input type='text' name='email' id='email' value="" required /><br><br>
             <label for='password' >Password*: </label>
-            <input type='text' name='password' id='password' value="" required />
+            <input type='password' name='password' id='password' value="" required />
             <label for='phone' >Phone*: </label>
             <input type='text' name='phone' id='phone' value="" required />
             <label for='street' >Street Address*: </label>

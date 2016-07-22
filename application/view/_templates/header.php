@@ -1,3 +1,11 @@
+<!-- Every page will need to start a session to know the user's state 
+     The session variable is: $_SESSION['CurrentUser'] -->
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +18,10 @@
         <meta name="author" content="">
         <title>Books and Tutors SFSU</title>
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo URL . 'css/bootstrap.min.css' ?>" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="css/shop-homepage.css" rel="stylesheet">
+        <link href="<?php echo URL . 'css/shop-homepage.css' ?>" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,7 +32,7 @@
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="student-warning">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</div>
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -42,20 +50,30 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="header-buttons">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="<?php echo URL; ?>products">Sell an Item</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>cart">Cart</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>customers">Register</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo URL; ?>signin">Sign In</a>
-                        </li>
-                    </ul>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="<?php echo URL; ?>products">sell an item</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo URL; ?>cart">cart</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo URL; ?>customers">register</a>
+                            </li>
+
+
+                            <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                                <li>
+                                    <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
+                                </li>
+                            <?php else : ?>
+                                <li>
+                                    <a href="<?php echo URL; ?>signin">sign in</a>
+                                </li>
+                            <?php endif; ?> 
+
+
+                        </ul>
                     </div>
                     <br /><br /><br />
                     <div class="navbar-nav header-search">
