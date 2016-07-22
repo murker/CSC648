@@ -1,27 +1,56 @@
 <div class="container">
-    <h2>SIGN UP</h2>
-    <!-- add customer form -->                  
-    <div class="box">         
-        <form action="<?php echo URL; ?>customers/addcustomer" method="POST">
-            <label for='firstname' >First Name*: </label>
- 	    <input type='text' name='firstname' id='firstname' value="" required />
-	    <label for='lastname' >Last Name*: </label>
-            <input type='text' name='lastname' id='lastname' value="" required />
-            <label for='email' >Email Address*:</label>
-	    <input type='text' name='email' id='email' value="" required /><br><br>
-            <label for='password' >Password*: </label>
-            <input type='password' name='password' id='password' value="" required />
-            <label for='phone' >Phone*: </label>
-            <input type='text' name='phone' id='phone' value="" required />
-            <label for='street' >Street Address*: </label>
-            <input type='text' name='street' id='street' value="" required /><br><br>
-            <label for='city' >City*: </label>
-            <input type='text' name='city' id='city' value="" required />
-            <label for='zipcode' >Zip code*: </label>
-            <input type='text' name='zipcode' id='zipcode' value="" required /><br><br>
-            <input type='submit' name='submit_add_customer' value='Submit' />
-        </form>
-    </div>
+    <form action="<?php echo URL; ?>customers/addcustomer" method="POST">
+        <div class="register-top-grid">
+            <h3>PERSONAL INFORMATION</h3>
+            <div>
+                <span>First Name<label>*</label></span>
+                <input type='text' name='firstname' id='firstname' value="" required /> 
+            </div>
+            <div>
+                <span>Last Name<label>*</label></span>
+                <input type='text' name='lastname' id='lastname' value="" required />
+            </div>
+            <div>
+                <span>Phone Number<label>*</label></span>
+                <input type='text' name='phone' id='phone' value="" required />
+            </div>
+            <div>
+                <span>Email Address<label>*</label></span>
+                <input type='text' name='email' id='email' value="" required /> 
+                </div>
+                <span>Password<label>*</label></span>
+                <input type='password' name='password' id='password' value="" required />
+            <div class="clear"> </div>
+            <a class="news-letter" href="#">
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
+            </a>
+            <div class="clear"> </div>
+        </div>
+        <div class="register-bottom-grid">
+            <h3>SHIPPING INFORMATION</h3>
+            <div>
+                <span>Street Address<label>*</label></span>
+                <input type='text' name='street' id='street' value="" required />
+            </div>
+            <div>
+                <span>City<label>*</label></span>
+                <input type='text' name='city' id='city' value="" required />
+            </div
+            <div>
+                <span>Zip Code<label>*</label></span>
+                <input type='text' name='zipcode' id='zipcode' value="" required />
+            </div>
+            <div class="clear"> </div>
+        <input type='submit' name='submit_add_customer' value='Submit' />
+        </div>   
+    </form>
+</div>
+
+
+
+
+
+<div class="container">
     <!-- main content output -->
     <div class="box">
         <h3>List of customers</h3>
