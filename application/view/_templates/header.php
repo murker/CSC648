@@ -32,20 +32,33 @@ if (!isset($_SESSION)) {
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="student-warning">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</div>
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
                 <div class="navbar-nav">
-                    <a class="navbar-brand header-logo" href="#"><a href="<?php echo URL; ?>"><img src="<?php echo URL . '/img/logo.png' ?>" /></a></a>
+                    <a class="navbar-brand header-logo" href="#">
+                        <a href="<?php echo URL; ?>">
+                            <img src="<?php echo URL . '/img/logo.png' ?>" />
+                        </a>
+                    </a>
+                    <div class="navbar-header hamburger">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="header-search">
+                    <form action="<?php echo URL; ?>searchproducts/index" method="POST">
+                        <div class="input-group">
+                            <div class="form-group has-feedback">
+                                <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -76,15 +89,8 @@ if (!isset($_SESSION)) {
                         </ul>
                     </div>
                     <br /><br /><br />
-                    <div class="navbar-nav header-search">
-                        <form action="<?php echo URL; ?>searchproducts/index" method="POST">
-                            <input type="text" name='searchinput' placeholder="Search for books, tutors and more!" required>
-                            <input type="submit" name='submit_search_product' value="Search">
-                        </form>
-                    </div>
+
                 </div>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container -->
     </nav>
