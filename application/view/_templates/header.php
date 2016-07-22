@@ -59,6 +59,7 @@ if (!isset($_SESSION)) {
                                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
                             </div>
                         </div>
+                    </form>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
