@@ -44,16 +44,16 @@
                     <div class="header-buttons">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="<?php echo URL; ?>products">sell an item</a>
+                            <a href="<?php echo URL; ?>products">Sell an Item</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL; ?>cart">cart</a>
+                            <a href="<?php echo URL; ?>cart">Cart</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL; ?>customers">register</a>
+                            <a href="<?php echo URL; ?>customers">Register</a>
                         </li>
                         <li>
-                            <a href="<?php echo URL; ?>signin">sign in</a>
+                            <a href="<?php echo URL; ?>signin">Sign In</a>
                         </li>
                     </ul>
                     </div>
