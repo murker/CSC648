@@ -36,6 +36,7 @@
                     <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
                     <div class="thumbnail">                                                                          
                         <div class="caption">
+                            <a href="#">
                             <div class="search-image">
                                 <?php
                                 if (isset($product->img1))
@@ -46,7 +47,7 @@
                             </div>
                             <div class="search-data">
                                 <h4>
-                                    <a href="#"><?php
+                                    <?php
                                         if (isset($product->name))
                                             echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
                                         ?></a></h4>

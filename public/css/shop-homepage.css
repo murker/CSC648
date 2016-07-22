@@ -25,7 +25,8 @@ body {
     white-space: nowrap;
 }
 .header-logo{
-    position: absolute;
+}
+.header-buttons{
 }
 .header-buttons a{
     color:#E2AF2D !important;
@@ -34,24 +35,24 @@ body {
     color:#ECCD7F !important;
 }
 .header-search{
-    position:inherit;
-    margin-top:-15px;
-    padding-left:12px;
+    margin-top:10px;
 }
 .header-search input{
     height:40px;
-    border-radius: 5px;
-    font-size:12pt;
-    font-weight: bold;
+    border-radius: 5px !important;
 }
 .header-search input[type="text"]{
-    min-width:285px;
+    min-width:375px;
     padding-left:10px;
 }
-.header-search input[type="submit"]{
-    background:#fff;
+.hamburger{
+    float:right;
 }
-
+.glyphicon{
+    font-size:12pt;
+    padding-top:5px;
+    color: #333;
+}
 .item-listing{
     padding: 4px;
     margin-bottom: 20px;
@@ -123,6 +124,7 @@ body {
     border-radius: 0px;
 }
 .thumbnail h5{
+    /*padding-top:10px;*/
     font-size: 12pt;
     color:#333;
 }
