@@ -35,7 +35,7 @@
     </div>
         <!-- main content output -->
     <div class="box">
-        <h3>List of Items</h3>
+        <h3>List of Items <small>Left in for debug</small></h3>
         <table>
             <thead style="background-color: #ddd; font-weight: bold;">
             <tr>

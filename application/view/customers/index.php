@@ -69,7 +69,7 @@
                         </div>
                         <div>
                             <div class="col-sm-3">
-                                <label>Zip</label>
+                                <label>Zip Code</label>
                             </div>
                             <div class="col-sm-9">
                                 <input type='text' name='zipcode' id='zipcode' value="" required />
