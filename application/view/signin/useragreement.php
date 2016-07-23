@@ -1,7 +1,7 @@
 <div class="container">
-    <h2>SIGN OUT</h2>
+    <h2>USER AGREEMENT</h2>
     <!-- add sign in form -->                  
     <div class="box"> 
-        <p><strong>You've signed out. See you again soon!</strong></p>
+        <p><strong>User agreement coming soon</strong></p>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="container">
-    <h2>SIGN OUT</h2>
+    <h2>PRIVACY NOTICE</h2>
     <!-- add sign in form -->                  
     <div class="box"> 
-        <p><strong>You've signed out. See you again soon!</strong></p>
+        <p><strong>Privacy notice coming soon</strong></p>
     </div>
 </div>

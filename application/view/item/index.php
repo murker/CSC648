@@ -12,11 +12,19 @@
             <?php
             if (isset($product->name))
                 echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
-            ?></a></h4>
+            ?>
+        </h4>
+        <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
+        <form>
+        <label for='quantity' >Quantity: </label>
+        <input type='text' name='quantity' id='quantity' value="1" required />
+        <label for='stock_qty' >available: </label>
+        <?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?>
         <h5>
             <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
         </h5>
-        <br /><br /><input type="button" value="Add to cart" />
-    <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
+        <input type="button" value="Buy It Now" /></br>
+        <input type="button" value="Add to cart" />
+        </form>
     </div>
 </div>

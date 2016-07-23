@@ -35,8 +35,8 @@
         </div>
         <div class="login-page">
             <h4 class="title">New Customers</h4>
-            <p>By Registering, you agree that you've read and accepted our  <a title="link opens in new window" href="#" target="_blank">User Agreement</a>, 
-                you're at least 18 years old, and you consent to our <a title="link opens in new window" href="#" target="_blank">Privacy Notice</a>.</p>
+            <p>By Registering, you agree that you've read and accepted our  <a href="<?php echo URL . 'signin/useragreement' ?>">User Agreement</a>, 
+                you're at least 18 years old, and you consent to our <a href="<?php echo URL . 'signin/privacynotice' ?>">Privacy Notice</a>.</p>
             <div class="button1">                
                 <a href="<?php echo URL; ?>customers"><input type="submit" name="Submit" value="Create an Account"></a>
             </div>
