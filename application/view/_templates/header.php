@@ -52,7 +52,7 @@ if (!isset($_SESSION)) {
                     </div>
                 </div>
                 <div class="header-search">
-                    <form action="<?php echo URL; ?>searchproducts/index" method="POST">
+                    <form action="<?php echo URL; ?>searchproducts/index" method="GET">
                         <div class="input-group">
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
