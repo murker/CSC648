@@ -39,19 +39,19 @@ class Home extends Controller
     public function sortbyCategory()
     {
         $category = 0;
-        if (isset($_POST["submit_sortbyBooks"])){
+        if (isset($_GET["submit_sortbyBooks"])){
         $category = 1;
-        }else if (isset($_POST["submit_sortbyTutors"])){
+        }else if (isset($_GET["submit_sortbyTutors"])){
         $category = 2;
-        }else if (isset($_POST["submit_sortbyElectronics"])){
+        }else if (isset($_GET["submit_sortbyElectronics"])){
         $category = 3;
-        }else if (isset($_POST["submit_sortbyEntertainment"])){
+        }else if (isset($_GET["submit_sortbyEntertainment"])){
         $category = 4;
-        }else if (isset($_POST["submit_sortbyClothing"])){
+        }else if (isset($_GET["submit_sortbyClothing"])){
         $category = 5;
-        }else if (isset($_POST["submit_sortbyFurniture"])){
+        }else if (isset($_GET["submit_sortbyFurniture"])){
         $category = 6;
-        }else if (isset($_POST["submit_sortbyOther"])){
+        }else if (isset($_GET["submit_sortbyOther"])){
         $category = 7;
         }
         $products = $this->homemodel->sortbyCategory($category);
