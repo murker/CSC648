@@ -36,7 +36,7 @@
                     <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
                     <div class="thumbnail">                                                                          
                         <div class="caption">
-                            <a href="<?php echo URL; ?>item">                            
+                            <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">                            
                             <div class="search-image">
                                 <?php
                                 if (isset($product->img1))
