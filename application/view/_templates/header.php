@@ -37,7 +37,7 @@ if (!isset($_SESSION)) {
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-nav">
-                    <a class="navbar-brand header-logo" href="#">
+                    <a class="navbar-brand header-logo">
                         <a href="<?php echo URL; ?>">
                             <img src="<?php echo URL . '/img/logo.png' ?>" />
                         </a>
@@ -67,17 +67,17 @@ if (!isset($_SESSION)) {
                         <ul class="nav navbar-nav">                                                      
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
-                                <a href="<?php echo URL; ?>products">sell an item</a>
+                                <a href="<?php echo URL; ?>products">Sell an Item</a>
                                 </li>
                                 <li>
-                                <a href="<?php echo URL; ?>cart">cart</a>
+                                <a href="<?php echo URL; ?>cart">Cart</a>
                                 </li>  
                                 <li>                                    
-                                    <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
+                                    <a href="<?php echo URL; ?>signout/destroySession">Sign Out</a>
                                 </li>
                             <?php else : ?>
                                 <li>
-                                    <a href="<?php echo URL; ?>signin">sign in</a>
+                                    <a href="<?php echo URL; ?>signin">Sign In or Register</a>
                                 </li>
                             <?php endif; ?> 
                         </ul>
