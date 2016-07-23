@@ -37,7 +37,7 @@ if (!isset($_SESSION)) {
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-nav">
-                    <a class="navbar-brand header-logo" href="#">
+                    <a class="navbar-brand header-logo">
                         <a href="<?php echo URL; ?>">
                             <img src="<?php echo URL . '/img/logo.png' ?>" />
                         </a>
@@ -52,7 +52,7 @@ if (!isset($_SESSION)) {
                     </div>
                 </div>
                 <div class="header-search">
-                    <form action="<?php echo URL; ?>searchproducts/index" method="GET">
+                    <form action="<?php echo URL; ?>searchproducts/index" method="POST">
                         <div class="input-group">
                             <div class="form-group has-feedback">
                                 <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
@@ -67,23 +67,33 @@ if (!isset($_SESSION)) {
                         <ul class="nav navbar-nav">                                                      
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
-                                <a href="<?php echo URL; ?>products">sell an item</a>
+                                    <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell an Item</a>
                                 </li>
                                 <li>
-                                <a href="<?php echo URL; ?>cart">cart</a>
+                                    <a href="<?php echo URL; ?>cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
                                 </li>  
-                                <li>                                    
-                                    <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
+                                <li>
+                                    <div class="dropdown pull-right">
+                            <button class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true" style="color:#E2AF2D"></span> Hello, Name
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu header-dropdown">
+                                <li><a href="<?php echo URL . 'customers/editcustomer/2' ?>">Profile</a></li>
+                                <li><a href="#">Items for Sale</a></li>
+                                <option value disabled>———————————</option>
+                                <li><a href="<?php echo URL; ?>signout/destroySession">Sign Out</a></li>
+                            </ul>
+                        </div>
                                 </li>
                             <?php else : ?>
                                 <li>
-                                    <a href="<?php echo URL; ?>signin">sign in</a>
+                                    <a href="<?php echo URL; ?>signin">Sign In or Register</a>
                                 </li>
                             <?php endif; ?> 
                         </ul>
                     </div>
-                    <br /><br /><br />
-
+                    <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                        
+                    <?php endif; ?> 
                 </div>
             </div>
         </div>

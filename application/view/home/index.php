@@ -1,9 +1,7 @@
 <!-- Page Content -->
 <div class="container">
     <div class="row">
-
-        <div class="col-md-3">
-            <p class="lead">Category</p>
+        <div class="col-sm-2">
             <div class="list-group">   
                 <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
                     <input type='submit' class="list-group-item" name='submit_sortbyBooks' value="Books" />
@@ -28,8 +26,8 @@
                 </form>
             </div>
         </div>
-
-        <div class="col-md-9">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-9">
 
             <div class="row">
                 <?php foreach ($products as $product) { ?>
@@ -41,8 +39,6 @@
                                 <?php
                                 if (isset($product->img1))
                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" />';
-                                else
-                                    echo '<img src="<' . URL . '/img/imagenotfound.png" />';
                                 ?>                                   
                             </div>
                             <div class="search-data">
@@ -54,7 +50,7 @@
                                 <h5>
                                     <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
                                 </h5>
-                                <br /><br /><input type="button" value="Add to cart" />
+                                <!--<br /><br /><input type="button" value="Add to cart" class="btn btn-primary"/>-->
                             <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
                             </div>
                         </div>
