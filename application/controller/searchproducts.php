@@ -37,4 +37,13 @@ class Searchproducts extends Controller
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
+    
+    public function getuserProducts($user_id)
+    {
+        $products = $this->searchproductsmodel->getuserProducts($user_id);
+        // load views
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
+    }
 }

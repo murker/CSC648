@@ -1,4 +1,11 @@
 <?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+?>
+
+
+<?php
 /**
  * Class Products
  * This is a demo class.
@@ -39,14 +46,31 @@ class Products extends Controller
         if (isset($_POST["submit_add_product"])) {
             // do addProduct() in model/model.php
             $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
-            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
-            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
-            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
-            $this->productsmodel->addProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image1, $image2, $image3, $image4);
+            
+            if(($_FILES['imageToUpload2']['tmp_name']) != ""){
+                $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
+            }else{
+                $image2 = NULL;
+            }
+            if(($_FILES['imageToUpload3']['tmp_name']) != ""){
+                $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
+            }else{
+                $image3 = NULL;
+            }
+            if(($_FILES['imageToUpload4']['tmp_name']) != ""){
+                $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
+            }else{
+                $image4 = NULL;
+            }
+            $this->productsmodel->addProduct($_POST["customer_id"], $_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image1, $image2, $image3, $image4);
         }
 
         // where to go after product has been added
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
+        
     }
 
     /**
@@ -67,7 +91,10 @@ class Products extends Controller
         }
 
         // where to go after product has been deleted
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
     }
 
      /**

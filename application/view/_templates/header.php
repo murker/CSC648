@@ -78,7 +78,7 @@ if (!isset($_SESSION)) {
                                 <span class="caret"></span></button>
                             <ul class="dropdown-menu header-dropdown">
                                 <li><a href="<?php echo URL . 'customers/editcustomer/' . htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>">Profile</a></li>
-                                <li><a href="#">Items for Sale</a></li>
+                                <li><a href="<?php echo URL . 'searchproducts/getuserproducts/' . htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>">Items for Sale</a></li>
                                 <option value disabled>———————————</option>
                                 <li><a href="<?php echo URL; ?>signout/destroySession">Sign Out</a></li>
                             </ul>
