@@ -107,7 +107,7 @@ class ProductsModel
 
     public function getProduct($product_id)
     {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id FROM product WHERE id = :product_id LIMIT 1";
+        $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product WHERE id = :product_id LIMIT 1";
         $query = $this->db->prepare($sql);
         $parameters = array(':product_id' => $product_id);
 
