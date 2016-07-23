@@ -15,6 +15,7 @@ class SearchProductsModel
     }
     public function searchProduct($searchword)
     {
+        if ($searchword != ""){
         $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE (name like :searchword or description like :searchword)";
         $query = $this->db->prepare($sql);
         $parameters = array(':searchword' =>  $searchword);
@@ -26,6 +27,7 @@ class SearchProductsModel
         // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         return $query->fetchAll();
+        }
     }
     public function getuserProducts($user_id)
     {
