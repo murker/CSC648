@@ -77,7 +77,7 @@
                         </div>
                         <div class="clear"> </div>
                         <h4 style="visibility: hidden">hax</h4>
-                        <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-default" />
+                        <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-primary" />
                     </div>   
                 </form>
             </div>

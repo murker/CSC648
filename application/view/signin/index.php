@@ -9,14 +9,12 @@
                 <form action="<?php echo URL; ?>signin/signincustomer" method="POST">
                     <fieldset class="input">
                         <div class="form-group">
-                            <p id="login-form-username">
                             <div class="col-sm-3">
                                 <label for='email' >Email</label>
                             </div>
                             <div class="col-sm-9">
                                 <input type='text' name='email' id='email' value="" required />
                             </div>
-                            </p>
                             <p id="login-form-password">
                             <div class="col-sm-3">
                                 <label for='password' >Password</label>
@@ -35,7 +33,7 @@
                                 <p id="login-form-remember">
                                     <label for="modlgn_remember"><a href="#">Forget Your Password? </a></label>
                                 </p>
-                                <input type="submit" name="signincustomer" value="Login" class="btn btn-default">
+                                <input type="submit" name="signincustomer" value="Login" class="btn btn-primary">
                                 <div class="clear"></div>                                       
                             </div>
                         </div>

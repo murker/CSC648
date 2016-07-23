@@ -57,7 +57,7 @@
                             </div>
                             <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer->id, ENT_QUOTES, 'UTF-8'); ?>" />
                             <h4 style="visibility: hidden">hax</h4>
-                            <input type="submit" name="submit_update_customer" value="Update" class="btn btn-default"/>
+                            <input type="submit" name="submit_update_customer" value="Update" class="btn btn-primary"/>
                             </form>
                         </div>
                     </div>
