@@ -38,8 +38,10 @@ class Customers extends Controller
     {
         // if we have POST data to create a new customer entry
         if (isset($_POST["submit_add_customer"])) {
+            $salt = "saltedpass4team4";
+            $saltedpassword = md5($salt . $_POST["password"]);
             // do addCustomer() in model/customerModel.php
-            $this->customermodel->addCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["password"], $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"]);
+            $this->customermodel->addCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $saltedpassword, $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"]);
         }
 
         // where to go after customer has been added
@@ -104,8 +106,10 @@ class Customers extends Controller
     {
         // if we have POST data to create a new Customer entry
         if (isset($_POST["submit_update_customer"])) {
+            $salt = "saltedpass4team4";
+            $saltedpassword = md5($salt . $_POST["password"]);
             // do updateCustomer() from model/customerModel.php
-            $this->customermodel->updateCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $_POST["password"], $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"], $_POST["customer_id"]);
+            $this->customermodel->updateCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $saltedpassword, $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"], $_POST["customer_id"]);
         }
 
         // where to go after customer has been added

@@ -38,7 +38,9 @@ class SignIn extends Controller {
         if (isset($_POST["signincustomer"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
-            $match = $this->signinmodel->signinCustomer($email, $password);
+            $salt = "saltedpass4team4";
+            $saltedpassword = md5($salt . $password);
+            $match = $this->signinmodel->signinCustomer($email, $saltedpassword);
             
             // if user fails to login, show error message
             if ($match->email == $email) {
