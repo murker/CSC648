@@ -13,11 +13,11 @@ class ProductsModel
             exit('Database connection could not be established.');
         }
     }
-    public function addProduct($name, $description, $price, $stock_qty, $category_id, $img1, $img2, $img3, $img4)     
+    public function addProduct($customer_id, $name, $description, $price, $stock_qty, $category_id, $img1, $img2, $img3, $img4)     
     {
-        $sql = "INSERT INTO product (name, description, price, stock_qty, category_id, img1, img2, img3, img4) VALUES (:name, :description, :price, :stock_qty, :category_id, :img1, :img2, :img3, :img4)";
+        $sql = "INSERT INTO product (customer_id, name, description, price, stock_qty, category_id, img1, img2, img3, img4) VALUES (:customer_id, :name, :description, :price, :stock_qty, :category_id, :img1, :img2, :img3, :img4)";
         $query = $this->db->prepare($sql);
-        $parameters = array(':name' => $name, ':description' => $description, ':price' => $price, ':stock_qty' => $stock_qty, ':category_id' => $category_id, ':img1' => $img1, ':img2' => $img2, ':img3' => $img3, ':img4' => $img4);
+        $parameters = array(':customer_id' => $customer_id, ':name' => $name, ':description' => $description, ':price' => $price, ':stock_qty' => $stock_qty, ':category_id' => $category_id, ':img1' => $img1, ':img2' => $img2, ':img3' => $img3, ':img4' => $img4);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
