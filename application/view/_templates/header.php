@@ -64,20 +64,15 @@ if (!isset($_SESSION)) {
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="header-buttons">
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="<?php echo URL; ?>products">sell an item</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo URL; ?>cart">cart</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo URL; ?>customers">register</a>
-                            </li>
-
-
+                        <ul class="nav navbar-nav">                                                      
                             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                 <li>
+                                <a href="<?php echo URL; ?>products">sell an item</a>
+                                </li>
+                                <li>
+                                <a href="<?php echo URL; ?>cart">cart</a>
+                                </li>  
+                                <li>                                    
                                     <a href="<?php echo URL; ?>signout/destroySession">sign out</a>
                                 </li>
                             <?php else : ?>
@@ -85,8 +80,6 @@ if (!isset($_SESSION)) {
                                     <a href="<?php echo URL; ?>signin">sign in</a>
                                 </li>
                             <?php endif; ?> 
-
-
                         </ul>
                     </div>
                     <br /><br /><br />
