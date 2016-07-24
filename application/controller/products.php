@@ -134,26 +134,28 @@ class Products extends Controller
     {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_product"])) {
-            $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
-            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
-            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
-            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
-            $this->productsmodel->updateProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $_POST["product_id"], $image1, $image2, $image3, $image4);
+            $this->productsmodel->updateProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $_POST["product_id"]);
         }
 
         // where to go after product has been added
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
     }
     public function updateProductImg1()
     {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg1"])) {
             $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);           
-            $this->productsmodel->updateProductImg1($_POST["product_id"], $image4);
+            $this->productsmodel->updateProductImg1($_POST["product_id"], $image1);
         }
 
         // where to go after product has been added
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
     }
     public function updateProductImg2()
     {
@@ -164,7 +166,10 @@ class Products extends Controller
         }
 
         // where to go after product has been added
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
     }
     public function updateProductImg3()
     {
@@ -175,7 +180,10 @@ class Products extends Controller
         }
 
         // where to go after product has been added
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
     }
     public function updateProductImg4()
     {
@@ -186,6 +194,9 @@ class Products extends Controller
         }
 
         // where to go after product has been added
-        header('location: ' . URL . 'products/index');
+        $products = $this->searchproductsmodel->getuserProducts($_SESSION['CurrentUser']);
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/products/userproducts.php';
+        require APP . 'view/_templates/footer.php';
     }
 }
