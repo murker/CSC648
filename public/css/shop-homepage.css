@@ -17,6 +17,9 @@ body {
 .navbar-nav img{
     padding-right:50px;
 }
+.sort-select{
+    width: 175px;
+}
 .student-warning{
     background:#fff;
     color:#c00;
