@@ -32,7 +32,6 @@ class CartModel {
         $sql2 = "UPDATE cart SET name = :invoice WHERE id = :cid";
         $query2 = $this->db->prepare($sql2);
         $parameters2 = array(':invoice' => "invoice", ':cid' => $cid);
-        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql2, $parameters2);  exit();
         $query2->execute($parameters2);
     }
 
@@ -76,6 +75,7 @@ class CartModel {
         $sql = "DELETE FROM cart_item WHERE cart_id = :cid AND product_id = :pid";
         $query = $this->db->prepare($sql);
         $parameters = array(':cid' => $cid, ':pid' => $pid);
+        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
     }
 
@@ -97,9 +97,10 @@ class CartModel {
 
     public function updateCartItem($uid, $pid, $qty) {
         $cid = $this->getUserCart($uid);
-        $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND produc_id = :pid";
+        $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND product_id = :pid";
         $query = $this->db->prepare($sql);
         $parameters = array(':cid' => $cid, ':pid' => $pid, ':qty' => $qty);
+        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
     }
 

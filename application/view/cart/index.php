@@ -1,6 +1,42 @@
 <div class="container">
     <h2>CART</h2>
-    <!-- cart testing -->                  
+    <div class="row">
+        <?php foreach ($products as $product) { ?>
+            <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
+            <div class="thumbnail">                                                                          
+                <div class="caption">
+                    <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">                            
+                        <div class="search-image">
+                            <?php
+                            if (isset($product->img1))
+                                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" />';
+                            ?>                                   
+                        </div>
+                        <div class="search-data">
+                            <h4>
+                                <?php
+                                if (isset($product->name))
+                                    echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
+                                ?></a></h4>
+                            <form action="<?php echo URL; ?>cart/itemButton" method="POST">
+                                <h5>
+                                    <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
+                                    <label for='pid' >Qty: </label>
+                                    <input type='text' name='qty' id='qty' value=<?php echo $product->qty; ?> required />
+                                </h5>
+                                <input type="hidden" name="pid" value=<?php echo $product->id; ?>>
+                                <input type="submit" name='Update' value="Update Qty" class="btn btn-primary"/>
+                                <input type="submit" name='Delete' value="Delete" class="btn btn-primary"/>
+                            </form>
+                  <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
+                        </div>
+                </div>
+            </div>
+            <!--</div>-->
+        <?php } ?>
+    </div>
+    <!-- cart testing -->
+    <h2>DEBUG INTERFACE</h2>
     <div class="box">         
         <form action="<?php echo URL; ?>cart/addItem" method="POST">
             <label for='pid' >Item PID: </label>
@@ -43,34 +79,5 @@
                 <?php } ?>
             </tbody>
         </table>
-    </div>
-    <div class="row">
-        <?php foreach ($products as $product) { ?>
-            <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-            <div class="thumbnail">                                                                          
-                <div class="caption">
-                    <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">                            
-                        <div class="search-image">
-                            <?php
-                            if (isset($product->img1))
-                                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" />';
-                            ?>                                   
-                        </div>
-                        <div class="search-data">
-                            <h4>
-                                <?php
-                                if (isset($product->name))
-                                    echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
-                                ?></a></h4>
-                            <h5>
-                                <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
-                            </h5>
-                            <!--<br /><br /><input type="button" value="Add to cart" class="btn btn-primary"/>-->
-                        <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
-                        </div>
-                </div>
-            </div>
-            <!--</div>-->
-        <?php } ?>
     </div>
 </div>
