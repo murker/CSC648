@@ -17,6 +17,11 @@
             <input type='submit' name='submit_delete_item' value='DeleteItem' />
         </form>
     </div>
+    <div class="box">         
+        <form action="<?php echo URL; ?>cart/createInvoice" method="POST">
+            <input type='submit' name='submit_create_invoice' value='Create Invoice' />
+        </form>
+    </div>
     <!-- cart listing -->
     <div class="box">
         <h3>List of items in cart of user id# <?php if (isset($_SESSION['CurrentUser'])) echo $_SESSION['CurrentUser']; ?></h3>
