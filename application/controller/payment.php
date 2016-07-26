@@ -20,19 +20,6 @@ class Payment extends Controller {
         require APP . 'view/payment/index.php';
         require APP . 'view/_templates/footer.php';
     }
-    
-    public function finishTransaction(){       
-        createInvoice();
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/invoice/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
-     public function reviewpayment(){
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/payment/reviewpayment.php';
-        require APP . 'view/_templates/footer.php';
-    }
-
     public function createInvoice() {
         if (!isset($_SESSION)) {
             session_start();
@@ -70,13 +57,7 @@ class Payment extends Controller {
         return $invoice_data;
     }
 
-    public function sendbuyerConfirmation() {
-        
-    }
-
-    public function sendSellerConfirmation() {
-       
-    }
+   
     
     public function updateInventory(){
         
