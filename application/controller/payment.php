@@ -1,17 +1,35 @@
-        
+ 
+
 <?php
 
 class Payment extends Controller {
 
     public function index() {
+        if (!isset($_SESSION)) {
+            session_start();
+        }   
+        $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
+        $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
+        $products = array();
+        foreach ($cart_items as $item) {
+            $nextProduct = $this->itemmodel->getProduct($item->product_id);
+            $nextProduct->qty = $item->item_qty;
+            array_push($products, $nextProduct);
+        }
         require APP . 'view/_templates/header.php';
         require APP . 'view/payment/index.php';
         require APP . 'view/_templates/footer.php';
     }
     
-    public function finishTransaction(){
+    public function finishTransaction(){       
+        createInvoice();
         require APP . 'view/_templates/header.php';
         require APP . 'view/invoice/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
+     public function reviewpayment(){
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/payment/reviewpayment.php';
         require APP . 'view/_templates/footer.php';
     }
 
@@ -28,7 +46,9 @@ class Payment extends Controller {
                 $this->cartmodel->createInvoice($_SESSION['CurrentUser'], $invoiceData);
             }
         }
-        header('location: ' . URL . 'cart/index');
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invoice/index.php';
+        require APP . 'view/_templates/footer.php';        
     }
     public function calcInvoice($cart_items) {
         $time_stamp = date("Y-m-d H:i:s");
