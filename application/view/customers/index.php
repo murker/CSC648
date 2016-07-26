@@ -38,6 +38,7 @@
                                 <input type='text' name='email' id='email' value="" required />
                             </div>
                         </div>
+                        
                         <div>
                             <div class="col-sm-3">
                                 <label>Password</label>
@@ -54,6 +55,7 @@
                                 <input type='password' name='confirmpw' id='confirmpw' value="" required />
                             </div>
                         </div>
+                        
                         <div class="clear"> </div>
                         <!--                    <a class="news-letter" href="#">
                                                 <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
@@ -90,6 +92,23 @@
                         <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-primary" />
                     </div>   
                 </form>
+                
+                <!-- Script that validates password -->
+                <script>
+                    var password = document.getElementById("password");
+                    var confirm_password = document.getElementById("confirmpw");
+                    
+                    function validatePassword() {
+                        if (password.value != confirm_password.value) {
+                            confirm_password.setCustomValidity("Passwords does not match");
+                        } else {
+                            confirm_password.setCustomValidity('');
+                        }
+                    }
+                    password.onchange = validatePassword;
+                    confirm_password.onkeyup = validatePassword;
+                </script>
+                
             </div>
         </div>
     </div>
