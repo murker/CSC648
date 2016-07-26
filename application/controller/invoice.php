@@ -24,8 +24,8 @@ class Invoice extends Controller {
     }
     public function sendbuyerConfirmation() {
         
-        $email_from = "izaacg@mail.sfsu.edu";
-        $email_to = "izaacg@mail.sfsu.edu";
+        $email_from = "sang510@mail.sfsu.edu";
+        $email_to = "sang510@mail.sfsu.edu";
         $email_subject = "Books and Tutors Invoice";
         $email_message = "invoice";
         $headers = 'From: '.$email_from."\r\n". 'Reply-To: '.$email_from."\r\n" .

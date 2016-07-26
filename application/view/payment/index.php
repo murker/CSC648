@@ -23,7 +23,7 @@ $tax = 0.09;
                     <td><?php if (isset($product->id)) echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?></td>
                     <td><?php if (isset($product->name)) echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?></td>                   
                     <td><?php if (isset($product->price)){ $price = htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); echo $price;} ?></td>                                       
-                    <td><?php if (isset($product->qty)) { $quantity = htmlspecialchars($product->qty, ENT_QUOTES, 'UTF-8'); echo $quantity;} ?></td>   
+                    <td align="center"><?php if (isset($product->qty)) { $quantity = htmlspecialchars($product->qty, ENT_QUOTES, 'UTF-8'); echo $quantity;} ?></td>   
                     <td><?php $total = $price * $quantity; echo number_format((float)$total, 2, '.', ''); ?></td>
                     <?php $subtotal += $total;?>
                 </tr>
