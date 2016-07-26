@@ -1,3 +1,8 @@
+<?php
+$subtotal = 0;
+$tax = 0.09;
+?>
+
 <div clss="box">
     <h3>Your items for sale</h3>
     <table>
@@ -19,9 +24,35 @@
                     <td><?php if (isset($product->name)) echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?></td>                   
                     <td><?php if (isset($product->price)){ $price = htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); echo $price;} ?></td>                                       
                     <td><?php if (isset($product->qty)) { $quantity = htmlspecialchars($product->qty, ENT_QUOTES, 'UTF-8'); echo $quantity;} ?></td>   
-                    <td><?php $total = $price * $quantity; echo $total; ?></td>
+                    <td><?php $total = $price * $quantity; echo number_format((float)$total, 2, '.', ''); ?></td>
+                    <?php $subtotal += $total;?>
                 </tr>
-            <?php } ?>        
+            <?php } ?> 
+                
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Subtotal:</td>
+                    <td></td>
+                    <td><?php echo number_format((float)$subtotal, 2, '.', '')?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Tax:</td>
+                    <td></td>
+                    <td><?php echo number_format((float)$subtotal*$tax, 2, '.', '')?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total:</td>
+                    <td></td>
+                    <td><?php echo number_format((float)$subtotal+($subtotal*$tax), 2, '.', '')?></td>
+                </tr>
         </tbody>
     </table>
 </div>
