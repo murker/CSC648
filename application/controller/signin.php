@@ -1,7 +1,7 @@
 <!-- Every page will need to start a session to know the user's state 
      The session variable is: $_SESSION['CurrentUser'] -->
 <?php
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
 ?>
@@ -18,7 +18,7 @@ if(!isset($_SESSION)) {
  *
  */
 class SignIn extends Controller {
-    
+
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/customers/index
@@ -34,34 +34,35 @@ class SignIn extends Controller {
      * This method handles what happens when customer signs in
      */
     public function signinCustomer() {
-        
+
         if (isset($_POST["signincustomer"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
             $salt = "saltedpass4team4";
             $saltedpassword = md5($salt . $password);
             $match = $this->signinmodel->signinCustomer($email, $saltedpassword);
-            
+
             // if user fails to login, show error message
             if ($match->email == $email) {
                 $_SESSION['CurrentUser'] = $match->id;  // create session for user             
-                header('location: ' . URL . 'home');   
-            } 
-            if ($match->email != $email){
-                header('location: ' . URL . 'signin?msg=failed');     
+                header('location: ' . URL . 'home');
+            }
+            if ($match->email != $email) {
+                header('location: ' . URL . 'signin?msg=failed');
             }
         }
     }
-    
+
     public function privacyNotice() {
         require APP . 'view/_templates/header.php';
         require APP . 'view/signin/privacynotice.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function userAgreement() {
         require APP . 'view/_templates/header.php';
         require APP . 'view/signin/useragreement.php';
-        require APP . 'view/_templates/footer.php';  
+        require APP . 'view/_templates/footer.php';
     }
+
 }

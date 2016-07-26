@@ -38,11 +38,21 @@
                                 <input type='text' name='email' id='email' value="" required />
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <label>Password</label>
+                        <div>
+                            <div class="col-sm-3">
+                                <label>Password</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type='password' name='password' id='password' value="" required />
+                            </div>
                         </div>
-                        <div class="col-sm-9">
-                            <input type='password' name='password' id='password' value="" required />
+                        <div>
+                            <div class="col-sm-3">
+                                <label>Confirm Password</label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type='password' name='confirmpw' id='confirmpw' value="" required />
+                            </div>
                         </div>
                         <div class="clear"> </div>
                         <!--                    <a class="news-letter" href="#">
