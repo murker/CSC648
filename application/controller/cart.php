@@ -83,8 +83,7 @@ class Cart extends Controller {
         $invoice_data["g_total"] = $invoice_data["total"] + $invoice_data["shipping"] + $invoice_data["tax"];
 
         return $invoice_data;
-    }
-
+    }    
 }
 
 ?>

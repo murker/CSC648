@@ -36,7 +36,7 @@
         <?php } ?>
     </div>
     <td><form action="<?php echo URL; ?>payment" method="GET">
-                   <input type='submit' name='payment' value="Process to Checkout" class="btn btn-primary" />
+                   <input type='submit' name='payment' value="Checkout" class="btn btn-primary" />
     </form></td>
     <!-- cart testing -->
     <h2>DEBUG INTERFACE</h2>
