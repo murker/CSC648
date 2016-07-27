@@ -41,6 +41,12 @@ body {
 }
 .header-logo{
 }
+.header-slogan{
+    color:#BBB;
+    margin-left: 15px;
+    font-size: 10pt;
+    font-weight:bold;
+}
 .header-buttons button{
     margin-top: 13px;
     background-color: transparent;
