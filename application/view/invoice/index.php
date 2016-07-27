@@ -1,17 +1,16 @@
-<td><form action="<?php echo URL; ?>invoice/getInvoice" method="GET">
-                   <input type='submit' name='getInvoice' value="show invoice" id="searchButton" />
-                </form></td>
-
-<p>Set to my personal sfsu email for testing. It works. To test go to controller and edit email to and from. This buttons will go away once sfsu email checking is implemented.<p>                
-<td><form action="<?php echo URL; ?>invoice/sendsellerConfirmation" method="GET">
-                   <input type='submit' name='sendsellerConfirmation' value="send seller confirmation Email" id="searchButton" />
-                </form></td>
-<td><form action="<?php echo URL; ?>invoice/sendbuyerConfirmation" method="GET">
-                   <input type='submit' name='sendbuyerConfirmation' value="send buyer confirmation Email" id="searchButton" />
-                </form></td>
-
-
 <div class="container">
+    <div>
+        <td><form action="<?php echo URL; ?>invoice/getInvoice" method="GET">
+                <input type='submit' name='getInvoice' value="show invoice" id="searchButton" />
+            </form></td>
+        <p>Set to my personal sfsu email for testing. It works. To test go to controller and edit email to and from. This buttons will go away once sfsu email checking is implemented.</p>                
+        <td><form action="<?php echo URL; ?>invoice/sendsellerConfirmation" method="GET">
+                <input type='submit' name='sendsellerConfirmation' value="send seller confirmation Email" id="searchButton" />
+            </form></td>
+        <td><form action="<?php echo URL; ?>invoice/sendbuyerConfirmation" method="GET">
+                <input type='submit' name='sendbuyerConfirmation' value="send buyer confirmation Email" id="searchButton" />
+            </form></td>
+    </div>
     <div>
         <h3>Invoice</h3>       
         <label>Customer_id: </label>
@@ -32,6 +31,6 @@
     This invoice has been sent to your email <?php if (isset($customer->email)) echo htmlspecialchars($customer->email, ENT_QUOTES, 'UTF-8'); ?><br>
     Thank you for shopping with us.
 </div>
-                
+
 
 

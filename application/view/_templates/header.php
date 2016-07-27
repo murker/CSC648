@@ -59,15 +59,14 @@ if (!isset($_SESSION)) {
                                     <div>
                                         <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                        <select>
-                                            <option>All</option>
-                                            <option>Books</option>
-                                            <option>Tutors</option>
-                                            <option>Electronics</option>
-                                            <option>Entertainment</option>
-                                            <option>Clothing</option>
-                                            <option>Furniture</option>
-                                            <option>Other</option>
+                                        <select name='category_id'>
+                                        <option value="1">Books</option>
+                                        <option value="2">Tutors</option>
+                                        <option value="3">Electronics</option>
+                                        <option value="4">Entertainment</option>
+                                        <option value="5">Clothing</option>
+                                        <option value="6">Furniture</option>
+                                        <option value="7">Other</option>                                        
                                         </select>
                                     </div>
                                 </div>
@@ -114,3 +113,30 @@ if (!isset($_SESSION)) {
                 </div>
             </div>
         </nav>
+        
+        
+        <!--            <div class="col-sm-2">
+                <div class="list-group">   
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
+                        <input type='submit' class="list-group-item" name='submit_sortbyBooks' value="Books" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">                  
+                        <input type='submit' class="list-group-item" name='submit_sortbyTutors' value="Tutors" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">                    
+                        <input type='submit' class="list-group-item" name='submit_sortbyElectronics' value="Electronics" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
+                        <input type='submit' class="list-group-item" name='submit_sortbyEntertainment' value="Entertainment" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
+                        <input type='submit' class="list-group-item" name='submit_sortbyClothing' value="Clothing" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
+                        <input type='submit' class="list-group-item" name='submit_sortbyFurniture' value="Furniture" />
+                    </form>
+                    <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
+                        <input type='submit' class="list-group-item" name='submit_sortbyOther' value="Other" />
+                    </form>
+                </div>
+            </div>-->

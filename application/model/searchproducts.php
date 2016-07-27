@@ -13,12 +13,12 @@ class SearchProductsModel
             exit('Database connection could not be established.');
         }
     }
-    public function searchProduct($searchword)
+    public function searchProduct($searchword, $category_id)
     {
         if ($searchword != ""){
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE (name like :searchword or description like :searchword)";
+        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE category_id = :category_id AND name like :searchword";
         $query = $this->db->prepare($sql);
-        $parameters = array(':searchword' =>  $searchword);
+        $parameters = array(':searchword' =>  $searchword, ':category_id' => $category_id);
         $query->execute($parameters);
 
         // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
