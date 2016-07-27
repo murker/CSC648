@@ -1,25 +1,20 @@
- 
-
+        
 <?php
 
-class Payment extends Controller {
+class Buyitnow extends Controller {
 
     public function index() {
-        if (!isset($_SESSION)) {
-            session_start();
-        }   
-        $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
-        $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
-        $products = array();
-        foreach ($cart_items as $item) {
-            $nextProduct = $this->itemmodel->getProduct($item->product_id);
-            $nextProduct->qty = $item->item_qty;
-            array_push($products, $nextProduct);
-        }
         require APP . 'view/_templates/header.php';
-        require APP . 'view/payment/index.php';
+        require APP . 'view/buyitnow/index.php';
         require APP . 'view/_templates/footer.php';
     }
+    
+    public function finishTransaction(){
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invoice/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
+
     public function createInvoice() {
         if (!isset($_SESSION)) {
             session_start();
@@ -33,9 +28,7 @@ class Payment extends Controller {
                 $this->cartmodel->createInvoice($_SESSION['CurrentUser'], $invoiceData);
             }
         }
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/invoice/index.php';
-        require APP . 'view/_templates/footer.php';        
+        header('location: ' . URL . 'cart/index');
     }
     public function calcInvoice($cart_items) {
         $time_stamp = date("Y-m-d H:i:s");
@@ -57,12 +50,28 @@ class Payment extends Controller {
         return $invoice_data;
     }
 
-   
+    public function sendbuyerConfirmation() {
+        
+    }
+
+    public function sendSellerConfirmation() {
+       
+    }
     
     public function updateInventory(){
         
     }
+    
+    public function submit_buyitnow_item() {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        // if we have an id of a song that should be deleted
+        if (isset($_POST["submit_delete_item"])) {
+            $this->cartmodel->deleteCartItem($_SESSION['CurrentUser'], $_POST["pid"]);
+        }
+        header('location: ' . URL . 'cart/index');
+    }
 
 }
-
 ?>

@@ -18,6 +18,7 @@ class Controller
     public $siginmodel = null;
     public $sortmodel = null;
     public $itemmodel = null;
+    public $invoicemodel = null;
 
     /**
      * Whenever controller is created, open a database connection too and load "the model".
@@ -32,7 +33,8 @@ class Controller
         $this->loadsearchproductsModel();
         $this->loadsigninModel();
         $this->loadsortModel();
-         $this->loaditemModel();
+        $this->loaditemModel();
+        $this->loadinvoiceModel();
     }
 
     /**
@@ -103,5 +105,11 @@ class Controller
         require APP . 'model/item.php';
         // create new "model" (and pass the database connection)
         $this->itemmodel = new ItemModel($this->db);
+    }
+     public function loadinvoiceModel()
+    {
+        require APP . 'model/invoice.php';
+        // create new "model" (and pass the database connection)
+        $this->invoicemodel = new InvoiceModel($this->db);
     }
 }
