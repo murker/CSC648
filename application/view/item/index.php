@@ -34,8 +34,10 @@
                 <h5>
                     <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
                 </h5>
-                <input type="button" value="Buy It Now" class = "btn btn-primary"/></br>
-                <input type="button" value="Add to cart" class = "btn btn-primary" />
+                <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                    <input type="button" value="Buy It Now" class = "btn btn-primary"/></br>
+                    <input type="button" value="Add to cart" class = "btn btn-primary" />
+                <?php endif; ?> 
             </form>                                    
         </div>
     </div>
