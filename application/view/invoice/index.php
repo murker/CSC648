@@ -1,6 +1,8 @@
 <td><form action="<?php echo URL; ?>invoice/getInvoice" method="GET">
                    <input type='submit' name='getInvoice' value="show invoice" id="searchButton" />
                 </form></td>
+
+<p>Set to my personal sfsu email for testing. It works. To test go to controller and edit email to and from. This buttons will go away once sfsu email checking is implemented.<p>                
 <td><form action="<?php echo URL; ?>invoice/sendsellerConfirmation" method="GET">
                    <input type='submit' name='sendsellerConfirmation' value="send seller confirmation Email" id="searchButton" />
                 </form></td>
