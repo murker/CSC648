@@ -16,7 +16,7 @@ class Searchproducts extends Controller
      */
     public function index()
     {
-        $products = $this->searchproductsmodel->searchProduct('%'. $_GET["searchinput"] . '%');
+        $products = $this->searchproductsmodel->searchProduct('%'. $_GET["searchinput"] . '%', $_GET["category_id"]);
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
