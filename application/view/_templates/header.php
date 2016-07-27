@@ -60,13 +60,14 @@ if (!isset($_SESSION)) {
                                         <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                                         <select name='category_id'>
-                                        <option value="1">Books</option>
-                                        <option value="2">Tutors</option>
-                                        <option value="3">Electronics</option>
-                                        <option value="4">Entertainment</option>
-                                        <option value="5">Clothing</option>
-                                        <option value="6">Furniture</option>
-                                        <option value="7">Other</option>                                        
+                                            <option value="0">All</option>
+                                            <option value="1">Books</option>
+                                            <option value="2">Tutors</option>
+                                            <option value="3">Electronics</option>
+                                            <option value="4">Entertainment</option>
+                                            <option value="5">Clothing</option>
+                                            <option value="6">Furniture</option>
+                                            <option value="7">Other</option>                                        
                                         </select>
                                     </div>
                                 </div>
@@ -79,6 +80,9 @@ if (!isset($_SESSION)) {
                             <ul class="nav navbar-nav">                                                      
                                 <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                     <li>
+                                        <a href="<?php echo URL; ?>"><span class="glyphicon glyphicon-home" aria-hidden="true" style="color:#E2AF2D"></span> Home</a>
+                                    </li>
+                                    <li>
                                         <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell an Item</a>
                                     </li>
                                     <li>
@@ -88,7 +92,7 @@ if (!isset($_SESSION)) {
                                         <div class="dropdown pull-right">
                                             <button class="dropdown-toggle" type="button" data-toggle="dropdown">
                                                 <span class="glyphicon glyphicon-user" aria-hidden="true" style="color:#E2AF2D"></span>
-                                                Hello, Name
+                                                Hello, <?php echo htmlspecialchars($_SESSION['UserName']); ?>
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu header-dropdown">
@@ -110,11 +114,12 @@ if (!isset($_SESSION)) {
 
                         <?php endif; ?> 
                     </div>
+                    <div class="header-slogan">Providing students with an easy place to buy and sell books, tutors, and more!</div>
                 </div>
             </div>
         </nav>
-        
-        
+
+
         <!--            <div class="col-sm-2">
                 <div class="list-group">   
                     <form action="<?php echo URL; ?>home/sortbyCategory" method="GET">
