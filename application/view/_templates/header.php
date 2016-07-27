@@ -59,15 +59,14 @@ if (!isset($_SESSION)) {
                                     <div>
                                         <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                        <select>
-                                            <option>All</option>
-                                            <option>Books</option>
-                                            <option>Tutors</option>
-                                            <option>Electronics</option>
-                                            <option>Entertainment</option>
-                                            <option>Clothing</option>
-                                            <option>Furniture</option>
-                                            <option>Other</option>
+                                        <select name='category_id'>
+                                        <option value="1">Books</option>
+                                        <option value="2">Tutors</option>
+                                        <option value="3">Electronics</option>
+                                        <option value="4">Entertainment</option>
+                                        <option value="5">Clothing</option>
+                                        <option value="6">Furniture</option>
+                                        <option value="7">Other</option>                                        
                                         </select>
                                     </div>
                                 </div>
