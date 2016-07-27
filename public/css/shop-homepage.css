@@ -17,6 +17,11 @@ body {
 .navbar-nav img{
     padding-right:50px;
 }
+.sort-select{
+    width: 175px;
+    background:white;
+    margin-left:5px
+}
 .student-warning{
     background:#fff;
     color:#c00;
@@ -24,11 +29,18 @@ body {
     padding-left:2em;
     white-space: nowrap;
 }
+.quantity-text{
+    width: 25px;
+}
+.quantity{
+    font-weight: bold;
+    color:#c00;
+}
 .header-logo{
 }
 .header-buttons button{
-    margin-top: 14px;
-    background-color: Transparent;
+    margin-top: 13px;
+    background-color: transparent;
     background-repeat:no-repeat;
     border: none;
     cursor:pointer;
@@ -52,6 +64,9 @@ body {
 .header-buttons a:hover, .header-buttons button:hover{
     color:#ECCD7F !important;
 }
+.header-category{
+    display:inline;
+}
 .header-search{
     margin-top:10px;
 }
@@ -60,8 +75,20 @@ body {
     border-radius: 5px !important;
 }
 .header-search input[type="text"]{
-    min-width:375px;
     padding-left:10px;
+    width:80%;
+}
+.header-search input[type="text"], .header-search span{
+    float:right;
+}
+.header-search select{
+    width:20%;
+    float:left;
+    background:white;
+    height:40px;
+}
+.header-searchbardiv{
+    width:50%;
 }
 input[type="text"],input[type="password"]{
     border-radius:5px;

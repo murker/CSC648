@@ -35,66 +35,82 @@ if (!isset($_SESSION)) {
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
             <div class="student-warning">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</div>
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-nav">
-                    <a class="navbar-brand header-logo">
-                        <a href="<?php echo URL; ?>">
-                            <img src="<?php echo URL . '/img/logo.png' ?>" />
+                <div class="row">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-nav">
+                        <a class="navbar-brand">
+                            <a href="<?php echo URL; ?>">
+                                <img src="<?php echo URL . '/img/logo.png' ?>" />
+                            </a>
                         </a>
-                    </a>
-                    <div class="navbar-header hamburger">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="header-search">
-                    <form action="<?php echo URL; ?>searchproducts/index" method="GET">
-                        <div class="input-group">
-                            <div class="form-group has-feedback">
-                                <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
+                        <div class="navbar-header hamburger">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
                         </div>
-                    </form>
-                </div>
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <div class="header-buttons">
-                        <ul class="nav navbar-nav">                                                      
-                            <?php if (isset($_SESSION['CurrentUser'])) : ?>
-                                <li>
-                                    <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell an Item</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo URL; ?>cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
-                                </li>  
-                                <li>
-                                    <div class="dropdown pull-right">
-                            <button class="dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true" style="color:#E2AF2D"></span> Hello, Name
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu header-dropdown">
-                                <li><a href="<?php echo URL . 'customers/editcustomer/' . htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>">Profile</a></li>
-                                <li><a href="<?php echo URL . 'searchproducts/getuserproducts/' . htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>">Items for Sale</a></li>
-                                <option value disabled>———————————</option>
-                                <li><a href="<?php echo URL; ?>signout/destroySession">Sign Out</a></li>
+                    </div>
+                    <div class="header-search">
+                        <form action="<?php echo URL; ?>searchproducts/index" method="GET" class="nav-form">
+                            <div class="input-group header-searchbardiv">
+                                <div class="form-group has-feedback">
+                                    <div>
+                                        <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
+                                        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                                        <select>
+                                            <option>All</option>
+                                            <option>Books</option>
+                                            <option>Tutors</option>
+                                            <option>Electronics</option>
+                                            <option>Entertainment</option>
+                                            <option>Clothing</option>
+                                            <option>Furniture</option>
+                                            <option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="header-buttons">
+                            <ul class="nav navbar-nav">                                                      
+                                <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                                    <li>
+                                        <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell an Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo URL; ?>cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
+                                    </li>  
+                                    <li>
+                                        <div class="dropdown pull-right">
+                                            <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                                <span class="glyphicon glyphicon-user" aria-hidden="true" style="color:#E2AF2D"></span>
+                                                Hello, Name
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu header-dropdown">
+                                                <li><a href="<?php echo URL . 'customers/editcustomer/' . htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>">Profile</a></li>
+                                                <li><a href="<?php echo URL . 'searchproducts/getuserproducts/' . htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>">Items for Sale</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="<?php echo URL; ?>signout/destroySession">Sign Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                <?php else : ?>
+                                    <li>
+                                        <a href="<?php echo URL; ?>signin">Sign In or Register</a>
+                                    </li>
+                                <?php endif; ?> 
                             </ul>
                         </div>
-                                </li>
-                            <?php else : ?>
-                                <li>
-                                    <a href="<?php echo URL; ?>signin">Sign In or Register</a>
-                                </li>
-                            <?php endif; ?> 
-                        </ul>
+                        <?php if (isset($_SESSION['CurrentUser'])) : ?>
+
+                        <?php endif; ?> 
                     </div>
-                    <?php if (isset($_SESSION['CurrentUser'])) : ?>
-                        
-                    <?php endif; ?> 
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>

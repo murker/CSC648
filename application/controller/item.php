@@ -1,4 +1,10 @@
 <?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+?>
+
+<?php
 /**
  * Class Item
  * This is a demo class.
@@ -25,6 +31,7 @@ class Item extends Controller
     // if we have an id of a product that should be edited
         if (isset($product_id)) {
             // do getProduct() in model/model.php
+            $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
             $product = $this->itemmodel->getProduct($product_id);
 
             // in a real application we would also check if this db entry exists and therefore show the result or

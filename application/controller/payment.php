@@ -1,10 +1,14 @@
-        
+ 
+
 <?php
 
-class Cart extends Controller {
+class Payment extends Controller {
 
     public function index() {
-        require APP . 'view/_templates/header.php';
+        if (!isset($_SESSION)) {
+            session_start();
+        }   
+        $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
         $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
         $products = array();
         foreach ($cart_items as $item) {
@@ -12,10 +16,10 @@ class Cart extends Controller {
             $nextProduct->qty = $item->item_qty;
             array_push($products, $nextProduct);
         }
-        require APP . 'view/cart/index.php';
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/payment/index.php';
         require APP . 'view/_templates/footer.php';
     }
-
     public function createInvoice() {
         if (!isset($_SESSION)) {
             session_start();
@@ -29,42 +33,10 @@ class Cart extends Controller {
                 $this->cartmodel->createInvoice($_SESSION['CurrentUser'], $invoiceData);
             }
         }
-        header('location: ' . URL . 'cart/index');
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/invoice/index.php';
+        require APP . 'view/_templates/footer.php';        
     }
-
-    public function itemButton() {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        if (isset($_POST["Update"])) {
-            $this->cartmodel->updateCartItem($_SESSION['CurrentUser'], $_POST["pid"], $_POST["qty"]);
-        } else if (isset($_POST["Delete"])) {
-            $this->cartmodel->deleteCartItem($_SESSION['CurrentUser'], $_POST["pid"]);
-        }
-        header('location: ' . URL . 'cart/index');
-    }
-
-    public function addItem() {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        if (isset($_POST["submit_add_item"])) {
-            $this->cartmodel->addCartItem($_SESSION['CurrentUser'], $_POST["pid"], $_POST["qty"]);
-        }
-        header('location: ' . URL . 'cart/index');
-    }
-
-    public function removeItem() {
-        if (!isset($_SESSION)) {
-            session_start();
-        }
-        // if we have an id of a song that should be deleted
-        if (isset($_POST["submit_delete_item"])) {
-            $this->cartmodel->deleteCartItem($_SESSION['CurrentUser'], $_POST["pid"]);
-        }
-        header('location: ' . URL . 'cart/index');
-    }
-
     public function calcInvoice($cart_items) {
         $time_stamp = date("Y-m-d H:i:s");
         $invoice_data = array("date" => $time_stamp, "total" => 0, "shipping" => 0, "tax" => 0, "g_total" => 0);
@@ -83,7 +55,14 @@ class Cart extends Controller {
         $invoice_data["g_total"] = $invoice_data["total"] + $invoice_data["shipping"] + $invoice_data["tax"];
 
         return $invoice_data;
-    }    
+    }
+
+   
+    
+    public function updateInventory(){
+        
+    }
+
 }
 
 ?>
