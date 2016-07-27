@@ -113,7 +113,7 @@ class Customers extends Controller
         }
 
         // where to go after customer has been added
-        header('location: ' . URL . 'customers/index');
+        header('location: ' . URL . 'home/index');
     }
 
     /**
