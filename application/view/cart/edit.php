@@ -2,7 +2,7 @@
     <h2>You are in the View: application/view/customer/edit.php (everything in this box comes from that file)</h2>
     <!-- add customer form -->
     <div>
-        <h3>Edit a customer</h3>
+        <h3>Edit a Customer</h3>
         <form action="<?php echo URL; ?>customers/updatecustomer" method="POST">
             <label>firstname</label>
             <input type="text" name="firstname" value="<?php echo htmlspecialchars($customer->firstname, ENT_QUOTES, 'UTF-8'); ?>" required />

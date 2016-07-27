@@ -22,6 +22,25 @@ class Home extends Controller
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
+    public function sort()            
+    {
+        $sortby = $_GET["sortby"];
+        if ($sortby == "date-old-new"){
+           $products = $this->homemodel->sortbyOldestNewest(); 
+        }
+        if ($sortby == "date-new-old"){
+            $products = $this->homemodel->sortbyNewestOldest();
+        }
+        if ($sortby == "price-low-high"){
+            $products = $this->homemodel->sortbyPriceAsc();
+        }
+        if ($sortby == "price-high-low"){
+            $products = $this->homemodel->sortbyPriceDesc();
+        }
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/home/index.php';
+        require APP . 'view/_templates/footer.php';
+    }
     public function sortbypriceAsc()
     {
         $products = $this->homemodel->sortbyPriceAsc();

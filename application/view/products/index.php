@@ -3,7 +3,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <div class="row">
-                <h4 class="title">Sell an Item</h4>
+                <h3 class="title">Sell an Item</h3>
                 <form action="<?php echo URL; ?>products/addproduct" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="customer_id" value= "<?php echo htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>" />
                     <div class="col-sm-3">
@@ -34,14 +34,14 @@
                     <label for='category_id' >Category</label>
                     </div>
                     <div class="col-sm-9">
-                    <select name='category_id' required>
+                    <select name='category_id' class="sell-category" required>
                         <option value="1">Books</option>
                         <option value="2">Tutors</option>
                         <option value="3">Electronics</option>
                         <option value="4">Entertainment</option>
                         <option value="5">Clothing</option>
                         <option value="6">Furniture</option>
-                        <option value="7">Misc</option>
+                        <option value="7">Other</option>
                     </select>
                     </div>
                     <h6 style="visibility: hidden">hax</h6>

@@ -17,7 +17,7 @@ class SigninModel
     
     public function signinCustomer($email, $password)
     {
-        $sql = "SELECT id, email FROM customer WHERE email = :email AND password = :password";
+        $sql = "SELECT id, email, firstname FROM customer WHERE email = :email AND password = :password";
         $query = $this->db->prepare($sql);
         $parameters = array(':email' => $email, ':password' => $password );
         $query->execute($parameters);

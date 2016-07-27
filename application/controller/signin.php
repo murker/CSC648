@@ -44,9 +44,11 @@ class SignIn extends Controller {
 
             // if user fails to login, show error message
             if ($match->email == $email) {
-                $_SESSION['CurrentUser'] = $match->id;  // create session for user             
+                $_SESSION['CurrentUser'] = $match->id;  // create session for user 
+                $_SESSION['UserName'] = $match->firstname;
                 header('location: ' . URL . 'home');
             }
+
             if ($match->email != $email) {
                 header('location: ' . URL . 'signin?msg=failed');
             }
