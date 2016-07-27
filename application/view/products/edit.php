@@ -3,7 +3,7 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <div class="login-title row">
-                <h4 class="title">Update an Item</h4>  
+                <h3 class="title">Update an Item</h3>  
                 <form action="<?php echo URL; ?>products/updateproduct" method="POST">
                     <div class="col-sm-3">
                         <label for='name' >Item</label>

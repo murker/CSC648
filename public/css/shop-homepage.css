@@ -32,6 +32,9 @@ body {
 .quantity-text{
     width: 25px;
 }
+.sell-category{
+    background:white;
+}
 .quantity{
     font-weight: bold;
     color:#c00;
@@ -84,8 +87,9 @@ body {
 .header-search select{
     width:20%;
     float:left;
-    background:white;
     height:40px;
+    border-color:#CCC;
+    padding-left: 10px;
 }
 .header-searchbardiv{
     width:50%;

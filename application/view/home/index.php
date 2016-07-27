@@ -6,13 +6,13 @@
          <div class="pull-right">
             Sort by 
             <form action="<?php echo URL; ?>home/sort" method="GET" class="nav-form">
-            <select name='sortby' class="sort-select">
+            <select name='sortby' class="sort-select" onchange='this.form.submit()'>
                 <option value="date-old-new">Date: Oldest to Newest</option>
                 <option value="date-new-old">Date: Newest to Oldest</option>
                 <option value="price-low-high">Price: Lowest to Highest</option>
                 <option value="price-high-low">Price: Highest to Lowest</option>
             </select>
-            <input type='submit' name='submit_sort' value="Submit" id="searchButton" />
+                <noscript><input type='submit' name='submit_sort' value="Submit" id="searchButton" /></noscript>
             </form>
         </div>
     <br /><br />
