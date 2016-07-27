@@ -4,7 +4,7 @@
         <div class="col-sm-8">
             <div class="row">
                 <form action="<?php echo URL; ?>customers/updatecustomer" method="POST">
-                    <h4 class="title">Your Profile</h4>
+                    <h3 class="title">Your Profile</h3>
                     <div id="loginbox" class="loginbox">  
                         <div>
                             <div class="col-sm-3">

@@ -25,8 +25,8 @@
                                     <input type='text' name='qty' id='qty' value=<?php echo $product->qty; ?> required />
                                 </h5>
                                 <input type="hidden" name="pid" value=<?php echo $product->id; ?>>
-                                <input type="submit" name='Update' value="Update Qty" class="btn btn-primary"/>
-                                <input type="submit" name='Delete' value="Delete" class="btn btn-primary"/>
+                                <input type="submit" name='Update' value="Update Qty" class="btn btn-default"/>
+                                <input type="submit" name='Delete' value="Delete" class="btn btn-danger"/>
                             </form>
                   <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
                         </div>
@@ -35,6 +35,7 @@
             <!--</div>-->
         <?php } ?>
     </div>
+    <br />
     <td><form action="<?php echo URL; ?>payment" method="GET">
                    <input type='submit' name='payment' value="Checkout" class="btn btn-primary" />
     </form></td>
