@@ -71,15 +71,14 @@
                                         ?></a></h4>
                                     <h5>
                                         <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
-                                    </h5>
-                                    <!--<br /><br /><input type="button" value="Add to cart" class="btn btn-primary"/>-->
-                                <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
+                                    </h5>                                   
                                     <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
                                     <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                         <form action="<?php echo URL; ?>cart/additem" method="POST">
                                     <?php else : ?>
                                         <form action="<?php echo URL; ?>signin" method="GET">
-                                    <?php endif; ?> 
+                                    <?php endif; ?>                                             
+                                            <?php if ($product->category_id != 2) : ?>      
                                             <label for='qty' >Quantity: </label>
                                             <input type='text' name='qty' id='quantity' value="1" required />              
                                             <label for='stock_qty' >available: </label>
@@ -87,6 +86,7 @@
                                             <input type="hidden" name="pid" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />                
                                             <input type="button" name="submit_buyitnow_item" value="Buy It Now" class = "btn btn-primary"/>
                                             <input type="submit" name="submit_add_item" value="Add to cart" class = "btn btn-primary" />                 
+                                            <?php endif; ?> 
                                         </form>                                                                                                                                                        
                                 </div>
                         </div>
