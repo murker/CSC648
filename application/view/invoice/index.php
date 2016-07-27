@@ -28,6 +28,108 @@
         <label>Total: </label>
         <?php if (isset($invoice->grand_total)) echo htmlspecialchars($invoice->grand_total, ENT_QUOTES, 'UTF-8'); ?><br>
     </div>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="<?php echo URL . '/img/logo.png' ?>" style="width:100%; max-width:300px;">
+                            </td>
+                            
+                            <td>
+                                Invoice #: 123<br>
+                                Created: July 27, 2016<br>                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="information">
+                <td colspan="2">
+                    <table>
+                        <tr>
+                            <td>
+                                Books and Tutors, Inc.<br>
+                                1600 Holloway Ave<br>
+                                San Francisco, CA 94132
+                            </td>                                                       
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Payment Method
+                </td>
+                
+                <td>
+                    Check #
+                </td>
+            </tr>
+            
+            <tr class="details">
+                <td>
+                    Check
+                </td>
+                
+                <td>
+                    1000
+                </td>
+            </tr>
+            
+            <tr class="heading">
+                <td>
+                    Item
+                </td>
+                
+                <td>
+                    Price
+                </td>
+            </tr>
+            
+            <tr class="item">
+                <td>
+                    Asus ubuntu/win10 8gb ram
+                </td>
+                
+                <td>
+                    $300.00
+                </td>
+            </tr>
+            
+            <tr class="item">
+                <td>
+                    Acer laptop winxp
+                </td>
+                
+                <td>
+                    $75.00
+                </td>
+            </tr>
+            
+            <tr class="item last">
+                <td>
+                    Database 675 book
+                </td>
+                
+                <td>
+                    $10.00
+                </td>
+            </tr>
+            
+            <tr class="total">
+                <td></td>
+                
+                <td>
+                   Total: $385.00
+                </td>
+            </tr>
+        </table>
+    </div>
     This invoice has been sent to your email <?php if (isset($customer->email)) echo htmlspecialchars($customer->email, ENT_QUOTES, 'UTF-8'); ?><br>
     Thank you for shopping with us.
 </div>
