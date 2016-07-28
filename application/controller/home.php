@@ -16,7 +16,9 @@ class Home extends Controller
      */
     public function index()
     {
-        $products = $this->homemodel->getAllProducts();    
+        $products = $this->homemodel->getAllProducts();
+        $_SESSION['searchword'] = "";
+        $_SESSION['category_id'] = 0;
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
