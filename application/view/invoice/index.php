@@ -35,7 +35,7 @@
                     <table>
                         <tr>
                             <td class="title">
-                                <img src="<?php echo URL . '/img/logo.png' ?>" style="width:100%; max-width:300px;">
+                                <img src="<?php echo URL . '/img/logo.png' ?>" style="width:150px;">
                             </td>
                             
                             <td>
