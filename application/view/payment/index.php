@@ -7,11 +7,10 @@ $tax = 0.09;
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <h3>Checkout</h3>
-            <table>
+            <table class="table">
                 <thead style="background-color: #ddd; font-weight: bold;">
                     <tr>
-                        <td>Image1</td>                
-                        <td>ID</td>
+                        <td></td>                
                         <td>Item</td>          
                         <td>Price</td>
                         <td>Quantity</td>
@@ -21,8 +20,7 @@ $tax = 0.09;
                 <tbody>
                     <?php foreach ($products as $product) { ?>
                         <tr>
-                            <td><?php if (isset($product->img1) && $product->img1 != "") echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '"  height="42" width="42" />'; ?></td>                    
-                            <td><?php if (isset($product->id)) echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php if (isset($product->img1) && $product->img1 != "") echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '"  height="42px" />'; ?></td>                    
                             <td><?php if (isset($product->name)) echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?></td>                   
                             <td><?php
                                 if (isset($product->price)) {
@@ -47,29 +45,28 @@ $tax = 0.09;
                     <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td>Subtotal:</td>
+                        <td style="font-weight:bold">Subtotal:</td>
                         <td></td>
                         <td><?php echo number_format((float) $subtotal, 2, '.', '') ?></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td>Tax:</td>
+                        <td style="font-weight:bold">Tax:</td>
                         <td></td>
                         <td><?php echo number_format((float) $subtotal * $tax, 2, '.', '') ?></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td>Total:</td>
+                        <td style="font-weight:bold">Total:</td>
                         <td></td>
                         <td><?php echo number_format((float) $subtotal + ($subtotal * $tax), 2, '.', '') ?></td>
                     </tr>
                 </tbody>
             </table>
+            <br />
+            <hr />
             <form class = "form-horizontal" action="<?php echo URL; ?>payment/createinvoice" method="POST">
                 <h4 class="title">Payment</h4>
                 <br />
