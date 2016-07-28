@@ -36,6 +36,12 @@
                         <input class="form-control" type='password' name='password' id='password' value="" required />
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for='name' class="col-sm-2 control-label">Verify Password</label>
+                    <div class="col-sm-6">
+                        <input class="form-control" type='password' name='confirmpw' id='confirmpw' value="" required />
+                    </div>
+                </div>
                 <h4 class="title">Shipping Information</h4>
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">Street Address</label>
@@ -58,3 +64,19 @@
         </div>
     </div>
 </div>
+
+<!-- Script that validates password -->
+<script>
+    var password = document.getElementById("password");
+    var confirm_password = document.getElementById("confirmpw");
+
+    function validatePassword() {
+        if (password.value !== confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords does not match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+</script>
