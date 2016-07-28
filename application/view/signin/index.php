@@ -33,7 +33,7 @@
             <br /><br />
         </div>
 
-        <div class="col-sm-5 col-sm-offset-1">
+        <div class="col-sm-4 col-sm-offset-1">
             <h4 class="title">New Customers</h4>
             <p>By Registering, you agree that you've read and accepted our  <a href="<?php echo URL . 'signin/useragreement' ?>">User Agreement</a>, 
                 you're at least 18 years old, and you consent to our <a href="<?php echo URL . 'signin/privacynotice' ?>">Privacy Notice</a>.</p>
