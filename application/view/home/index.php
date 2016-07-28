@@ -5,6 +5,7 @@
             <form action="<?php echo URL; ?>home/sort" method="GET" class="nav-form">
                 <label>Sort by</label>
                 <select name='sortby' class="sort-select" onchange='this.form.submit()'>
+                    <option value="best-match">Best match</option>
                     <option value="date-old-new">Date: Oldest to Newest</option>
                     <option value="date-new-old">Date: Newest to Oldest</option>
                     <option value="price-low-high">Price: Lowest to Highest</option>
