@@ -17,6 +17,11 @@ body {
 .navbar-nav img{
     padding-right:50px;
 }
+.sub-image{
+    float:left;
+    width:100px;
+    margin-right:5px;
+}
 .sort-select{
     width: 175px;
     background:white;
