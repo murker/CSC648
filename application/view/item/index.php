@@ -29,12 +29,15 @@
             </h3>
             <h4>
                 <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
-            </h4>
+            
+            <?php if ($product->category_id == 2) : ?>
+            /hour</h4>
+            <?php endif ; ?>
             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                 <form action="<?php echo URL; ?>cart/additem" method="POST">
                 <?php else : ?>
                     <form action="<?php echo URL; ?>signin" method="GET">
-                    <?php endif; ?> 
+                    <?php endif; ?>                    
                     <?php if ($product->category_id != 2) : ?> 
                         <span class = "quantity"><?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?> available</span>
                         <br /> <br />
@@ -48,7 +51,7 @@
                     <br />
                     <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
                 </form> 
-                <?php if ($product->category_id == 2) : ?>
+                <?php if ($product->category_id == 2) : ?>                    
                     <br />
                     <h4>Contact</h4>
                     <p>Please use the form below to contact this tutor</p>
