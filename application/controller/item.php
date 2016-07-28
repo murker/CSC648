@@ -50,13 +50,13 @@ class Item extends Controller
     }
     public function emailTutor()
     {
-        $email_from = "izaacg@mail.sfsu.edu";
-        $email_to = "izaacg@mail.sfsu.edu";
-        $email_subject = "Books and Tutors message to tutor";
-        $email_message = $_POST["comments"];
-        $headers = 'From: '.$email_from."\r\n". 'Reply-To: '.$email_from."\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-        @mail($email_to, $email_subject, $email_message, $headers);
+//        $email_from = "izaacg@mail.sfsu.edu";
+//        $email_to = "izaacg@mail.sfsu.edu";
+//        $email_subject = "Books and Tutors message to tutor";
+//        $email_message = $_POST["comments"];
+//        $headers = 'From: '.$email_from."\r\n". 'Reply-To: '.$email_from."\r\n" .
+//        'X-Mailer: PHP/' . phpversion();
+//        @mail($email_to, $email_subject, $email_message, $headers);
         
         require APP . 'view/_templates/header.php';
         require APP . 'view/item/messagesent.php';
