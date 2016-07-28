@@ -26,7 +26,10 @@ class Home extends Controller
     }
     public function sort()            
     {
-        $sortby = $_GET["sortby"];
+        $sortby = $_GET["sortby"];       
+        if ($sortby == "best-match"){
+           $products = $this->homemodel->sortbyBestmatch(); 
+        }
         if ($sortby == "date-old-new"){
            $products = $this->homemodel->sortbyOldestNewest(); 
         }

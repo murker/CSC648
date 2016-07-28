@@ -43,7 +43,7 @@
                         <br />
                         <input type="hidden" name="pid" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />
                         <input type="submit" name="submit_add_item" value="Add to cart" class = "btn btn-warning" />     
-                        <input type="button" value="Buy It Now" class = "btn btn-primary"/>
+                        <input type="submit" name="submit_buyitnow" value="Buy It Now" class = "btn btn-primary"/>
                     <?php endif; ?> 
                     <br />
                     <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
