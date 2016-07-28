@@ -25,33 +25,28 @@
                                 if (isset($product->img1))
                                     echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" />';
                                 ?>                                   
-                            </div>
-                            <div class="search-data">
+                            </div></a>
+                        <div class="search-data">
+                            <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">
                                 <h5>
                                     <?php
                                     if (isset($product->name))
                                         echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
                                     ?></a></h5>
-                                <h5>
-                                    <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
-                                    <?php if ($product->category_id == 2) : ?>
-                                        / hour</h5>
-                                <?php else : ?>
-                                    </h5>
-                                    <span class = "quantity"><?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?> available</span>
-                                <?php endif; ?>
-                     <!--<span class = "quantity"><?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?> available</span>-->
-                     <!--<br /><br /><input type="button" value="Add to cart" class="btn btn-primary"/>-->
-                 <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
-                            </div>
+                            <h5>
+                                <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
+                                <?php if ($product->category_id == 2) : ?>
+                                    / hour</h5>
+                            <?php else : ?>
+                                </h5>
+                                <span class = "quantity"><?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?> available</span>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--</div>-->
         <?php } ?>
     </div>
     <br />
     <div style = "visibility: hidden" class="pull-right">Page < 1 2 3 4 5 ></div>
-</div>
-</div>
 </div>
