@@ -37,11 +37,15 @@
                                             <?php
                                             if (isset($product->name))
                                                 echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
-                                            ?></a></h4>
+                                            ?></a></h4>                                        
                                         <h5>
                                             <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
                                         </h5>
+                                        <?php if ($product->category_id != 2) : ?>
                                         <span class = "quantity"><?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?> available</span>
+                                        <?php else : ?>
+                                        /hr
+                                        <?php endif; ?>                                        
                                         <!--<br /><br /><input type="button" value="Add to cart" class="btn btn-primary"/>-->
                                     <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
                                     </div>
