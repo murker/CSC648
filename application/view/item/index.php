@@ -3,9 +3,23 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
             <?php
-            if (isset($product->img1))
+            if (isset($product->img1) && $product->img1 != "")
                 echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" class = "img-thumbnail img-responsive"/>';
             ?>
+            <?php if ($product->category_id != 2) : ?>
+            <?php
+            if (isset($product->img2) && $product->img2 != "")
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img2) . '" class = "img-thumbnail img-responsive"/>';
+            ?>
+            <?php
+            if (isset($product->img3) && $product->img3 != "")
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img3) . '" class = "img-thumbnail img-responsive"/>';
+            ?>
+            <?php
+            if (isset($product->img4) && $product->img4 != "")
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img4) . '" class = "img-thumbnail img-responsive"/>';
+            ?>
+            <?php endif; ?>
         </div>
         <div class ="col-sm-6">
             <h3><?php
