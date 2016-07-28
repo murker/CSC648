@@ -59,15 +59,15 @@ if (!isset($_SESSION)) {
                                     <div>
                                         <input type="text" class="form-control" name="searchinput" placeholder="Search for books, tutors and more!"/>
                                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                                        <select name='category_id'>
-                                            <option value="0">All</option>
-                                            <option value="1">Books</option>
-                                            <option value="2">Tutors</option>
-                                            <option value="3">Electronics</option>
-                                            <option value="4">Entertainment</option>
-                                            <option value="5">Clothing</option>
-                                            <option value="6">Furniture</option>
-                                            <option value="7">Other</option>                                        
+                                        <select name='category_id' onchange='this.form.submit()'>
+                                            <option <?php if($selected == '0'){echo("selected");}?> value="0">All</option>
+                                            <option <?php if($selected == '1'){echo("selected");}?> value="1">Books</option>
+                                            <option <?php if($selected == '2'){echo("selected");}?> value="2">Tutors</option>
+                                            <option <?php if($selected == '3'){echo("selected");}?> value="3">Electronics</option>
+                                            <option <?php if($selected == '4'){echo("selected");}?> value="4">Entertainment</option>
+                                            <option <?php if($selected == '5'){echo("selected");}?> value="5">Clothing</option>
+                                            <option <?php if($selected == '6'){echo("selected");}?> value="6">Furniture</option>
+                                            <option <?php if($selected == '7'){echo("selected");}?> value="7">Other</option>                                        
                                         </select>
                                     </div>
                                 </div>

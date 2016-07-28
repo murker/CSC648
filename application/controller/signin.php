@@ -46,6 +46,8 @@ class SignIn extends Controller {
             if ($match->email == $email) {
                 $_SESSION['CurrentUser'] = $match->id;  // create session for user 
                 $_SESSION['UserName'] = $match->firstname;
+                $_SESSION['searchword'] = "";
+                $_SESSION['category_id'] = 0;
                 header('location: ' . URL . 'home');
             }
 
