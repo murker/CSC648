@@ -24,7 +24,7 @@
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" rows="4" type="text" name="description" value="<?php echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?>" required></textarea>
+                        <textarea class="form-control" rows="4" type="text" name="description" required><?php echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
