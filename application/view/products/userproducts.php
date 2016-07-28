@@ -1,8 +1,8 @@
 <!-- main content output -->
 <div class="box container">
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
             <h3>Your Items for Sale</h3>
             <br />
             <div class="row">

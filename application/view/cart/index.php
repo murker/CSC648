@@ -1,5 +1,4 @@
 <div class="container">
-
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
@@ -43,7 +42,8 @@
         </form>
                 </div>
     </div>
-    <!-- cart testing -->
+</div>
+<!--     cart testing 
     <h2>DEBUG INTERFACE</h2>
     <div class="box">         
         <form action="<?php echo URL; ?>cart/addItem" method="POST">
@@ -66,7 +66,7 @@
             <input type='submit' name='submit_create_invoice' value='Create Invoice' />
         </form>
     </div>
-    <!-- cart listing -->
+     cart listing 
     <div class="box">
         <h3>List of items in cart of user id# <?php if (isset($_SESSION['CurrentUser'])) echo $_SESSION['CurrentUser']; ?></h3>
         <table>
@@ -88,4 +88,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>-->
