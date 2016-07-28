@@ -52,35 +52,35 @@
                     <br />
                     <h4>Contact</h4>
                     <p>Please use the form below to contact this tutor</p>
-                    <form class="form-horizontal" name="contactform" method="POST" action="">
+                    <form class="form-horizontal" name="contactform" method="POST" action="<?php echo URL; ?>item/emailtutor">
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">First Name</label>
                             <div class="col-sm-8">
-                                <input  class="form-control" type="text" name="first_name" maxlength="50" size="30" value = "<?php if (isset($customer->firstname)) echo htmlspecialchars($customer->firstname, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input  class="form-control" type="text" name="first_name" maxlength="50" size="30" value = "<?php if (isset($customer->firstname)) echo htmlspecialchars($customer->firstname, ENT_QUOTES, 'UTF-8'); ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Last Name</label>
                             <div class="col-sm-8">
-                                <input  class="form-control" type="text" name="last_name" maxlength="50" size="30" value = "<?php if (isset($customer->lastname)) echo htmlspecialchars($customer->lastname, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input  class="form-control" type="text" name="last_name" maxlength="50" size="30" value = "<?php if (isset($customer->lastname)) echo htmlspecialchars($customer->lastname, ENT_QUOTES, 'UTF-8'); ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-8">
-                                <input  class="form-control" type="text" name="email" maxlength="80" size="30" value = "<?php if (isset($customer->email)) echo htmlspecialchars($customer->email, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input  class="form-control" type="text" name="email" maxlength="80" size="30" value = "<?php if (isset($customer->email)) echo htmlspecialchars($customer->email, ENT_QUOTES, 'UTF-8'); ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Phone</label>
                             <div class="col-sm-8">
-                                <input  class="form-control" type="text" name="telephone" maxlength="30" size="30" value = "<?php if (isset($customer->phone)) echo htmlspecialchars($customer->phone, ENT_QUOTES, 'UTF-8'); ?>">
+                                <input  class="form-control" type="text" name="telephone" maxlength="30" size="30" value = "<?php if (isset($customer->phone)) echo htmlspecialchars($customer->phone, ENT_QUOTES, 'UTF-8'); ?>" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Comments</label>
                             <div class="col-sm-8">
-                                <textarea  class="form-control" name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+                                <textarea  class="form-control" name="comments" maxlength="1000" cols="25" rows="6" required></textarea>
                             </div>
                         </div>
                         <input type="submit" value="Submit" class="btn btn-primary">   
