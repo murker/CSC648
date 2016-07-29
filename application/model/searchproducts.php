@@ -4,7 +4,7 @@ class SearchProductsModel {
 
     public $searchproductsmodel= null;
     
-    function __construct($db) {
+    function __construct() {
         
         require APP . 'dbcalls/searchproducts.php';
         $this->searchproductsmodel = new SearchProductsModelxl();

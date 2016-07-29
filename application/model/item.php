@@ -7,7 +7,7 @@ class ItemModel
     function __construct() {
         
         require APP . 'dbcalls/item.php';
-        $this->itemmodel = new IntemModelxl();
+        $this->itemmodel = new ItemModelxl();
     }
  
     public function getProduct($product_id)
