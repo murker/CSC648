@@ -58,50 +58,50 @@ class Controller
     
     public function loadCartModel()
     {
-        require APP . 'model/cart.php';
+        require APP . 'dbcalls/cart.php';
         // create new "model" (and pass the database connection)
-        $this->cartmodel = new CartModel($this->db);
+        $this->cartmodel = new CartModelxl($this->db);
     }
     public function loadcustomerModel()
     {
-        require APP . 'model/customers.php';
+        require APP . 'dbcalls/customers.php';
         // create new "model" (and pass the database connection)
-        $this->customermodel = new CustomerModel($this->db);
+        $this->customermodel = new CustomerModelxl($this->db);
     }
     public function loadhomeModel()
     {
-        require APP . 'model/home.php';
+        require APP . 'dbcalls/home.php';
         // create new "model" (and pass the database connection)
-        $this->homemodel = new HomeModel($this->db);
+        $this->homemodel = new HomeModelxl($this->db);
     }
     public function loadproductsModel()
     {
-        require APP . 'model/products.php';
+        require APP . 'dbcalls/products.php';
         // create new "model" (and pass the database connection)
-        $this->productsmodel = new ProductsModel($this->db);
+        $this->productsmodel = new ProductsModelxl($this->db);
     }
     public function loadsearchproductsModel()
     {
-        require APP . 'model/searchproducts.php';
+        require APP . 'dbcalls/searchproducts.php';
         // create new "model" (and pass the database connection)
-        $this->searchproductsmodel = new SearchProductsModel($this->db);
+        $this->searchproductsmodel = new SearchProductsModelxl($this->db);
     }
     public function loadsigninModel()
     {
-        require APP . 'model/signin.php';
+        require APP . 'dbcalls/signin.php';
         // create new "model" (and pass the database connection)
-        $this->signinmodel = new SigninModel($this->db);
+        $this->signinmodel = new SigninModelxl($this->db);
     }    
     public function loaditemModel()
     {
-        require APP . 'model/item.php';
+        require APP . 'dbcalls/item.php';
         // create new "model" (and pass the database connection)
-        $this->itemmodel = new ItemModel($this->db);
+        $this->itemmodel = new ItemModelxl($this->db);
     }
      public function loadinvoiceModel()
     {
-        require APP . 'model/invoice.php';
+        require APP . 'dbcalls/invoice.php';
         // create new "model" (and pass the database connection)
-        $this->invoicemodel = new InvoiceModel($this->db);
+        $this->invoicemodel = new InvoiceModelxl($this->db);
     }
 }
