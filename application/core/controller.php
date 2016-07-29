@@ -3,11 +3,6 @@
 class Controller
 {
     /**
-     * @var null Database Connection
-     */
-    public $db = null;
-
-    /**
      * @var null Model
      */
     public $cartmodel = null;
@@ -20,7 +15,7 @@ class Controller
     public $invoicemodel = null;
 
     /**
-     * Whenever controller is created, open a database connection too and load "the model".
+     * Whenever controller is created load the models".
      */
     function __construct()
     {        
@@ -37,49 +32,49 @@ class Controller
     public function loadCartModel()
     {
         require APP . 'model/cart.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->cartmodel = new CartModel();
     }
     public function loadcustomerModel()
     {
         require APP . 'model/customers.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->customermodel = new CustomerModel();
     }
     public function loadhomeModel()
     {
         require APP . 'model/home.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->homemodel = new HomeModel();
     }
     public function loadproductsModel()
     {
         require APP . 'model/products.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->productsmodel = new ProductsModel();
     }
     public function loadsearchproductsModel()
     {
         require APP . 'model/searchproducts.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" )
         $this->searchproductsmodel = new SearchProductsModel();
     }
     public function loadsigninModel()
     {
         require APP . 'model/signin.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->signinmodel = new SigninModel();
     }    
     public function loaditemModel()
     {
         require APP . 'model/item.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->itemmodel = new ItemModel();
     }
      public function loadinvoiceModel()
     {
         require APP . 'model/invoice.php';
-        // create new "model" (and pass the database connection)
+        // create new "model" 
         $this->invoicemodel = new InvoiceModel();
     }
 }
