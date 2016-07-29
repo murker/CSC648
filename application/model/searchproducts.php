@@ -15,6 +15,7 @@ class SearchProductsModel {
     }
 
     public function getuserProducts($user_id) {
-        return $this->searchproductsmodel->getuserProducts($user_id);
+        $parameters = array(':user_id' => $user_id);
+        return $this->searchproductsmodel->getuserProducts($parameters);
     }
 }

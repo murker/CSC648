@@ -55,11 +55,11 @@ class CustomerModelxl
      * @param string $track Track
      * @param string $link Link
      */
-    public function addCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode)
+    public function addCustomer($parameters)
     {
         $sql = "INSERT INTO customer (firstname, lastname, email, password, phone, street, city, zipcode) VALUES (:firstname, :lastname, :email, :password, :phone, :street, :city, :zipcode)";
         $query = $this->db->prepare($sql);
-        $parameters = array(':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email, ':password' => $password, ':phone' => $phone, ':street' => $street, ':city' => $city, ':zipcode' => $zipcode );
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -115,11 +115,11 @@ class CustomerModelxl
      * @param string $link Link
      * @param int $customer_id Id
      */
-    public function updateCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id)
+    public function updateCustomer($parameters)
     {
         $sql = "UPDATE customer SET firstname = :firstname, lastname = :lastname, email = :email , password = :password, phone = :phone, street = :street, city = :city, zipcode = :zipcode WHERE id = :customer_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email,':password' => $password, ':phone' => $phone, ':street' => $street, ':city' => $city, ':zipcode' => $zipcode, ':customer_id' => $customer_id);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -140,11 +140,10 @@ class CustomerModelxl
         // fetch() is the PDO method that get exactly one result
         return $query->fetch()->amount_of_customers;
     }
-    public function signinCustomer($email, $password)
+    public function signinCustomer($parameters)
     {
         $sql = "SELECT email FROM customer WHERE email = :email AND password = :password";
         $query = $this->db->prepare($sql);
-        $parameters = array(':email' => $email, ':password' => $password );
         $query->execute($parameters);
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

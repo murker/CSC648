@@ -31,7 +31,16 @@ class CustomerModel
      */
     public function addCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode)
     {
-        return $this->customermodel->addCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode);
+        
+        $parameters = array(':firstname' => $firstname, 
+            ':lastname' => $lastname, 
+            ':email' => $email, 
+            ':password' => $password, 
+            ':phone' => $phone, 
+            ':street' => $street, 
+            ':city' => $city, 
+            ':zipcode' => $zipcode );
+        return $this->customermodel->addCustomer($parameters);
     }
 
     /**
@@ -67,7 +76,16 @@ class CustomerModel
      */
     public function updateCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id)
     {
-        return $this->customermodel->updateCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id);
+        $parameters = array(':firstname' => $firstname, 
+            ':lastname' => $lastname, 
+            ':email' => $email,
+            ':password' => $password, 
+            ':phone' => $phone, 
+            ':street' => $street, 
+            ':city' => $city, 
+            ':zipcode' => $zipcode, 
+            ':customer_id' => $customer_id);
+        return $this->customermodel->updateCustomer($parameters);
     }
     
     public function getAmountOfCustomers()
@@ -77,7 +95,8 @@ class CustomerModel
     
     public function signinCustomer($email, $password)
     {
-        return $this->customermodel->signinCustomer($email, $password);
+        $parameters = array(':email' => $email, ':password' => $password );
+        return $this->customermodel->signinCustomer($parameters);
     }
 
 }

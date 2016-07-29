@@ -27,11 +27,11 @@ class ProductsModelxl
         // @see http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/
         $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
     }
-    public function addProduct($customer_id, $name, $description, $price, $stock_qty, $category_id, $img1, $img2, $img3, $img4)     
+    public function addProduct($parameters)     
     {
         $sql = "INSERT INTO product (customer_id, name, description, price, stock_qty, category_id, img1, img2, img3, img4) VALUES (:customer_id, :name, :description, :price, :stock_qty, :category_id, :img1, :img2, :img3, :img4)";
         $query = $this->db->prepare($sql);
-        $parameters = array(':customer_id' => $customer_id, ':name' => $name, ':description' => $description, ':price' => $price, ':stock_qty' => $stock_qty, ':category_id' => $category_id, ':img1' => $img1, ':img2' => $img2, ':img3' => $img3, ':img4' => $img4);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -50,55 +50,54 @@ class ProductsModelxl
         $query->execute($parameters);
     }
 
-    public function updateProduct($name, $description, $price, $stock_qty, $category_id, $product_id)
+    public function updateProduct($parameters)
     {
         $sql = "UPDATE product SET name = :name, description = :description, price = :price , stock_qty = :stock_qty, category_id = :category_id  WHERE id = :product_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':name' => $name, ':description' => $description, ':price' => $price, ':stock_qty' => $stock_qty, ':category_id' => $category_id, ':product_id' => $product_id);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
     }
-    public function updateProductImg1($product_id, $img1)
+    public function updateProductImg1($parameters)
     {
         $sql = "UPDATE product SET img1 = :img1 WHERE id = :product_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id, ':img1' => $img1);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
     }
-    public function updateProductImg2($product_id, $img2)
+    public function updateProductImg2($parameters)
     {
         $sql = "UPDATE product SET img2 = :img2 WHERE id = :product_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id, ':img2' => $img2);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
     }
-    public function updateProductImg3($product_id, $img3)
+    public function updateProductImg3($parameters)
     {
         $sql = "UPDATE product SET img3 = :img3 WHERE id = :product_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id, ':img3' => $img3);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
         $query->execute($parameters);
     }
-    public function updateProductImg4($product_id, $img4)
+    public function updateProductImg4($parameters)
     {
         $sql = "UPDATE product SET img4 = :img4 WHERE id = :product_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id, ':img4' => $img4);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

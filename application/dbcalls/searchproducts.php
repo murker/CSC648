@@ -49,10 +49,10 @@ class SearchProductsModelxl {
         }
     }
 
-    public function getuserProducts($user_id) {
+    public function getuserProducts($parameters) {
         $sql = "SELECT id, customer_id, name, description, price, stock_qty, category_id, img1, img2, img3, img4 FROM product WHERE customer_id = :user_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':user_id' => $user_id);
+        
         $query->execute($parameters);
 
         // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in

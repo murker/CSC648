@@ -29,11 +29,10 @@ class SigninModelxl
     }
 
     
-    public function signinCustomer($email, $password)
+    public function signinCustomer($parameters)
     {
         $sql = "SELECT id, email, firstname FROM customer WHERE email = :email AND password = :password";
         $query = $this->db->prepare($sql);
-        $parameters = array(':email' => $email, ':password' => $password );
         $query->execute($parameters);
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
