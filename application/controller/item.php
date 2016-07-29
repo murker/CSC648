@@ -1,4 +1,10 @@
 <?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+?>
+
+<?php
 /**
  * Class Item
  * This is a demo class.
@@ -25,6 +31,9 @@ class Item extends Controller
     // if we have an id of a product that should be edited
         if (isset($product_id)) {
             // do getProduct() in model/model.php
+            if (isset($_SESSION['CurrentUser'])){
+            $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
+            }
             $product = $this->itemmodel->getProduct($product_id);
 
             // in a real application we would also check if this db entry exists and therefore show the result or
@@ -38,5 +47,19 @@ class Item extends Controller
             // redirect user to products index page (as we don't have a customer_id)
             header('location: ' . URL . 'item/index');
         }
+    }
+    public function emailTutor()
+    {
+//        $email_from = "izaacg@mail.sfsu.edu";
+//        $email_to = "izaacg@mail.sfsu.edu";
+//        $email_subject = "Books and Tutors message to tutor";
+//        $email_message = $_POST["comments"];
+//        $headers = 'From: '.$email_from."\r\n". 'Reply-To: '.$email_from."\r\n" .
+//        'X-Mailer: PHP/' . phpversion();
+//        @mail($email_to, $email_subject, $email_message, $headers);
+        
+        require APP . 'view/_templates/header.php';
+        require APP . 'view/item/messagesent.php';
+        require APP . 'view/_templates/footer.php';
     }
 }

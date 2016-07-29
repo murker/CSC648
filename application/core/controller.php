@@ -15,8 +15,7 @@ class Controller
     public $homemodel = null;
     public $productsmodel = null;
     public $searchproductsmodel = null;
-    public $siginmodel = null;
-    public $sortmodel = null;
+    public $siginmodel = null;   
     public $itemmodel = null;
     public $invoicemodel = null;
 
@@ -31,8 +30,7 @@ class Controller
         $this->loadhomeModel();
         $this->loadproductsModel();
         $this->loadsearchproductsModel();
-        $this->loadsigninModel();
-        $this->loadsortModel();
+        $this->loadsigninModel();       
         $this->loaditemModel();
         $this->loadinvoiceModel();
     }
@@ -93,13 +91,7 @@ class Controller
         require APP . 'model/signin.php';
         // create new "model" (and pass the database connection)
         $this->signinmodel = new SigninModel($this->db);
-    }
-    public function loadsortModel()
-    {
-        require APP . 'model/sort.php';
-        // create new "model" (and pass the database connection)
-        $this->sortmodel = new SortModel($this->db);
-    }
+    }    
     public function loaditemModel()
     {
         require APP . 'model/item.php';

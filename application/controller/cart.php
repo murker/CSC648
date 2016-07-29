@@ -49,9 +49,13 @@ class Cart extends Controller {
             session_start();
         }
         if (isset($_POST["submit_add_item"])) {
-            $this->cartmodel->addCartItem($_SESSION['CurrentUser'], $_POST["pid"], $_POST["qty"]);
+            $this->cartmodel->addCartItem($_SESSION['CurrentUser'], $_POST["pid"], $_POST["qty"]);        
+            header('location: ' . URL . 'cart/index');
         }
-        header('location: ' . URL . 'cart/index');
+        if (isset($_POST["submit_buyitnow"])) {
+            $this->cartmodel->addCartItem($_SESSION['CurrentUser'], $_POST["pid"], $_POST["qty"]); 
+            header('location: ' . URL . 'cart/index');
+        }
     }
 
     public function removeItem() {

@@ -2,66 +2,72 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <div class="row">
-                <h4 class="title">Sell an Item</h4>
-                <form action="<?php echo URL; ?>products/addproduct" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="customer_id" value= "<?php echo htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>" />
-                    <div class="col-sm-3">
-                    <label for='name' >Item</label>
+            <h3 class="title">Sell an Item</h3>
+            <form class = "form-horizontal" action="<?php echo URL; ?>products/addproduct" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="customer_id" value= "<?php echo htmlspecialchars($_SESSION['CurrentUser'], ENT_QUOTES, 'UTF-8'); ?>" />
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Item</label>
+                    <div class="col-sm-6">
+                        <input type='text' class="form-control" name='name' id='name' value="" required />
                     </div>
-                    <div class="col-sm-9">
-                    <input type='text' name='name' id='name' value="" required />
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Price</label>
+                    <div class="col-sm-2">
+                        <input type='text' class="form-control" name='price' id='price' value="" required />
                     </div>
-                    <div class="col-sm-3">
-                    <label for='description' >Description</label>
+                    <label  class="col-sm-2 control-label">Quantity</label>
+                    <div class="col-sm-2">
+                        <input type='text' class="form-control" name='stock_qty' id='stock_qty' value="" required />
                     </div>
-                    <div class="col-sm-9">
-                    <input type='text' name='description' id='description' value="" required />
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-6">
+                        <textarea rows="4" type='text' class="form-control" name='description' id='description' value="" required></textarea>
                     </div>
-                    <div class="col-sm-3">
-                    <label for='price' >Price</label>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Category</label>
+                    <div class="col-sm-6">
+                        <select name='category_id' class="sell-category" required>
+                            <option value="1">Books</option>
+                            <option value="2">Tutors</option>
+                            <option value="3">Electronics</option>
+                            <option value="4">Entertainment</option>
+                            <option value="5">Clothing</option>
+                            <option value="6">Furniture</option>
+                            <option value="7">Other</option>
+                        </select>
                     </div>
-                    <div class="col-sm-9">
-                    <input type='text' name='price' id='price' value="" required />
+                </div>
+                <hr />
+                <div class="form-group">
+                    <label  class="col-sm-3 control-label">Image 1 <span style="color:blue;visibility: hidden">(Optional)</span></label>
+                    <div class="col-sm-6">
+                        <input type="file" name="imageToUpload1" id="imageToUpload1" required />
                     </div>
-                    <div class="col-sm-3">
-                    <label for='stock_qty' >Stock Quantity</label>
+                </div>
+                <div class="form-group">
+                    <label for='image2' class="col-sm-3 control-label">Image 2 <span style="color:blue">(Optional)</span></label>
+                    <div class="col-sm-6">
+                        <input type="file" name="imageToUpload2" id="imageToUpload2">
                     </div>
-                    <div class="col-sm-9">
-                    <input type='text' name='stock_qty' id='stock_qty' value="" required />
+                </div>
+                <div class="form-group">
+                    <label for='image2' class="col-sm-3 control-label">Image 3 <span style="color:blue">(Optional)</span></label>
+                    <div class="col-sm-6">
+                        <input type="file" name="imageToUpload3" id="imageToUpload3">
                     </div>
-                    <div class="col-sm-3">
-                    <label for='category_id' >Category</label>
+                </div>
+                <div class="form-group">
+                    <label for='image2' class="col-sm-3 control-label">Image 4 <span style="color:blue">(Optional)</span></label>
+                    <div class="col-sm-6">
+                        <input type="file" name="imageToUpload4" id="imageToUpload4">
                     </div>
-                    <div class="col-sm-9">
-                    <select name='category_id' required>
-                        <option value="1">Books</option>
-                        <option value="2">Tutors</option>
-                        <option value="3">Electronics</option>
-                        <option value="4">Entertainment</option>
-                        <option value="5">Clothing</option>
-                        <option value="6">Furniture</option>
-                        <option value="7">Misc</option>
-                    </select>
-                    </div>
-                    <h6 style="visibility: hidden">hax</h6>
-                    <div class="col-sm-12">
-                    <label for='image1' >Image 1</label>
-                    <input type="file" name="imageToUpload1" id="imageToUpload1" required />
-                    <br />
-                    <label for='image2' >Image 2 <span style="color:blue">(Optional)</span></label>
-                    <input type="file" name="imageToUpload2" id="imageToUpload2">
-                    <br />
-                    <label for='image3' >Image 3 <span style="color:blue">(Optional)</span></label>
-                    <input type="file" name="imageToUpload3" id="imageToUpload3">
-                    <br />
-                    <label for='image4' >Image 4 <span style="color:blue">(Optional)</span></label>
-                    <input type="file" name="imageToUpload4" id="imageToUpload4">
-                    <br />
-                    <input type='submit' name='submit_add_product' value='Submit' class="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
+                </div>
+                <input type='submit' name='submit_add_product' value='Submit' class="btn btn-primary" />    
+            </form>
         </div>
     </div>
 </div>

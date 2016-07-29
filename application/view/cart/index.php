@@ -1,44 +1,49 @@
 <div class="container">
-    <h2>CART</h2>
     <div class="row">
-        <?php foreach ($products as $product) { ?>
-            <!--<div class="col-sm-4 col-lg-4 col-md-4">-->
-            <div class="thumbnail">                                                                          
-                <div class="caption">
-                    <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">                            
-                        <div class="search-image">
-                            <?php
-                            if (isset($product->img1))
-                                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" />';
-                            ?>                                   
-                        </div>
-                        <div class="search-data">
-                            <h4>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+                <h3>Shopping Cart</h3>
+            <?php foreach ($products as $product) { ?>
+                <div class="thumbnail">                                                                          
+                    <div class="caption">
+                        <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">                            
+                            <div class="search-image">
                                 <?php
-                                if (isset($product->name))
-                                    echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
-                                ?></a></h4>
-                            <form action="<?php echo URL; ?>cart/itemButton" method="POST">
-                                <h5>
+                                if (isset($product->img1))
+                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" />';
+                                ?>                                   
+                            </div>
+                            <div class="search-data">
+                                <h4>
+                                    <?php
+                                    if (isset($product->name))
+                                        echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
+                                    ?></a></h4>
+                                <form action="<?php echo URL; ?>cart/itemButton" method="POST">
                                     <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
-                                    <label for='pid' >Qty: </label>
-                                    <input type='text' name='qty' id='qty' value=<?php echo $product->qty; ?> required />
-                                </h5>
-                                <input type="hidden" name="pid" value=<?php echo $product->id; ?>>
-                                <input type="submit" name='Update' value="Update Qty" class="btn btn-primary"/>
-                                <input type="submit" name='Delete' value="Delete" class="btn btn-primary"/>
-                            </form>
-                  <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
-                        </div>
+                                    <br />
+                                    <label for='pid' >Quantity </label>
+                                    <input type='text' class="quantity-text" name='qty' id='qty' value=<?php echo $product->qty; ?> required />
+                                    <br />
+                                    <input type="hidden" name="pid" value=<?php echo $product->id; ?>>
+                                    <input type="submit" name='Update' value="Update Qty" class="btn btn-default"/>
+                                    <input type="submit" name='Delete' value="Delete" class="btn btn-danger"/>
+                                </form>
+                      <!--<p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>-->
+                            </div>
+                    </div>
                 </div>
-            </div>
-            <!--</div>-->
-        <?php } ?>
+                <!--</div>-->
+            <?php } ?>
+
+        <br />
+        <form action="<?php echo URL; ?>payment" method="GET">
+            <input type='submit' name='payment' value="Checkout" class="btn btn-primary" />
+        </form>
+                </div>
     </div>
-    <td><form action="<?php echo URL; ?>payment" method="GET">
-                   <input type='submit' name='payment' value="Checkout" class="btn btn-primary" />
-    </form></td>
-    <!-- cart testing -->
+</div>
+<!--     cart testing 
     <h2>DEBUG INTERFACE</h2>
     <div class="box">         
         <form action="<?php echo URL; ?>cart/addItem" method="POST">
@@ -61,7 +66,7 @@
             <input type='submit' name='submit_create_invoice' value='Create Invoice' />
         </form>
     </div>
-    <!-- cart listing -->
+     cart listing 
     <div class="box">
         <h3>List of items in cart of user id# <?php if (isset($_SESSION['CurrentUser'])) echo $_SESSION['CurrentUser']; ?></h3>
         <table>
@@ -83,4 +88,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>-->
