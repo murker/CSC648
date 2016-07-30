@@ -28,12 +28,11 @@ class InvoiceModelxl {
         $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
     }
 
-    public function getInvoice($customer_id) {
+    public function getInvoice($parameters) {
        
         $sql = "SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total FROM invoice WHERE customer_id = :customer_id LIMIT 1";
         $query = $this->db->prepare($sql);
-        $parameters = array(':customer_id' => $customer_id);
-
+        
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 

@@ -51,7 +51,8 @@ class CustomerModel
      */
     public function deleteCustomer($customer_id)
     {
-        return $this->customermodel->deleteCustomer($customer_id);
+        $parameters = array(':customer_id' => $customer_id);
+        return $this->customermodel->deleteCustomer($parameters);
     }
 
     /**
@@ -59,7 +60,8 @@ class CustomerModel
      */
     public function getCustomer($customer_id)
     {
-        return $this->customermodel->getCustomer($customer_id);
+        $parameters = array(':customer_id' => $customer_id);
+        return $this->customermodel->getCustomer($parameters);
     }
 
     /**

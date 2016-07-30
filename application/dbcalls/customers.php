@@ -73,11 +73,11 @@ class CustomerModelxl
      * add/update/delete stuff!
      * @param int $customer_id Id of customer
      */
-    public function deleteCustomer($customer_id)
+    public function deleteCustomer($parameters)
     {
         $sql = "DELETE FROM customer WHERE id = :customer_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':customer_id' => $customer_id);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -88,11 +88,10 @@ class CustomerModelxl
     /**
      * Get a customer from database
      */
-    public function getCustomer($customer_id)
+    public function getCustomer($parameters)
     {
         $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM customer WHERE id = :customer_id LIMIT 1";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':customer_id' => $customer_id);
+        $query = $this->db->prepare($sql);        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

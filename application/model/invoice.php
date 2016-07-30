@@ -11,7 +11,7 @@ class InvoiceModel {
     }
 
     public function getInvoice($customer_id) {
-       
-        return $this->invoicemodel->getInvoice($customer_id);
+        $parameters = array(':customer_id' => $customer_id);
+        return $this->invoicemodel->getInvoice($parameters);
     }
 }
