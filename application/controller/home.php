@@ -1,5 +1,12 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+?>
+
+<?php
+
 /**
  * Class Home
  *
@@ -26,40 +33,60 @@ class Home extends Controller
     }
     public function sort()            
     {
-        $sortby = $_GET["sortby"];       
-        if ($sortby == "best-match"){
-           $products = $this->homemodel->sortbyBestmatch(); 
+        $searchword = $_SESSION['searchword'];
+        $category_id = $_SESSION['category_id'];
+        $sortby = $_GET["sortby"];  
+        
+        if ($sortby == "best-match") {         
+            if ($searchword == "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyBestmatch();
+            }elseif ($searchword != "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyBestmatchW($searchword);
+            }elseif ($searchword != "" && $category_id != 0) {
+                $products = $this->homemodel->sortbyBestmatchWc($searchword, $category_id);
+            }                
         }
-        if ($sortby == "date-old-new"){
-           $products = $this->homemodel->sortbyOldestNewest(); 
+        if ($sortby == "date-old-new"){          
+            if ($searchword == "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyOldestNewest();
+            }elseif ($searchword != "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyOldestNewestW($searchword);
+            }elseif ($searchword != "" && $category_id != 0) {
+                $products = $this->homemodel->sortbyOldestNewestWc($searchword, $category_id);
+            }
         }
         if ($sortby == "date-new-old"){
-            $products = $this->homemodel->sortbyNewestOldest();
+             if ($searchword == "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyNewestOldest();
+            }elseif ($searchword != "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyNewestOldestW($searchword);
+            }elseif ($searchword != "" && $category_id != 0) {
+                $products = $this->homemodel->sortbyNewestOldestWc($searchword, $category_id);
+            }
         }
         if ($sortby == "price-low-high"){
-            $products = $this->homemodel->sortbyPriceAsc();
+             if ($searchword == "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyPriceAsc();
+            }elseif ($searchword != "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyPriceAscW($searchword);
+            }elseif ($searchword != "" && $category_id != 0) {
+                $products = $this->homemodel->sortbyPriceAscWc($searchword, $category_id);
+            }
         }
         if ($sortby == "price-high-low"){
-            $products = $this->homemodel->sortbyPriceDesc();
+             if ($searchword == "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyPriceDesc();
+            }elseif ($searchword != "" && $category_id == 0) {
+                $products = $this->homemodel->sortbyPriceDescW($searchword);
+            }elseif ($searchword != "" && $category_id != 0) {
+                $products = $this->homemodel->sortbyPriceDescWc($searchword, $category_id);
+            }
         }
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
-    public function sortbypriceAsc()
-    {
-        $products = $this->homemodel->sortbyPriceAsc();
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/sort/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
-    public function sortbypriceDesc()
-    {
-        $products = $this->homemodel->sortbyPriceDesc();
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/sort/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
+    
     public function sortbyCategory()
     {
         $category = 0;
@@ -82,5 +109,5 @@ class Home extends Controller
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
-    }
+    }     
 }

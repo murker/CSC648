@@ -1,4 +1,10 @@
- <?php
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+?> 
+
+<?php
 
 /**
  * Class Home
@@ -24,22 +30,7 @@ class Searchproducts extends Controller
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';
     }
-    
-    public function sortbypriceAsc()
-    {
-        $products = $this->searchproductsmodel->sortbyPriceAsc();
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
-    public function sortbypriceDesc()
-    {
-        $products = $this->searchproductsmodel->sortbyPriceDesc();
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
-    
+           
     public function getuserProducts($user_id)
     {
         $products = $this->searchproductsmodel->getuserProducts($user_id);

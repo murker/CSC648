@@ -28,11 +28,11 @@ class ItemModelxl
         $this->db = new PDO(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHARSET, DB_USER, DB_PASS, $options);
     }
  
-    public function getProduct($product_id)
+    public function getProduct($parameters)
     {
         $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product WHERE id = :product_id LIMIT 1";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

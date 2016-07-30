@@ -39,11 +39,11 @@ class ProductsModelxl
         $query->execute($parameters);
     }
 
-    public function deleteProduct($product_id)
+    public function deleteProduct($parameters)
     {
         $sql = "DELETE FROM product WHERE id = :product_id";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id);
+        
         // useful for debugging: you can see the SQL behind above construction by using:
        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
 
@@ -118,11 +118,11 @@ class ProductsModelxl
         return $query->fetchAll();
     }
 
-    public function getProduct($product_id)
+    public function getProduct($parameters)
     {
         $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product WHERE id = :product_id LIMIT 1";
         $query = $this->db->prepare($sql);
-        $parameters = array(':product_id' => $product_id);
+        
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

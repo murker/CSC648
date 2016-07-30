@@ -26,7 +26,8 @@ class ProductsModel
 
     public function deleteProduct($product_id)
     {
-        return $this->productsmodel->deleteProduct($product_id);
+        $parameters = array(':product_id' => $product_id);
+        return $this->productsmodel->deleteProduct($parameters);
     }
 
     public function updateProduct($name, $description, $price, $stock_qty, $category_id, $product_id)
@@ -69,6 +70,7 @@ class ProductsModel
 
     public function getProduct($product_id)
     {
-        return $this->productsmodel->getProduct($product_id);
+        $parameters = array(':product_id' => $product_id);
+        return $this->productsmodel->getProduct($parameters);
     }
 }

@@ -12,6 +12,7 @@ class ItemModel
  
     public function getProduct($product_id)
     {
-        return $this->itemmodel->getProduct($product_id);
+        $parameters = array(':product_id' => $product_id);
+        return $this->itemmodel->getProduct($parameters);
     }
 }
