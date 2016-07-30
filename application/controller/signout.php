@@ -9,10 +9,10 @@
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
  *
  */
-session_start(); 
+session_start();
 
 class Signout extends Controller {
-    
+
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/customers/index
@@ -22,11 +22,12 @@ class Signout extends Controller {
         require APP . 'view/signout/index.php';
         require APP . 'view/_templates/footer.php';
     }
-    
+
     public function destroySession() {
-         // deletes the current session
+        // deletes the current session
         session_unset();
         session_destroy();
         header('location: ' . URL . 'signout');
     }
+
 }

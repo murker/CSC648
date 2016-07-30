@@ -7,16 +7,14 @@ class CartModelxl {
      */
     public $db = null;
 
-    function __construct()
-    {
+    function __construct() {
         $this->openDatabaseConnection();
     }
-    
+
     /**
      * Open the database connection with the credentials from application/config/config.php
      */
-    private function openDatabaseConnection()
-    {
+    private function openDatabaseConnection() {
         // set the (optional) options of the PDO connection. in this case, we set the fetch mode to
         // "objects", which means all results will be objects, like this: $result->user_name !
         // For example, fetch mode FETCH_ASSOC would return results like this: $result["user_name] !
@@ -102,7 +100,7 @@ class CartModelxl {
         $query->execute($parameters);
         return $query->fetchAll();
     }
-    
+
     public function updateCartItem($uid, $pid, $qty) {
         $cid = $this->getUserCart($uid);
         $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND product_id = :pid";

@@ -7,7 +7,7 @@ class Payment extends Controller {
     public function index() {
         if (!isset($_SESSION)) {
             session_start();
-        }   
+        }
         $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
         $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
         $products = array();
@@ -20,6 +20,7 @@ class Payment extends Controller {
         require APP . 'view/payment/index.php';
         require APP . 'view/_templates/footer.php';
     }
+
     public function createInvoice() {
         if (!isset($_SESSION)) {
             session_start();
@@ -35,8 +36,9 @@ class Payment extends Controller {
         }
         require APP . 'view/_templates/header.php';
         require APP . 'view/invoice/index.php';
-        require APP . 'view/_templates/footer.php';        
+        require APP . 'view/_templates/footer.php';
     }
+
     public function calcInvoice($cart_items) {
         $time_stamp = date("Y-m-d H:i:s");
         $invoice_data = array("date" => $time_stamp, "total" => 0, "shipping" => 0, "tax" => 0, "g_total" => 0);
@@ -57,12 +59,9 @@ class Payment extends Controller {
         return $invoice_data;
     }
 
-   
-    
-    public function updateInventory(){
+    public function updateInventory() {
         
     }
 
 }
-
 ?>

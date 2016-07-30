@@ -2,10 +2,9 @@
 
 class SearchProductsModel {
 
-    public $searchproductsmodel= null;
-    
+    public $searchproductsmodel = null;
+
     function __construct() {
-        
         require APP . 'dbcalls/searchproducts.php';
         $this->searchproductsmodel = new SearchProductsModelxl();
     }
@@ -14,9 +13,9 @@ class SearchProductsModel {
         $parameters = array(':searchword' => $searchword);
         return $this->searchproductsmodel->searchProductW($parameters);
     }
-    
+
     public function searchProductWc($searchword, $category_id) {
-        $parameters = array(':searchword' => $searchword, 
+        $parameters = array(':searchword' => $searchword,
             ':category_id' => $category_id);
         return $this->searchproductsmodel->searchProductWc($parameters);
     }

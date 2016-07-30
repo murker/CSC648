@@ -1,11 +1,13 @@
 <?php
-if(!isset($_SESSION)) {
+
+if (!isset($_SESSION)) {
     session_start();
 }
 ?>
 
 
 <?php
+
 /**
  * Class Products
  * This is a demo class.
@@ -15,14 +17,13 @@ if(!isset($_SESSION)) {
  * This is really weird behaviour, but documented here: http://php.net/manual/en/language.oop5.decon.php
  *
  */
-class Products extends Controller
-{
+class Products extends Controller {
+
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/products/index
      */
-    public function index()
-    {
+    public function index() {
 
         $products = $this->productsmodel->getAllProducts();
 
@@ -40,26 +41,25 @@ class Products extends Controller
      * the user back to products/index via the last line: header(...)
      * This is an example of how to handle a POST request.
      */
-    public function addProduct()
-    {
+    public function addProduct() {
         // if we have POST data to create a new product entry
         if (isset($_POST["submit_add_product"])) {
             // do addProduct() in model/model.php
             $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
-            
-            if(($_FILES['imageToUpload2']['tmp_name']) != ""){
+
+            if (($_FILES['imageToUpload2']['tmp_name']) != "") {
                 $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
-            }else{
+            } else {
                 $image2 = NULL;
             }
-            if(($_FILES['imageToUpload3']['tmp_name']) != ""){
+            if (($_FILES['imageToUpload3']['tmp_name']) != "") {
                 $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
-            }else{
+            } else {
                 $image3 = NULL;
             }
-            if(($_FILES['imageToUpload4']['tmp_name']) != ""){
+            if (($_FILES['imageToUpload4']['tmp_name']) != "") {
                 $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
-            }else{
+            } else {
                 $image4 = NULL;
             }
             $this->productsmodel->addProduct($_POST["customer_id"], $_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image1, $image2, $image3, $image4);
@@ -70,7 +70,6 @@ class Products extends Controller
         require APP . 'view/_templates/header.php';
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
-        
     }
 
     /**
@@ -82,8 +81,7 @@ class Products extends Controller
      * This is an example of how to handle a GET request.
      * @param int $product_id Id of the to-delete product
      */
-    public function deleteProduct($product_id)
-    {
+    public function deleteProduct($product_id) {
         // if we have an id of a customer that should be deleted
         if (isset($product_id)) {
             // do deleteCustomer() in model/model.php
@@ -97,13 +95,12 @@ class Products extends Controller
         require APP . 'view/_templates/footer.php';
     }
 
-     /**
+    /**
      * ACTION: editProduct
      * This method handles what happens when you move to http://yourproject/products/editproduct
      * @param int $product_id Id of the to-edit customer
      */
-    public function editProduct($product_id)
-    {
+    public function editProduct($product_id) {
         // if we have an id of a product that should be edited
         if (isset($product_id)) {
             // do getProduct() in model/model.php
@@ -111,7 +108,6 @@ class Products extends Controller
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
-
             // load views. within the views we can echo out $customer easily
             require APP . 'view/_templates/header.php';
             require APP . 'view/products/edit.php';
@@ -121,7 +117,7 @@ class Products extends Controller
             header('location: ' . URL . 'products/index');
         }
     }
-    
+
     /**
      * ACTION: updateProduct
      * This method handles what happens when you move to http://yourproject/products/updateproduct
@@ -130,8 +126,7 @@ class Products extends Controller
      * the user back to products/index via the last line: header(...)
      * This is an example of how to handle a POST request.
      */
-    public function updateProduct()
-    {
+    public function updateProduct() {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_product"])) {
             $this->productsmodel->updateProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $_POST["product_id"]);
@@ -143,12 +138,12 @@ class Products extends Controller
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
     }
-    public function updateProductImg1()
-    {
+
+    public function updateProductImg1() {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg1"])) {
-            $image1 = file_get_contents($_FILES['imageToUpload1']['tmp_name']);           
-            $this->productsmodel->updateProductImg1($_POST["product_id"], $image1);
+            $image = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
+            $this->productsmodel->updateProductImg(1, $_POST["product_id"], $image);
         }
 
         // where to go after product has been added
@@ -157,12 +152,12 @@ class Products extends Controller
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
     }
-    public function updateProductImg2()
-    {
+
+    public function updateProductImg2() {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg2"])) {
-            $image2 = file_get_contents($_FILES['imageToUpload2']['tmp_name']);          
-            $this->productsmodel->updateProductImg2($_POST["product_id"], $image2);
+            $image = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
+            $this->productsmodel->updateProductImg(2, $_POST["product_id"], $image);
         }
 
         // where to go after product has been added
@@ -171,12 +166,12 @@ class Products extends Controller
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
     }
-    public function updateProductImg3()
-    {
+
+    public function updateProductImg3() {
         // if we have POST data to create a new Product entry
-        if (isset($_POST["submit_update_productImg3"])) {      
-            $image3 = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
-            $this->productsmodel->updateProductImg3($_POST["product_id"], $image3);
+        if (isset($_POST["submit_update_productImg3"])) {
+            $image = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
+            $this->productsmodel->updateProductImg(3, $_POST["product_id"], $image);
         }
 
         // where to go after product has been added
@@ -185,12 +180,12 @@ class Products extends Controller
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
     }
-    public function updateProductImg4()
-    {
+
+    public function updateProductImg4() {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg4"])) {
-            $image4 = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
-            $this->productsmodel->updateProductImg4($_POST["product_id"], $image4);
+            $image = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
+            $this->productsmodel->updateProductImg(4, $_POST["product_id"], $image);
         }
 
         // where to go after product has been added
@@ -199,4 +194,5 @@ class Products extends Controller
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
     }
+
 }

@@ -7,16 +7,14 @@ class InvoiceModelxl {
      */
     public $db = null;
 
-    function __construct()
-    {
+    function __construct() {
         $this->openDatabaseConnection();
     }
-    
+
     /**
      * Open the database connection with the credentials from application/config/config.php
      */
-    private function openDatabaseConnection()
-    {
+    private function openDatabaseConnection() {
         // set the (optional) options of the PDO connection. in this case, we set the fetch mode to
         // "objects", which means all results will be objects, like this: $result->user_name !
         // For example, fetch mode FETCH_ASSOC would return results like this: $result["user_name] !
@@ -29,16 +27,15 @@ class InvoiceModelxl {
     }
 
     public function getInvoice($parameters) {
-       
+
         $sql = "SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total FROM invoice WHERE customer_id = :customer_id LIMIT 1";
         $query = $this->db->prepare($sql);
-        
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
         $query->execute($parameters);
 
         // fetch() is the PDO method that get exactly one result
         return $query->fetch();
     }
+
 }

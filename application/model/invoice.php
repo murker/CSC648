@@ -2,10 +2,10 @@
 
 class InvoiceModel {
 
-    public $invoicemodel= null;
-    
+    public $invoicemodel = null;
+
     function __construct() {
-        
+
         require APP . 'dbcalls/invoice.php';
         $this->invoicemodel = new InvoiceModelxl();
     }
@@ -14,4 +14,5 @@ class InvoiceModel {
         $parameters = array(':customer_id' => $customer_id);
         return $this->invoicemodel->getInvoice($parameters);
     }
+
 }
