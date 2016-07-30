@@ -22,9 +22,17 @@ class Searchproducts extends Controller
      */
     public function index()
     {
-        $products = $this->searchproductsmodel->searchProduct('%'. $_GET["searchinput"] . '%', $_GET["category_id"]);
+        $searchword = '%'. $_GET["searchinput"] . '%';
+        $category_id = $_GET["category_id"];
         $_SESSION['searchword'] = '%'. $_GET["searchinput"] . '%';
         $_SESSION['category_id'] = $_GET["category_id"];
+        if ($searchword != "") {
+            if ($category_id == 0) {
+                $products = $this->searchproductsmodel->searchProductW($searchword);                
+            } else {
+                $products = $this->searchproductsmodel->searchProductWc($searchword, $category_id); 
+            }           
+        }                    
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
@@ -39,4 +47,5 @@ class Searchproducts extends Controller
         require APP . 'view/products/userproducts.php';
         require APP . 'view/_templates/footer.php';
     }
+    
 }

@@ -10,8 +10,15 @@ class SearchProductsModel {
         $this->searchproductsmodel = new SearchProductsModelxl();
     }
 
-    public function searchProduct($searchword, $category_id) {
-        return $this->searchproductsmodel->searchProduct($searchword, $category_id);
+    public function searchProductW($searchword) {
+        $parameters = array(':searchword' => $searchword);
+        return $this->searchproductsmodel->searchProductW($parameters);
+    }
+    
+    public function searchProductWc($searchword, $category_id) {
+        $parameters = array(':searchword' => $searchword, 
+            ':category_id' => $category_id);
+        return $this->searchproductsmodel->searchProductWc($parameters);
     }
 
     public function getuserProducts($user_id) {

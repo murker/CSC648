@@ -76,12 +76,9 @@ class CustomerModelxl
     public function deleteCustomer($parameters)
     {
         $sql = "DELETE FROM customer WHERE id = :customer_id";
-        $query = $this->db->prepare($sql);
-        
-
+        $query = $this->db->prepare($sql);        
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
         $query->execute($parameters);
     }
 

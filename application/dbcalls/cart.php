@@ -102,14 +102,7 @@ class CartModelxl {
         $query->execute($parameters);
         return $query->fetchAll();
     }
-
-    public function getAmountOfCartItems($cid) {
-        $sql = "SELECT COUNT(id) AS amount_of_songs FROM song";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-        return $query->fetch()->amount_of_songs;
-    }
-
+    
     public function updateCartItem($uid, $pid, $qty) {
         $cid = $this->getUserCart($uid);
         $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND product_id = :pid";
