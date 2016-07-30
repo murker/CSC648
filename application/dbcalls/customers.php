@@ -51,8 +51,8 @@ class CustomerModelxl {
      * @param string $track Track
      * @param string $link Link
      */
-    public function addCustomer($parameters) {
-        $sql = "INSERT INTO customer (firstname, lastname, email, password, phone, street, city, zipcode) VALUES (:firstname, :lastname, :email, :password, :phone, :street, :city, :zipcode)";
+    public function addCustomer($table, $parameters) {
+        $sql = "INSERT INTO " . $table . " (firstname, lastname, email, password, phone, street, city, zipcode) VALUES (:firstname, :lastname, :email, :password, :phone, :street, :city, :zipcode)";
         $query = $this->db->prepare($sql);
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -65,8 +65,8 @@ class CustomerModelxl {
      * add/update/delete stuff!
      * @param int $customer_id Id of customer
      */
-    public function deleteCustomer($parameters) {
-        $sql = "DELETE FROM customer WHERE id = :customer_id";
+    public function deleteCustomer($table, $parameters) {
+        $sql = "DELETE FROM " . $table . " WHERE id = :customer_id";
         $query = $this->db->prepare($sql);
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -76,8 +76,8 @@ class CustomerModelxl {
     /**
      * Get a customer from database
      */
-    public function getCustomer($parameters) {
-        $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM customer WHERE id = :customer_id LIMIT 1";
+    public function getCustomer($table, $parameters) {
+        $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM " . $table . " WHERE id = :customer_id LIMIT 1";
         $query = $this->db->prepare($sql);
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
@@ -98,33 +98,11 @@ class CustomerModelxl {
      * @param string $link Link
      * @param int $customer_id Id
      */
-    public function updateCustomer($parameters) {
-        $sql = "UPDATE customer SET firstname = :firstname, lastname = :lastname, email = :email , password = :password, phone = :phone, street = :street, city = :city, zipcode = :zipcode WHERE id = :customer_id";
+    public function updateCustomer($table, $parameters) {
+        $sql = "UPDATE " . $table . " SET firstname = :firstname, lastname = :lastname, email = :email , password = :password, phone = :phone, street = :street, city = :city, zipcode = :zipcode WHERE id = :customer_id";
         $query = $this->db->prepare($sql);
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
     }
-
-    /**
-     * Get simple "stats". This is just a simple demo to show
-     * how to use more than one model in a controller (see application/controller/customers.php for more)
-     */
-    public function getAmountOfCustomers() {
-        $sql = "SELECT COUNT(id) AS amount_of_customers FROM customer";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch()->amount_of_customers;
-    }
-
-    public function signinCustomer($parameters) {
-        $sql = "SELECT email FROM customer WHERE email = :email AND password = :password";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetch();
-    }
-
 }

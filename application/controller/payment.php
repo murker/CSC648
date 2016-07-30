@@ -8,7 +8,7 @@ class Payment extends Controller {
         if (!isset($_SESSION)) {
             session_start();
         }
-        $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
+        $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
         $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
         $products = array();
         foreach ($cart_items as $item) {

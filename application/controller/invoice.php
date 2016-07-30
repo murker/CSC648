@@ -10,7 +10,7 @@ class Invoice extends Controller {
 
     public function index() {
         $invoice = $this->invoicemodel->getInvoice($_SESSION['CurrentUser']);
-        $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
+        $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
 
         // load views
         require APP . 'view/_templates/header.php';
@@ -20,7 +20,7 @@ class Invoice extends Controller {
 
     public function getInvoice() {
         $invoice = $this->invoicemodel->getInvoice($_SESSION['CurrentUser']);
-        $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
+        $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
         require APP . 'view/_templates/header.php';
         require APP . 'view/invoice/index.php';
         require APP . 'view/_templates/footer.php';

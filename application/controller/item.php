@@ -33,7 +33,7 @@ class Item extends Controller {
         if (isset($product_id)) {
             // do getProduct() in model/model.php
             if (isset($_SESSION['CurrentUser'])) {
-                $customer = $this->customermodel->getCustomer($_SESSION['CurrentUser']);
+                $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
             }
             $product = $this->itemmodel->getProduct($product_id);
 
