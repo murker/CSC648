@@ -28,7 +28,7 @@ class CustomerModel {
      * @param string $track Track
      * @param string $link Link
      */
-    public function addCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode) {
+    public function addCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode) {
         $parameters = array(':firstname' => $firstname,
             ':lastname' => $lastname,
             ':email' => $email,
@@ -37,7 +37,7 @@ class CustomerModel {
             ':street' => $street,
             ':city' => $city,
             ':zipcode' => $zipcode);
-        return $this->customermodel->addCustomer($parameters);
+        return $this->customermodel->addCustomer($table, $parameters);
     }
 
     /**
@@ -46,17 +46,17 @@ class CustomerModel {
      * add/update/delete stuff!
      * @param int $customer_id Id of customer
      */
-    public function deleteCustomer($customer_id) {
+    public function deleteCustomer($table, $customer_id) {
         $parameters = array(':customer_id' => $customer_id);
-        return $this->customermodel->deleteCustomer($parameters);
+        return $this->customermodel->deleteCustomer($table, $parameters);
     }
 
     /**
      * Get a customer from database
      */
-    public function getCustomer($customer_id) {
+    public function getCustomer($table, $customer_id) {
         $parameters = array(':customer_id' => $customer_id);
-        return $this->customermodel->getCustomer($parameters);
+        return $this->customermodel->getCustomer($table, $parameters);
     }
 
     /**
@@ -71,7 +71,7 @@ class CustomerModel {
      * @param string $link Link
      * @param int $customer_id Id
      */
-    public function updateCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id) {
+    public function updateCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id) {
         $parameters = array(':firstname' => $firstname,
             ':lastname' => $lastname,
             ':email' => $email,
@@ -81,13 +81,9 @@ class CustomerModel {
             ':city' => $city,
             ':zipcode' => $zipcode,
             ':customer_id' => $customer_id);
-        return $this->customermodel->updateCustomer($parameters);
+        return $this->customermodel->updateCustomer($table, $parameters);
     }
-
-    public function getAmountOfCustomers() {
-        return $this->customermodel->getAmountOfCustomers();
-    }
-
+    
     public function signinCustomer($email, $password) {
         $parameters = array(':email' => $email, ':password' => $password);
         return $this->customermodel->signinCustomer($parameters);

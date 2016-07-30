@@ -17,9 +17,7 @@ class Customers extends Controller {
      */
     public function index() {
         // getting all customers and amount of customers
-        $customers = $this->customermodel->getAllcustomers();
-        $amount_of_customers = $this->customermodel->getAmountOfCustomers();
-
+        $customers = $this->customermodel->getAllcustomers();       
         // load views. within the views we can echo out $customers and $amount_of_customers easily
         require APP . 'view/_templates/header.php';
         require APP . 'view/customers/index.php';
@@ -47,7 +45,7 @@ class Customers extends Controller {
             $salt = "saltedpass4team4";
             $saltedpassword = md5($salt . $_POST["password"]);
             // do addCustomer() in model/customerModel.php
-            $this->customermodel->addCustomer($firstname, $lastname, $email, $saltedpassword, $phone, $street, $city, $zipcode);
+            $this->customermodel->addCustomer('customer', $firstname, $lastname, $email, $saltedpassword, $phone, $street, $city, $zipcode);
         }
 
         // where to go after customer has been added
@@ -67,7 +65,7 @@ class Customers extends Controller {
         // if we have an id of a customer that should be deleted
         if (isset($customer_id)) {
             // do deleteCustomer() in model/customerModel.php
-            $this->customermodel->deleteCustomer($customer_id);
+            $this->customermodel->deleteCustomer('customer', $customer_id);
         }
 
         // where to go after customer has been deleted
@@ -83,7 +81,7 @@ class Customers extends Controller {
         // if we have an id of a customer that should be edited
         if (isset($customer_id)) {
             // do getCustomer() in model/customerModel.php
-            $customer = $this->customermodel->getCustomer($customer_id);
+            $customer = $this->customermodel->getCustomer('customer', $customer_id);
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
             // load views. within the views we can echo out $customer easily
@@ -110,22 +108,10 @@ class Customers extends Controller {
             $salt = "saltedpass4team4";
             $saltedpassword = md5($salt . $_POST["password"]);
             // do updateCustomer() from model/customerModel.php
-            $this->customermodel->updateCustomer($_POST["firstname"], $_POST["lastname"], $_POST["email"], $saltedpassword, $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"], $_POST["customer_id"]);
+            $this->customermodel->updateCustomer('customer', $_POST["firstname"], $_POST["lastname"], $_POST["email"], $saltedpassword, $_POST["phone"], $_POST["street"], $_POST["city"], $_POST["zipcode"], $_POST["customer_id"]);
         }
 
         // where to go after customer has been added
         header('location: ' . URL . 'home/index');
     }
-
-    /**
-     * AJAX-ACTION: ajaxGetStats
-     * TODO documentation
-     */
-    public function ajaxGetStats() {
-        $amount_of_customers = $this->customermodel->getAmountOfCustomers();
-
-        // simply echo out something. A supersimple API would be possible by echoing JSON here
-        echo $amount_of_customers;
-    }
-
 }
