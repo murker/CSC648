@@ -4,7 +4,7 @@
         <div class="col-sm-8">
             <h3>Account Registration</h3>
             <br />
-            <form class="form-horizontal" action="<?php echo URL; ?>customers/addcustomer" method="POST">
+            <form name="customer_form" class="form-horizontal" action="<?php echo URL; ?>customers/addcustomer" method="POST">
                 <h4 class="title">About You</h4>
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">First Name</label>
@@ -59,7 +59,7 @@
                         <input class="form-control" type='text' name='zipcode' id='zipcode' value="" required />
                     </div>
                 </div>
-                <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-primary" />
+                <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-primary" onclick="validateEmail()"/>
             </form>
         </div>
     </div>
@@ -69,7 +69,6 @@
 <script>
     var password = document.getElementById("password");
     var confirm_password = document.getElementById("confirmpw");
-
     function validatePassword() {
         if (password.value !== confirm_password.value) {
             confirm_password.setCustomValidity("Passwords does not match");
@@ -79,4 +78,17 @@
     }
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
+
+    function validateEmail() {
+        var email = document.getElementById("email");
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (email.value.match(mailformat)) {
+            document.form1.text1.focus();
+            return true;
+        } else {
+            alert("You have entered an invalid email address!");
+            document.form1.text1.focus();
+            return false;
+        }
+    }
 </script>
