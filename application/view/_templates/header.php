@@ -92,18 +92,27 @@ if (!isset($_SESSION)) {
                         <div class="header-buttons" style="clear:both">
                             <ul class="nav navbar-nav pull-right">   
                                 <li>
-                                    <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell</a>
+                                    <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                                        <a href="<?php echo URL; ?>products">
+                                        <?php else : ?>
+                                            <a href="<?php echo URL; ?>signin">
+                                            <?php endif; ?> 
+                                            <span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo URL; ?>cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
+                                    <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                                        <a href="<?php echo URL; ?>cart">
+                                        <?php else : ?>
+                                            <a href="<?php echo URL; ?>signin">
+                                            <?php endif; ?> 
+                                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
                                 </li> 
                             </ul>
                         </div>
                     </div>
                 </div>
-                <?php if (isset($_SESSION['CurrentUser'])) : ?>
 
-                <?php endif; ?> 
+
                 <div class="header-slogan">Providing students with an easy place to buy and sell books, tutors, and more!
                     <span class="pull-right">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</span>
                 </div>

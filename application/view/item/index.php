@@ -1,67 +1,73 @@
 <div class="container">
+    <h3 class="title"><?php
+        if (isset($product->name))
+            echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
+        ?>
+    </h3>
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-4">
             <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <?php if ((isset($product->img2) && $product->img2 != "") || (isset($product->img3) && $product->img3 != "") || (isset($product->img4) && $product->img4 != "")) : ?>
+                        <a class="left" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right pull-right" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    <?php endif; ?> 
+                    <ol class="carousel-indicators">
+                        <?php
+                        if ((isset($product->img2) && $product->img2 != "") || (isset($product->img3) && $product->img3 != "") || (isset($product->img4) && $product->img4 != ""))
+                            echo "<li data-target = '#carousel-example-generic' data-slide-to = '0' class='active'></li>";
+                        if (isset($product->img2) && $product->img2 != "")
+                            echo "<li data-target = '#carousel-example-generic' data-slide-to = '1'></li>";
+                        if (isset($product->img3) && $product->img3 != "")
+                            echo "<li data-target = '#carousel-example-generic' data-slide-to = '2'></li>";
+                        if (isset($product->img4) && $product->img4 != "")
+                            echo "<li data-target = '#carousel-example-generic' data-slide-to = '3'></li>";
+                        ?>
+                    </ol>
+                    <div class="carousel-inner">
+                        <?php
+                        if (isset($product->img1) && $product->img1 != "") {
+                            echo "<div class='item active'>";
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" class = "slide-image img-responsive"/>';
+                            echo "</div>";
+                        }
+                        ?>
+                        <?php
+                        if (isset($product->img2) && $product->img2 != "") {
+                            echo "<div class='item'>";
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img2) . '" class = "slide-image img-responsive"/>';
+                            echo "</div>";
+                        }
+                        ?>
+                        <?php
+                        if (isset($product->img3) && $product->img3 != "") {
+                            echo "<div class='item'>";
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img3) . '" class = "slide-image img-responsive"/>';
+                            echo "</div>";
+                        }
+                        ?>
+                        <?php
+                        if (isset($product->img4) && $product->img4 != "") {
+                            echo "<div class='item'>";
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img4) . '" class = "slide-image img-responsive"/>';
+                            echo "</div>";
+                        }
+                        ?>
                     </div>
-
                 </div>
-            <?php
-            if (isset($product->img1) && $product->img1 != "")
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img1) . '" class = "img-thumbnail img-responsive pull-left"/>';
-            ?>
-            <?php if ($product->category_id != 2) : ?>
-                <?php
-                if (isset($product->img2) && $product->img2 != "")
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img2) . '" class = "img-thumbnail img-responsive sub-image" style="clear:left" />';
-                ?>
-                <?php
-                if (isset($product->img3) && $product->img3 != "")
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img3) . '" class = "img-thumbnail img-responsive sub-image"/>';
-                ?>
-                <?php
-                if (isset($product->img4) && $product->img4 != "")
-                    echo '<img src="data:image/jpeg;base64,' . base64_encode($product->img4) . '" class = "img-thumbnail img-responsive sub-image"/>';
-                ?>
-            <?php endif; ?>
+            </div>
         </div>
         <div class ="col-sm-6">
-            <h3><?php
-                if (isset($product->name))
-                    echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8');
-                ?>
-            </h3>
             <h4>
                 <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>            
-            <?php if ($product->category_id == 2) : ?>
-            / hour
-            <?php endif ; ?></h4>
+                <?php if ($product->category_id == 2) : ?>
+                    / hour
+                <?php endif; ?></h4>
             <?php if (isset($_SESSION['CurrentUser'])) : ?>
                 <form action="<?php echo URL; ?>cart/additem" method="POST">
                 <?php else : ?>
@@ -74,8 +80,8 @@
                         <input type='text' name='qty' value="1" class="quantity-text" required />
                         <br />
                         <input type="hidden" name="pid" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />
-                        <input type="submit" name="submit_add_item" value="Add to cart" class = "btn btn-warning" />     
-                        <input type="submit" name="submit_buyitnow" value="Buy It Now" class = "btn btn-primary"/>
+                        <input type="submit" name="submit_add_item" value="Add to cart" class = "btn btn-primary" />     
+                        <input type="submit" name="submit_buyitnow" value="Buy It Now" class = "btn btn-warning"/>
                     <?php endif; ?> 
                     <br /><br />
                     <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
