@@ -8,14 +8,17 @@ body {
     /*padding-top: 150px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 .nav{
-    font-size: 12pt;
-    font-weight: bold;
+}
+.navbar-nav {
+    margin: 4px -15px;
+}
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 0px;
+    line-height: 10px;
 }
 .navbar{
     background:#232176;
-}
-.navbar-nav img{
-    padding-right:50px;
 }
 .sub-image{
     float:left;
@@ -26,13 +29,6 @@ body {
     width: 175px;
     background:white;
     margin-left:5px
-}
-.student-warning{
-    background:#fff;
-    color:#c00;
-    font-weight: bold;
-    padding-left:2em;
-    white-space: nowrap;
 }
 .quantity-text{
     width: 25px;
@@ -47,18 +43,19 @@ body {
 .header-logo{
 }
 .header-slogan{
-    color:#BBB;
+    color:#ccc;
     margin-left: 15px;
     font-size: 10pt;
     font-weight:bold;
 }
+.header-buttons{
+    font-size: 13pt;
+    font-weight: bold;
+}
 .header-buttons button{
-    margin-top: 13px;
+    margin-top: 15px;
     background-color: transparent;
-    background-repeat:no-repeat;
     border: none;
-    cursor:pointer;
-    overflow: hidden;
     outline:none;
 }
 .header-dropdown{
@@ -66,7 +63,7 @@ body {
     border: 2px solid #E2AF2D;
 }
 .header-dropdown > li > a{
-    font-size: 12pt;
+    font-size: 13pt;
     font-weight: bold;
 }
 .header-dropdown > li > a:hover{
@@ -77,33 +74,35 @@ body {
 }
 .header-buttons a:hover, .header-buttons button:hover{
     color:#ECCD7F !important;
-}
-.header-category{
-    display:inline;
+    background:#232176 !important;
 }
 .header-search{
-    margin-top:10px;
+    margin-top:25px;
 }
 .header-search input{
     height:40px;
-    border-radius: 5px !important;
 }
 .header-search input[type="text"]{
     padding-left:10px;
-    width:80%;
-}
-.header-search input[type="text"], .header-search span{
-    float:right;
+    border-radius: 5px 0px 0px 5px;
+    border: 0px;
+    outline: none;
 }
 .header-search select{
-    width:20%;
-    float:left;
     height:40px;
     border-color:#CCC;
     padding-left: 10px;
 }
-.header-searchbardiv{
-    width:50%;
+.header-search button{
+    height:40px;
+    background:white;
+    margin-top:-1px;
+    border:2px;
+    border-radius: 0px 5px 5px 0px;
+    outline: none;
+}
+.header-search button:focus {
+    outline:none !important;
 }
 input[type="text"],input[type="password"]{
     border-radius:5px;
