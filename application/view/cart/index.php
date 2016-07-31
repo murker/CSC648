@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-                <h3>Shopping Cart</h3>
+            <h3 class="title">Shopping Cart</h3>
             <?php foreach ($products as $product) { ?>
                 <div class="thumbnail">                                                                          
                     <div class="caption">
@@ -36,11 +36,11 @@
                 <!--</div>-->
             <?php } ?>
 
-        <br />
-        <form action="<?php echo URL; ?>payment" method="GET">
-            <input type='submit' name='payment' value="Checkout" class="btn btn-primary" />
-        </form>
-                </div>
+            <br />
+            <form action="<?php echo URL; ?>payment" method="GET">
+                <input type='submit' name='payment' value="Checkout" class="btn btn-primary pull-right" />
+            </form>
+        </div>
     </div>
 </div>
 <!--     cart testing 
@@ -78,13 +78,13 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($cart_items as $cart_item) { ?>
-                    <tr>
-                        <td><?php if (isset($cart_item->cart_id)) echo htmlspecialchars($cart_item->cart_id, ENT_QUOTES, 'UTF-8'); ?></td>
-                        <td><?php if (isset($cart_item->product_id)) echo htmlspecialchars($cart_item->product_id, ENT_QUOTES, 'UTF-8'); ?></td>
-                        <td><?php if (isset($cart_item->item_qty)) echo htmlspecialchars($cart_item->item_qty, ENT_QUOTES, 'UTF-8'); ?></td>
-                    </tr>
-                <?php } ?>
+<?php foreach ($cart_items as $cart_item) { ?>
+                        <tr>
+                            <td><?php if (isset($cart_item->cart_id)) echo htmlspecialchars($cart_item->cart_id, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php if (isset($cart_item->product_id)) echo htmlspecialchars($cart_item->product_id, ENT_QUOTES, 'UTF-8'); ?></td>
+                            <td><?php if (isset($cart_item->item_qty)) echo htmlspecialchars($cart_item->item_qty, ENT_QUOTES, 'UTF-8'); ?></td>
+                        </tr>
+<?php } ?>
             </tbody>
         </table>
     </div>

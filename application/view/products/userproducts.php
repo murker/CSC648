@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
-            <h3>Your Items for Sale</h3>
+            <h3 class="title">Your Items for Sale</h3>
             <br />
             <table class="table">
                 <thead style="background-color: #ddd; font-weight: bold;">

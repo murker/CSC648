@@ -6,30 +6,30 @@
             <form class = "form-horizontal" action="<?php echo URL; ?>products/updateproduct" method="POST">
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">Item</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-10">
                         <input class="form-control" type="text" name="name" value="<?php echo htmlspecialchars($product->name, ENT_QUOTES, 'UTF-8'); ?>" required />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">Price</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <input class="form-control" type="text" name="price" value="<?php echo htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>" required />
                     </div>
                     <label for='name' class="col-sm-2 control-label">Quantity</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <input class="form-control" type="text" name="stock_qty" value="<?php echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?>" required />
                     </div>
                 </div>
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">Description</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-10">
                         <textarea class="form-control" rows="4" type="text" name="description" required><?php echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for='name' class="col-sm-2 control-label">Category</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-10">
                         <select name='category_id' class="sell-category" required>
                             <option value="1">Books</option>
                             <option value="2">Tutors</option>
@@ -42,8 +42,9 @@
                     </div>
                 </div>
                 <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />
-                <input type="submit" name="submit_update_product" value="Update" class="btn btn-primary" />
+                <input type="submit" name="submit_update_product" value="Update" class="btn btn-primary center-block" />
             </form>
+            <div class="clearfix"></div>
             <hr>
             <div class="col-sm-12">
                 <form action="<?php echo URL; ?>products/updateproductImg1" method="POST" enctype="multipart/form-data">
