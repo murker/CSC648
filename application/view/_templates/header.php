@@ -84,21 +84,21 @@ if (!isset($_SESSION)) {
                                     <li><a href="<?php echo URL; ?>signout/destroySession">Sign Out</a></li>
                                 </ul>
                             </div>
-                            <div class="header-buttons" style="clear:both">
-                                <ul class="nav navbar-nav pull-right">   
-                                    <li>
-                                        <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell</a>
-                                    </li>
-                                    <li>
-                                        <a href="<?php echo URL; ?>cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
-                                    </li> 
-                                </ul>
-                            </div>
                         <?php else : ?>
                             <form action="<?php echo URL; ?>signin" class="pull-right">
                                 <button>Sign In or Register</button>
                             </form>
                         <?php endif; ?>
+                        <div class="header-buttons" style="clear:both">
+                            <ul class="nav navbar-nav pull-right">   
+                                <li>
+                                    <a href="<?php echo URL; ?>products"><span class="glyphicon glyphicon-usd" aria-hidden="true" style="color:#E2AF2D"></span> Sell</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo URL; ?>cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="color:#E2AF2D"></span> Cart</a>
+                                </li> 
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <?php if (isset($_SESSION['CurrentUser'])) : ?>
