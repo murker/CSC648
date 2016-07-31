@@ -65,13 +65,13 @@
     </div>
 </div>
 
-<!-- Script that validates password -->
+<!-- Script that validates password and email -->
 <script>
     var password = document.getElementById("password");
     var confirm_password = document.getElementById("confirmpw");
     function validatePassword() {
         if (password.value !== confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords does not match");
+            confirm_password.setCustomValidity("Passwords must match!");
         } else {
             confirm_password.setCustomValidity('');
         }
@@ -81,12 +81,12 @@
 
     function validateEmail() {
         var email = document.getElementById("email");
-        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (email.value.match(mailformat)) {
+        var domain = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (email.value.match(domain)) {
             document.form1.text1.focus();
             return true;
         } else {
-            alert("You have entered an invalid email address!");
+            email.setCustomValidity("Email must be from SFSU!")
             document.form1.text1.focus();
             return false;
         }
