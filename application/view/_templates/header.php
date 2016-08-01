@@ -51,7 +51,7 @@ if (!isset($_SESSION)) {
                     <div class="col-sm-6 header-search">
                         <div class="row">
                             <form action="<?php echo URL; ?>searchproducts/index" method="GET">
-                                <select name='category_id' class="col-xs-2 col-xs-offset-1">
+                                <select name='category_id' class="col-xs-3 col-xs-offset-1">
                                     <option value="0">All</option>
                                     <option value="1">Books</option>
                                     <option value="2">Tutors</option>
@@ -61,7 +61,7 @@ if (!isset($_SESSION)) {
                                     <option value="6">Furniture</option>
                                     <option value="7">Other</option>                                        
                                 </select>
-                                <input type="text" class="col-xs-7" name="searchinput" placeholder="Search for books, tutors and more!"/>
+                                <input type="text" class="col-xs-6" name="searchinput" placeholder="Search for books, tutors and more!"/>
                                 <div class="col-xs-2"></div>
                                 <button action class="btn col-xs-1" type="submit">
                                     <span class="glyphicon glyphicon-search"></span>
