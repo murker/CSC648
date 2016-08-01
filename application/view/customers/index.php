@@ -4,7 +4,7 @@
         <div class="col-sm-8">
             <h3 class="title">Account Registration</h3>
             <br />
-            <form class="form-horizontal" action="<?php echo URL; ?>customers/addcustomer" method="POST">
+            <form name="customer_form" class="form-horizontal" action="<?php echo URL; ?>customers/addcustomer" method="POST">
                 <h4 class="title">About You</h4>
                 <br />
                 <div class="form-group">
@@ -62,24 +62,35 @@
                         <input class="form-control" type='text' name='zipcode' id='zipcode' value="" required />
                     </div>
                 </div>
-                <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-primary pull-right" />
+                <input type='submit' name='submit_add_customer' value='Submit' class="btn btn-primary" onclick="validateEmail()"/>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Script that validates password -->
+<!-- Script that validates password and email -->
 <script>
     var password = document.getElementById("password");
     var confirm_password = document.getElementById("confirmpw");
-
     function validatePassword() {
         if (password.value !== confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords does not match");
+            confirm_password.setCustomValidity("Passwords must match!");
         } else {
             confirm_password.setCustomValidity('');
         }
     }
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
+
+    function validateEmail() {
+        var email = document.getElementById("email");
+        var domain1 = /^\w+([-+.]\w+)*@mail.sfsu.edu$/; // accepts common characters before @ symbol
+        var domain2 = /^\w+([-+.]\w+)*@sfsu.edu$/;
+        if (email.value.match(domain1) || email.value.match(domain2)) {
+            email.setCustomValidity('');
+        } else {
+            email.setCustomValidity("Email must be from SFSU!")
+        }
+        email.onchange = validateEmail;
+    }
 </script>
