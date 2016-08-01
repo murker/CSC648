@@ -75,7 +75,7 @@ class Cart extends Controller {
         foreach ($cart_items as $item) {
             //TODO: check if item is out of stock, decriment
             //TODO: need to update shipping cost
-            $invoice_data["shipping"] = 1;
+            //$invoice_data["shipping"] = 1;
 
             //Add up item costs
             $product = $thisClass->itemmodel->getProduct($item->product_id);
@@ -83,7 +83,7 @@ class Cart extends Controller {
         }
 
         //TODO: check proper tax value
-        $invoice_data["tax"] = $invoice_data["total"] * 0.07;
+        $invoice_data["tax"] = $invoice_data["total"] * 0.0;
         $invoice_data["g_total"] = $invoice_data["total"] + $invoice_data["shipping"] + $invoice_data["tax"];
 
         return $invoice_data;
