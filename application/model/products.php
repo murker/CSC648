@@ -20,12 +20,14 @@ class ProductsModel {
             ':img2' => $img2,
             ':img3' => $img3,
             ':img4' => $img4);
-        return $this->productsmodel->addProduct($parameters);
+        //return $this->productsmodel->addProduct($parameters);
+        return $this->productsmodel->addEntry("product", $parameters);
     }
 
     public function deleteProduct($product_id) {
-        $parameters = array(':product_id' => $product_id);
-        return $this->productsmodel->deleteProduct($parameters);
+        $parameters = array(':id' => $product_id);
+        //return $this->productsmodel->deleteProduct($parameters);
+        return $this->productsmodel->deleteEntry("product", $parameters);
     }
 
     public function updateProduct($name, $description, $price, $stock_qty, $category_id, $product_id) {
