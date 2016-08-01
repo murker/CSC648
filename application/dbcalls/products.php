@@ -57,6 +57,14 @@ class ProductsModelxl {
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
     }
+    
+    public function updateProductQty($parameters) {
+        $sql = "UPDATE product SET stock_qty = :stock_qty WHERE id = :product_id";
+        $query = $this->db->prepare($sql);
+        // useful for debugging: you can see the SQL behind above construction by using:
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+        $query->execute($parameters);
+    }
 
     public function getAllProducts() {
         $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product";

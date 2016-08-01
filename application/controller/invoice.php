@@ -9,6 +9,9 @@ if (!isset($_SESSION)) {
 class Invoice extends Controller {
 
     public function index() {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $invoice = $this->invoicemodel->getInvoice($_SESSION['CurrentUser']);
         $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
 

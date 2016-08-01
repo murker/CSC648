@@ -31,12 +31,17 @@ $tax = 0.09;
                             <td align="center"><?php
                                 if (isset($product->qty)) {
                                     $quantity = htmlspecialchars($product->qty, ENT_QUOTES, 'UTF-8');
-                                    echo $quantity;
+
+                                    if (isset($product->missing)) {
+                                        echo "<font color=\"red\">" . $quantity . "</font>";
+                                    } else {
+                                        echo $quantity;
+                                    }
                                 }
                                 ?></td>   
                             <td><?php
-                                $total = $price * $quantity;
-                                echo number_format((float) $total, 2, '.', '');
+                            $total = $price * $quantity;
+                            echo number_format((float) $total, 2, '.', '');
                                 ?></td>
                         </tr>
                     <?php } ?> 

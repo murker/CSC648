@@ -1,5 +1,5 @@
 <div class="container">
-<!--    <div>
+   <div>
         <td><form action="<?php echo URL; ?>invoice/getInvoice" method="GET">
                 <input type='submit' name='getInvoice' value="show invoice" id="searchButton" />
             </form></td>
@@ -27,7 +27,7 @@
         <?php if (isset($invoice->tax)) echo htmlspecialchars($invoice->tax, ENT_QUOTES, 'UTF-8'); ?><br>
         <label>Total: </label>
         <?php if (isset($invoice->grand_total)) echo htmlspecialchars($invoice->grand_total, ENT_QUOTES, 'UTF-8'); ?><br>
-    </div>-->
+    </div>
     <div class="invoice-box">
         <table cellpadding="0" cellspacing="0">
             <tr class="top">
