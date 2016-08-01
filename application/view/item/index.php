@@ -9,6 +9,7 @@
         <div class="col-sm-4">
             <div class="row carousel-holder">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<!--                    
                     <?php if ((isset($product->img2) && $product->img2 != "") || (isset($product->img3) && $product->img3 != "") || (isset($product->img4) && $product->img4 != "")) : ?>
                         <a class="left" href="#carousel-example-generic" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>
@@ -17,6 +18,7 @@
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                     <?php endif; ?> 
+                    -->
                     <ol class="carousel-indicators">
                         <?php
                         if ((isset($product->img2) && $product->img2 != "") || (isset($product->img3) && $product->img3 != "") || (isset($product->img4) && $product->img4 != ""))
