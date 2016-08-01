@@ -81,14 +81,13 @@
 
     function validateEmail() {
         var email = document.getElementById("email");
-        var domain = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (email.value.match(domain)) {
-            document.form1.text1.focus();
-            return true;
+        var domain1 = /^\w+([-+.]\w+)*@mail.sfsu.edu$/; // accepts common characters before @ symbol
+        var domain2 = /^\w+([-+.]\w+)*@sfsu.edu$/;
+        if (email.value.match(domain1) || email.value.match(domain2)) {
+            email.setCustomValidity('');
         } else {
             email.setCustomValidity("Email must be from SFSU!")
-            document.form1.text1.focus();
-            return false;
         }
+        email.onchange = validateEmail;
     }
 </script>
