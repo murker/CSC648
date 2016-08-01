@@ -6,8 +6,8 @@ class CustomerModel {
 
     function __construct() {
 
-        require APP . 'dbcalls/customers.php';
-        $this->customermodel = new CustomerModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->customermodel = new Sqlcalls();
     }
 
     /**

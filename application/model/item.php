@@ -5,8 +5,8 @@ class ItemModel {
     public $itemmodel = null;
 
     function __construct() {
-        require APP . 'dbcalls/item.php';
-        $this->itemmodel = new ItemModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->itemmodel = new Sqlcalls();
     }
 
     public function getProduct($product_id) {

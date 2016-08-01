@@ -5,8 +5,8 @@ class ProductsModel {
     public $productsmodel = null;
 
     function __construct() {
-        require APP . 'dbcalls/products.php';
-        $this->productsmodel = new ProductsModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->productsmodel = new Sqlcalls();
     }
 
     public function addProduct($customer_id, $name, $description, $price, $stock_qty, $category_id, $img1, $img2, $img3, $img4) {
