@@ -70,7 +70,6 @@ class CartModelxl {
             $query3->execute($parameters3);
             return $cid;
         } else {
-
             return $cid->id;
         }
     }
