@@ -5,18 +5,18 @@
         ?>
     </h3>
     <div class="row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-1"></div>
         <div class="col-sm-4">
             <div class="row carousel-holder">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-<!--                    
+                    <!--                    
                     <?php if ((isset($product->img2) && $product->img2 != "") || (isset($product->img3) && $product->img3 != "") || (isset($product->img4) && $product->img4 != "")) : ?>
-                        <a class="left" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right pull-right" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
+                                                <a class="left" href="#carousel-example-generic" data-slide="prev">
+                                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                                </a>
+                                                <a class="right pull-right" href="#carousel-example-generic" data-slide="next">
+                                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                                </a>
                     <?php endif; ?> 
                     -->
                     <ol class="carousel-indicators">
@@ -64,7 +64,8 @@
                 </div>
             </div>
         </div>
-        <div class ="col-sm-6">
+        <div class="col-sm-1"></div>
+        <div class ="col-sm-5">
             <h4>
                 <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>            
                 <?php if ($product->category_id == 2) : ?>
@@ -127,5 +128,6 @@
                     </form>           
                 <?php endif; ?>
         </div>
+        <div class="col-sm-1"></div>
     </div>
 </div>
