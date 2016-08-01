@@ -7,14 +7,22 @@ if (!isset($_SESSION)) {
 <?php
 
 class Invoice extends Controller {
-
+//SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total
     public function index() {
+
         $invoice = $this->invoicemodel->getInvoice($_SESSION['CurrentUser']);
         $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
+        $invoice_items = $this->cartmodel->getCartItemsCID($invoice->cart_id);
+        
+        $products = array();
+        foreach ($invoice_items as $item) {
+            $nextProduct = $this->itemmodel->getProduct($item->product_id);
+            $nextProduct->qty = $item->item_qty;
+            array_push($products, $nextProduct);
+        }
 
-        // load views
         require APP . 'view/_templates/header.php';
-        require APP . 'view/home/index.php';
+        require APP . 'view/invoice/index.php';
         require APP . 'view/_templates/footer.php';
     }
 

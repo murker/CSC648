@@ -22,7 +22,7 @@ class Cart extends Controller {
         }
         if (isset($_POST["submit_create_invoice"])) {
             $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']);
-            $invoiceData = $this->calcInvoice($cart_items);
+            $invoiceData = Cart::calcInvoice($cart_items, $this);
 
             if ($invoiceData['total'] > 0) {
                 //TODO: create notice that cart is empty
@@ -69,7 +69,7 @@ class Cart extends Controller {
         header('location: ' . URL . 'cart/index');
     }
 
-    public function calcInvoice($cart_items) {
+    public static function calcInvoice($cart_items, $thisClass) {
         $time_stamp = date("Y-m-d H:i:s");
         $invoice_data = array("date" => $time_stamp, "total" => 0, "shipping" => 0, "tax" => 0, "g_total" => 0);
         foreach ($cart_items as $item) {
@@ -78,7 +78,7 @@ class Cart extends Controller {
             $invoice_data["shipping"] = 1;
 
             //Add up item costs
-            $product = $this->itemmodel->getProduct($item->product_id);
+            $product = $thisClass->itemmodel->getProduct($item->product_id);
             $invoice_data["total"] += $product->price * $item->item_qty;
         }
 

@@ -44,6 +44,11 @@ class ProductsModel {
         $parameters = array(':product_id' => $product_id, ':img' => $img);
         return $this->productsmodel->updateProductImg($imgnumber, $parameters);
     }
+    
+    public function updateProductQty($product_id, $new_qty) {
+        $parameters = array(':product_id' => $product_id, ':stock_qty' => $new_qty);
+        return $this->productsmodel->updateProductQty($parameters);
+    }
 
     public function getAllProducts() {
         return $this->productsmodel->getAllProducts();

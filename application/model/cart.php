@@ -31,6 +31,10 @@ class CartModel {
         return $this->cartmodel->getCartItems($uid);
     }
 
+    public function getCartItemsCID($cid) {
+        return $this->cartmodel->getCartItemsCID($cid);
+    }
+
     public function getAmountOfCartItems($cid) {
         return $this->cartmodel->getAmountOfCartItems($cid);
     }

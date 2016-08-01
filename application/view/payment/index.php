@@ -31,14 +31,18 @@ $tax = 0.09;
                             <td align="center"><?php
                                 if (isset($product->qty)) {
                                     $quantity = htmlspecialchars($product->qty, ENT_QUOTES, 'UTF-8');
-                                    echo $quantity;
+
+                                    if (isset($product->missing)) {
+                                        echo "<font color=\"red\">" . $quantity . "</font>";
+                                    } else {
+                                        echo $quantity;
+                                    }
                                 }
                                 ?></td>   
                             <td><?php
-                                $total = $price * $quantity;
-                                echo number_format((float) $total, 2, '.', '');
+                            $total = $price * $quantity;
+                            echo number_format((float) $total, 2, '.', '');
                                 ?></td>
-                            <?php $subtotal += $total; ?>
                         </tr>
                     <?php } ?> 
 
@@ -47,21 +51,21 @@ $tax = 0.09;
                         <td></td>
                         <td style="font-weight:bold">Subtotal:</td>
                         <td></td>
-                        <td><?php echo number_format((float) $subtotal, 2, '.', '') ?></td>
+                        <td><?php echo number_format((float) $invoiceData["total"], 2, '.', '') ?></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
                         <td style="font-weight:bold">Tax:</td>
                         <td></td>
-                        <td><?php echo number_format((float) $subtotal * $tax, 2, '.', '') ?></td>
+                        <td><?php echo number_format((float) $invoiceData["tax"], 2, '.', '') ?></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
                         <td style="font-weight:bold">Total:</td>
                         <td></td>
-                        <td><?php echo number_format((float) $subtotal + ($subtotal * $tax), 2, '.', '') ?></td>
+                        <td><?php echo number_format((float) $invoiceData["g_total"], 2, '.', '') ?></td>
                     </tr>
                 </tbody>
             </table>

@@ -70,7 +70,6 @@ class CartModelxl {
             $query3->execute($parameters3);
             return $cid;
         } else {
-
             return $cid->id;
         }
     }
@@ -94,6 +93,14 @@ class CartModelxl {
 
     public function getCartItems($uid) {
         $cid = $this->getUserCart($uid);
+        $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':cid' => $cid);
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
+
+    public function getCartItemsCID($cid) {
         $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
         $query = $this->db->prepare($sql);
         $parameters = array(':cid' => $cid);
