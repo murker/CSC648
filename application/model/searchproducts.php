@@ -5,8 +5,8 @@ class SearchProductsModel {
     public $searchproductsmodel = null;
 
     function __construct() {
-        require APP . 'dbcalls/searchproducts.php';
-        $this->searchproductsmodel = new SearchProductsModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->searchproductsmodel = new Sqlcalls();
     }
 
     public function searchProductW($searchword) {

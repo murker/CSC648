@@ -6,8 +6,8 @@ class InvoiceModel {
 
     function __construct() {
 
-        require APP . 'dbcalls/invoice.php';
-        $this->invoicemodel = new InvoiceModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->invoicemodel = new Sqlcalls();
     }
 
     public function getInvoice($customer_id) {

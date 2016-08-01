@@ -6,8 +6,8 @@ class CartModel {
 
     function __construct() {
 
-        require APP . 'dbcalls/cart.php';
-        $this->cartmodel = new CartModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->cartmodel = new Sqlcalls();
     }
 
     public function createInvoice($usr_id, $invoice_data) {

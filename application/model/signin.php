@@ -6,8 +6,8 @@ class SigninModel {
 
     function __construct() {
 
-        require APP . 'dbcalls/signin.php';
-        $this->signinmodel = new SigninModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->signinmodel = new Sqlcalls();
     }
 
     public function signinCustomer($email, $password) {
