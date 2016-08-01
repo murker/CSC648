@@ -7,8 +7,8 @@ class HomeModel {
 
     function __construct() {
 
-        require APP . 'dbcalls/home.php';
-        $this->homemodel = new HomeModelxl();
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->homemodel = new Sqlcalls();
     }
 
     public function getAllProducts() {
