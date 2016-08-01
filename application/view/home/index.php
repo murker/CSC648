@@ -53,7 +53,7 @@
                                     <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                         <form action="<?php echo URL; ?>cart/additem" method="POST">
                                         <?php else : ?>
-                                            <form action="<?php echo URL; ?>signin" class="pull-right">
+                                            <form action="<?php echo URL; ?>signin">
                                             <?php endif; ?>
                                             <br />
                                             <input type="hidden" name="pid" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />
