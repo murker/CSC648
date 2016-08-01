@@ -68,6 +68,7 @@ class Payment extends Controller {
                     $new_qty = $nextProduct->stock_qty - $item->item_qty;
                     $this->productsmodel->updateProductQty($item->product_id, $new_qty);
                 }
+                //TODO: fix to make sure there is an error message
                 $this->cartmodel->createInvoice($_SESSION['CurrentUser'], $invoiceData);
             }
         }

@@ -1,6 +1,6 @@
 <?php
 $subtotal = 0;
-$tax = 0.09;
+$tax = 0.00;
 ?>
 <div class="container">
     <div class="box row">
@@ -45,7 +45,7 @@ $tax = 0.09;
                                 ?></td>
                         </tr>
                     <?php } ?> 
-
+<!--
                     <tr>
                         <td></td>
                         <td></td>
@@ -59,7 +59,7 @@ $tax = 0.09;
                         <td style="font-weight:bold">Tax:</td>
                         <td></td>
                         <td><?php echo number_format((float) $invoiceData["tax"], 2, '.', '') ?></td>
-                    </tr>
+                    </tr>-->
                     <tr>
                         <td></td>
                         <td></td>
@@ -69,9 +69,10 @@ $tax = 0.09;
                     </tr>
                 </tbody>
             </table>
-            <br />
-            <hr />
+<!--            <br />
+            <hr />-->
             <form class = "form-horizontal" action="<?php echo URL; ?>payment/createinvoice" method="POST">
+<!--
                 <h4 class="title">Payment</h4>
                 <br />
                 <div class="form-group">
@@ -114,8 +115,8 @@ $tax = 0.09;
                     <div class="col-sm-4">
                         <input class="form-control" type='text' name='zipcode' id='zipcode' value="<?php echo htmlspecialchars($customer->zipcode, ENT_QUOTES, 'UTF-8'); ?>" required />
                     </div>
-                </div>
-                <input type='submit' name='submit_create_invoice' value='Submit' class="btn btn-primary pull-right" />
+                </div>-->
+                <input type='submit' name='submit_create_invoice' value='Confirm' class="btn btn-primary pull-right" />
             </form>
         </div>   
     </div>
