@@ -71,9 +71,8 @@ class Payment extends Controller {
                 $this->cartmodel->createInvoice($_SESSION['CurrentUser'], $invoiceData);
             }
         }
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/invoice/index.php';
-        require APP . 'view/_templates/footer.php';
+        
+        header('location: ' . URL . 'invoice/index');
     }
 }
 ?>

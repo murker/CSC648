@@ -100,6 +100,14 @@ class CartModelxl {
         return $query->fetchAll();
     }
 
+    public function getCartItemsCID($cid) {
+        $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
+        $query = $this->db->prepare($sql);
+        $parameters = array(':cid' => $cid);
+        $query->execute($parameters);
+        return $query->fetchAll();
+    }
+
     public function updateCartItem($uid, $pid, $qty) {
         $cid = $this->getUserCart($uid);
         $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND product_id = :pid";

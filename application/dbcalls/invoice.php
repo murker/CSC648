@@ -28,13 +28,10 @@ class InvoiceModelxl {
 
     public function getInvoice($parameters) {
 
-        $sql = "SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total FROM invoice WHERE customer_id = :customer_id LIMIT 1";
+        $sql = "SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total FROM invoice WHERE customer_id = :customer_id ORDER BY cart_id DESC LIMIT 1";
         $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
-
-        // fetch() is the PDO method that get exactly one result
         return $query->fetch();
     }
 
