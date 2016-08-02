@@ -63,6 +63,11 @@ class Products extends Controller {
                 $image4 = NULL;
             }
             $this->productsmodel->addProduct($_POST["customer_id"], $_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image1, $image2, $image3, $image4);
+            if ($_POST["category_id"] == 2){
+            $product_id = $this->productsmodel->getProductbyname($_POST["name"]);
+            $this->productsmodel->addTutor($_POST["customer_id"], $product_id->id, $_POST["name"], $_POST["description"], $_POST["price"], $image1);  
+            }                        
+            
         }
 
         // where to go after product has been added

@@ -22,6 +22,16 @@ class ProductsModel {
             ':img4' => $img4);        
         return $this->productsmodel->addEntry("product", $parameters);
     }
+    
+    public function addTutor($customer_id, $product_id, $name, $description, $price, $img1) {
+        $parameters = array(':customer_id' => $customer_id,
+            ':product_id' => $product_id,
+            ':name' => $name,
+            ':description' => $description,
+            ':price' => $price,            
+            ':img1' => $img1);       
+        return $this->productsmodel->addEntry("tutor", $parameters);
+    }
 
     public function deleteProduct($table, $product_id) {
         $parameters = array(':id' => $product_id);      
@@ -79,6 +89,18 @@ class ProductsModel {
             ':img3',
             ':img4');  
         $target = array(':id' => $product_id);
+        return $this->productsmodel->getEntry("product", $val, $target);
+    }
+    
+    public function getProductbyname($name) {
+         $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id');  
+        $target = array(':name' => $name);
         return $this->productsmodel->getEntry("product", $val, $target);
     }
 }
