@@ -79,7 +79,7 @@ class HomeModel {
         return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order);  
     }
 
-    public function sortbysortbyBestmatch($column, $order) {
+    public function sortbyBestmatch($column, $order) {
         $val = array(':id', 
             ':customer_id',
             ':name',
@@ -92,7 +92,7 @@ class HomeModel {
         return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order); 
     }
 
-    public function sortbysortbyBestmatchW($column, $order, $searchword) {
+    public function sortbyBestmatchW($column, $order, $searchword) {
         $val = array(':id', 
             ':customer_id',
             ':name',
@@ -105,7 +105,7 @@ class HomeModel {
         return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order);        
     }
 
-    public function sortbysortbyBestmatchWc($column, $order, $searchword, $category_id) {
+    public function sortbyBestmatchWc($column, $order, $searchword, $category_id) {
         $val = array(':id', 
             ':customer_id',
             ':name',
