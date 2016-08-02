@@ -89,7 +89,7 @@
                     <br /><br />
                     <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
                     <tbody>
-                    <?php if ($tutors != NULL) : ?>
+                    <?php if (($tutors != NULL) && $product->category_id != 2 ): ?>
                     <p><strong>Recommended Tutors:</strong></p>
                     <?php foreach ($tutors as $tutor) { ?>
                         <tr>
