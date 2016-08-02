@@ -27,6 +27,7 @@ class Sqlcalls {
     }
 
     //INSERT
+    
     public function createInvoice($usr_id, $invoice_data) {
         $cid = $this->getUserCart($usr_id);
 
@@ -58,15 +59,9 @@ class Sqlcalls {
     }
 
     /**
-     * Add a customer to database
-     * TODO put this explanation into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $artist Artist
-     * @param string $track Track
-     * @param string $link Link
+     * Add a customer to database    
+     * @param string $table table name
+     * @param array $pars parameters  
      */
    
     public function addEntry($table, $pars) {
@@ -90,27 +85,13 @@ class Sqlcalls {
     }
 
     //UPDATE
-    /**
-     * Update a customer in database
-     * // TODO put this explaination into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $artist Artist
-     * @param string $track Track
-     * @param string $link Link
-     * @param int $customer_id Id
+    
+     /**
+     * Update a table in database
+     * @param string $table table name
+     * @param array $val values
+     * @param array $target    
      */    
-
-    public function updateCartItem($uid, $pid, $qty) {
-        $cid = $this->getUserCart($uid);
-        $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND product_id = :pid";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':cid' => $cid, ':pid' => $pid, ':qty' => $qty);
-        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
 
     public function updateEntry($table, $val, $target) {
         $sql = "UPDATE " . $table . " SET ";
@@ -140,126 +121,90 @@ class Sqlcalls {
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
         $query->execute($pars);
     }
-
-    //SELECT    
-
-    public function searchProductW($parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE name like :searchword";
+    
+    public function updateCartItem($uid, $pid, $qty) {
+        $cid = $this->getUserCart($uid);
+        $sql = "UPDATE cart_item SET item_qty = :qty WHERE cart_id = :cid AND product_id = :pid";
         $query = $this->db->prepare($sql);
+        $parameters = array(':cid' => $cid, ':pid' => $pid, ':qty' => $qty);
+        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
     }
 
-    public function searchProductWc($parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE category_id = :category_id AND name like :searchword";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
+    //SELECT       
 
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+    public function getAllEntriesAdv($table, $val, $target) {
+        $sql = "SELECT ";
+        //Set values
+        $first = True;
+        foreach ($val as $key) {
+            if ($first) {
+                $first = False;
+            } else {
+                $sql = $sql . ", ";
+            }
+            $sql = $sql . ltrim($key, ':');
+        }
+
+        $sql = $sql . " FROM " . $table;
+
+        if (count($target) > 0) {
+            //Set target
+            $sql = $sql . " WHERE";
+            $first = True;
+            foreach ($target as $key => $value) {
+                if ($first) {
+                    $first = False;
+                } else {
+                    $sql = $sql . " AND";
+                }
+                $sql = $sql . " " . ltrim($key, ':') . " like " . $key;
+            }
+        }
+        $query = $this->db->prepare($sql);
+        $pars = array_merge($target);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
+        $query->execute($pars);
         return $query->fetchAll();
     }
     
-    public function sortbyCategory($parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product where category_id = :category";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
+    public function getAllEntriesAdv2($table, $val, $target, $column, $order) {
+        $sql = "SELECT ";
+        //Set values
+        $first = True;
+        foreach ($val as $key) {
+            if ($first) {
+                $first = False;
+            } else {
+                $sql = $sql . ", ";
+            }
+            $sql = $sql . ltrim($key, ':');
+        }
 
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
+        $sql = $sql . " FROM " . $table;
+
+        if (count($target) > 0) {
+            //Set target
+            $sql = $sql . " WHERE";
+            $first = True;
+            foreach ($target as $key => $value) {
+                if ($first) {
+                    $first = False;
+                } else {
+                    $sql = $sql . " AND";
+                }
+                $sql = $sql . " " . ltrim($key, ':') . " like " . $key;
+            }
+        }
+        
+        $sql = $sql  . " ORDER BY " . $column . " " . $order;
+        $query = $this->db->prepare($sql);
+        $pars = array_merge($target);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
+        $query->execute($pars);
         return $query->fetchAll();
     }
-
-    public function sortby($column, $order) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product ORDER BY " . $column . " " . $order;
-        $query = $this->db->prepare($sql);
-        $query->execute();
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }
-
-    public function sortbyW($column, $order, $parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE name like :searchword ORDER BY " . $column . " " . $order;
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }
-
-    public function sortbyWc($column, $order, $parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE category_id = :category_id AND name like :searchword ORDER BY " . $column . " " . $order;
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }
-
-    public function sortbysortbyBestmatch() {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product ORDER BY id ASC";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }
-
-    public function sortbysortbyBestmatchW($parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE name LIKE :searchword ORDER BY LOCATE(:searchword, name)";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }
-
-    public function sortbysortbyBestmatchWc($parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE category_id = :category_id AND name LIKE :searchword ORDER BY LOCATE(:searchword, name)";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }
-
+        
     public function getInvoice($parameters) {
 
         $sql = "SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total FROM invoice WHERE customer_id = :customer_id ORDER BY cart_id DESC LIMIT 1";
@@ -267,15 +212,7 @@ class Sqlcalls {
         //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
         return $query->fetch();
-    }
-        
-    public function getCartItemsCID($cid) {
-        $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':cid' => $cid);
-        $query->execute($parameters);
-        return $query->fetchAll();
-    }
+    }            
 
     public function getUserCart($usr_id) {
         $sql = "SELECT id FROM cart AS id WHERE name = :current AND customer_id = :usr_id";
@@ -346,6 +283,7 @@ class Sqlcalls {
         $query->execute($target);
         return $query->fetch();
     }
+    
     public function getAllEntries($table, $val, $target) {
         $sql = "SELECT ";
         //Set values

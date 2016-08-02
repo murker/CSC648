@@ -10,7 +10,6 @@ class CustomerModel {
         $this->customermodel = new Sqlcalls();
     }
 
-
     /**
      * Add a customer to database    
      */

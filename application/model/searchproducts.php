@@ -10,14 +10,30 @@ class SearchProductsModel {
     }
 
     public function searchProductW($searchword) {
-        $parameters = array(':searchword' => $searchword);
-        return $this->searchproductsmodel->searchProductW($parameters);
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');         
+        $target = array(':name' => $searchword);
+        return $this->searchproductsmodel->getAllEntriesAdv("product", $val, $target);
     }
 
     public function searchProductWc($searchword, $category_id) {
-        $parameters = array(':searchword' => $searchword,
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');                 
+        $target = array(':name' => $searchword,
             ':category_id' => $category_id);
-        return $this->searchproductsmodel->searchProductWc($parameters);
+        return $this->searchproductsmodel->getAllEntriesAdv("product", $val, $target);
     }
 
     public function getuserProducts($customer_id) {

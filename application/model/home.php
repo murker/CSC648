@@ -28,38 +28,94 @@ class HomeModel {
     }
 
     public function sortbyCategory($category) {
-        $parameters = array(':category' => $category);
-        return $this->homemodel->sortbyCategory($parameters);
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');  
+        $target = array(':category_id' => $category);
+        return $this->homemodel->getAllEntries("product", $val, $target);
     }
 
     public function sortby($column, $order) {
-        return $this->homemodel->sortby($column, $order);
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');                 
+        $target = array();        
+        return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order);
     }
 
     public function sortbyW($column, $order, $searchword) {
-        $parameters = array(':searchword' => $searchword);
-        return $this->homemodel->sortbyW($column, $order, $parameters);
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');         
+        $target = array(':name' => $searchword);
+        return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order);               
     }
 
     public function sortbyWc($column, $order, $searchword, $category_id) {
-        $parameters = array(':searchword' => $searchword,
-            ':category_id' => $category_id);
-        return $this->homemodel->sortbyWc($column, $order, $parameters);
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');         
+        $target = array(':name' => $searchword, ':category_id' => $category_id);
+        return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order);  
     }
 
-    public function sortbysortbyBestmatch() {
-        return $this->homemodel->sortbysortbyBestmatch();
+    public function sortbysortbyBestmatch($column, $order) {
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');         
+        $target = array();
+        return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order); 
     }
 
-    public function sortbysortbyBestmatchW($searchword) {
-        $parameters = array(':searchword' => $searchword);
-        return $this->homemodel->sortbysortbyBestmatchW($parameters);
+    public function sortbysortbyBestmatchW($column, $order, $searchword) {
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');         
+        $target = array(':name' => $searchword);
+        return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order);        
     }
 
-    public function sortbysortbyBestmatchWc($searchword, $category_id) {
-        $parameters = array(':searchword' => $searchword,
-            ':category_id' => $category_id);
-        return $this->homemodel->sortbysortbyBestmatchWc($parameters);
+    public function sortbysortbyBestmatchWc($column, $order, $searchword, $category_id) {
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1');         
+        $target = array(':name' => $searchword, ':category_id' => $category_id);
+        return $this->homemodel->getAllEntriesAdv2("product", $val, $target, $column, $order); 
     }
 
 }
