@@ -15,9 +15,18 @@ class SigninModel {
 //        return $this->signinmodel->signinCustomer($parameters);
 //    }
     
-    public function signinCustomer($email, $password) {               
+    public function signinCustomer($email, $password) { 
+        $val = array(':id',
+            ':firstname',
+            ':lastname',
+            ':email',
+            ':password',
+            ':phone',
+            ':street',
+            ':city',
+            ':zipcode');
         $target = array(':email' => $email, ':password' => $password);
-        return $this->signinmodel->getEntry("customer", $target);
+        return $this->signinmodel->getEntry("customer", $val, $target);
     }
 
 }

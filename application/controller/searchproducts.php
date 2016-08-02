@@ -39,8 +39,8 @@ class Searchproducts extends Controller {
         require APP . 'view/_templates/footer.php';
     }
 
-    public function getuserProducts($user_id) {
-        $products = $this->searchproductsmodel->getuserProducts($user_id);
+    public function getuserProducts($customer_id) {
+        $products = $this->searchproductsmodel->getuserProducts($customer_id);
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/products/userproducts.php';

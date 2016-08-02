@@ -141,17 +141,7 @@ class Sqlcalls {
         $query->execute($pars);
     }
 
-    //SELECT
-    public function getAllProducts() {
-        $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        return $query->fetchAll();
-    }
+    //SELECT    
 
     public function searchProductW($parameters) {
         $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product WHERE name like :searchword";
@@ -178,20 +168,7 @@ class Sqlcalls {
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         return $query->fetchAll();
     }
-
-    public function getuserProducts($parameters) {
-        $sql = "SELECT id, customer_id, name, description, price, stock_qty, category_id, img1, img2, img3, img4 FROM product WHERE customer_id = :user_id";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetchAll();
-    }    
-
+    
     public function sortbyCategory($parameters) {
         $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product where category_id = :category";
         $query = $this->db->prepare($sql);
@@ -291,17 +268,7 @@ class Sqlcalls {
         $query->execute($parameters);
         return $query->fetch();
     }
-
-    public function getProduct($parameters) {
-        $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product WHERE id = :product_id LIMIT 1";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
-    }
-    
+        
     public function getCartItemsCID($cid) {
         $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
         $query = $this->db->prepare($sql);
@@ -345,8 +312,19 @@ class Sqlcalls {
         return $query->fetchAll();
     }
 
-    public function getEntry($table, $target) {
-        $sql = "SELECT *";        
+    public function getEntry($table, $val, $target) {
+        $sql = "SELECT ";                
+        //Set values
+        $first = True;
+        foreach ($val as $key) {
+            if ($first) {
+                $first = False;
+            } else {
+                $sql = $sql . ", ";
+            }
+            $sql = $sql . ltrim($key, ':');
+        }
+
         $sql = $sql . " FROM " . $table;
 
         if (count($target) > 0) {
@@ -372,7 +350,7 @@ class Sqlcalls {
         $sql = "SELECT ";
         //Set values
         $first = True;
-        foreach ($val as $key => $value) {
+        foreach ($val as $key) {
             if ($first) {
                 $first = False;
             } else {
@@ -397,22 +375,14 @@ class Sqlcalls {
             }
         }
         $query = $this->db->prepare($sql);
-        $pars = array_merge($val, $target);
-        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
+        $pars = array_merge($target);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
         $query->execute($pars);
         return $query->fetchAll();
     }
     
-
     //DELETE
     
-    /**
-     * Delete a row in the database
-     * Please note: this is just an example! In a real application you would not simply let everybody
-     * add/update/delete stuff!
-     * @param string $table, array $pars
-     */
-
     public function deleteEntry($table, $pars) {
         $sql = "DELETE FROM " . $table . " WHERE";
         $first = True;
