@@ -33,9 +33,10 @@ class CartModel {
         return $this->cartmodel->getCartItems($uid);
     }
 
-    public function getCartItemsCID($cid) {
-//        $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
-        return $this->cartmodel->getCartItemsCID($cid);
+    public function getCartItemsCID($cid) {       
+        $val = array(':cart_id', ':product_id', ':item_qty');
+        $target = array(':cart_id' => $cid);
+        return $this->cartmodel->getAllEntries("cart_item", $val, $target);
     }
 
     public function getAmountOfCartItems($cid) {
@@ -44,9 +45,9 @@ class CartModel {
 
     public function updateCartItem($uid, $pid, $qty) {        
         $cid = $this->cartmodel->getUserCart($uid);
-        $tar = array(":cart_id" => $cid, ":product_id" => $pid);
+        $target = array(":cart_id" => $cid, ":product_id" => $pid);
         $val = array(":item_qty" => $qty);
-        return $this->cartmodel->updateEntry("cart_item", $val, $tar);
+        return $this->cartmodel->updateEntry("cart_item", $val, $target);
     }
 
 }

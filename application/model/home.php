@@ -10,35 +10,22 @@ class HomeModel {
         include_once APP . 'dbcalls/sqlcalls.php';
         $this->homemodel = new Sqlcalls();
     }
-
-    public function getAllProducts() {        
-        return $this->homemodel->getAllProducts();
-    }
     
-//    public function getAllProducts() {     
-//        $customer_id = "";
-//        $name = "";
-//        $description = "";
-//        $price = "";
-//        $stock_qty = "";
-//        $category_id = "";
-//        $img1 = "";
-//        $img2 = "";
-//        $img3 = "";
-//        $img4 = "";
-//        $val = array(':customer_id' => $customer_id,
-//            ':name' => $name,
-//            ':description' => $description,
-//            ':price' => $price,
-//            ':stock_qty' => $stock_qty,
-//            ':category_id' => $category_id,
-//            ':img1' => $img1,
-//            ':img2' => $img2,
-//            ':img3' => $img3,
-//            ':img4' => $img4);  
-//        $target = array();
-//        return $this->homemodel->getAllEntries("product", $val, $target);
-//    }
+    public function getAllProducts() {             
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1',
+            ':img2',
+            ':img3',
+            ':img4');  
+        $target = array();
+        return $this->homemodel->getAllEntries("product", $val, $target);
+    }
 
     public function sortbyCategory($category) {
         $parameters = array(':category' => $category);
