@@ -38,11 +38,11 @@ class Home extends Controller {
 
         if ($sortby == "best-match") {
             if ($searchword == "" && $category_id == 0) {
-                $products = $this->homemodel->sortbyBestmatch();
+                $products = $this->homemodel->sortbyBestmatch('name', 'ASC');
             } elseif ($searchword != "" && $category_id == 0) {
-                $products = $this->homemodel->sortbyBestmatchW($searchword);
+                $products = $this->homemodel->sortbyBestmatchW('name', 'ASC', $searchword);
             } elseif ($searchword != "" && $category_id != 0) {
-                $products = $this->homemodel->sortbyBestmatchWc($searchword, $category_id);
+                $products = $this->homemodel->sortbyBestmatchWc('name', 'ASC', $searchword, $category_id);
             }
         }
         if ($sortby == "date-old-new") {
