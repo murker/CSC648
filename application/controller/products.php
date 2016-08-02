@@ -85,7 +85,7 @@ class Products extends Controller {
         // if we have an id of a customer that should be deleted
         if (isset($product_id)) {
             // do deleteCustomer() in model/model.php
-            $this->productsmodel->deleteProduct($product_id);
+            $this->productsmodel->deleteProduct("product", $product_id);
         }
 
         // where to go after product has been deleted
@@ -143,7 +143,7 @@ class Products extends Controller {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg1"])) {
             $image = file_get_contents($_FILES['imageToUpload1']['tmp_name']);
-            $this->productsmodel->updateProductImg(1, $_POST["product_id"], $image);
+            $this->productsmodel->updateProductImg(":img1", $image, $_POST["product_id"]);
         }
 
         // where to go after product has been added
@@ -157,7 +157,7 @@ class Products extends Controller {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg2"])) {
             $image = file_get_contents($_FILES['imageToUpload2']['tmp_name']);
-            $this->productsmodel->updateProductImg(2, $_POST["product_id"], $image);
+            $this->productsmodel->updateProductImg(":img2", $image, $_POST["product_id"]);
         }
 
         // where to go after product has been added
@@ -171,7 +171,7 @@ class Products extends Controller {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg3"])) {
             $image = file_get_contents($_FILES['imageToUpload3']['tmp_name']);
-            $this->productsmodel->updateProductImg(3, $_POST["product_id"], $image);
+            $this->productsmodel->updateProductImg(":img3", $image, $_POST["product_id"]);
         }
 
         // where to go after product has been added
@@ -185,7 +185,7 @@ class Products extends Controller {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_productImg4"])) {
             $image = file_get_contents($_FILES['imageToUpload4']['tmp_name']);
-            $this->productsmodel->updateProductImg(4, $_POST["product_id"], $image);
+            $this->productsmodel->updateProductImg(":img4", $image, $_POST["product_id"]);
         }
 
         // where to go after product has been added

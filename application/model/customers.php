@@ -10,12 +10,6 @@ class CustomerModel {
         $this->customermodel = new Sqlcalls();
     }
 
-    /**
-     * Get all customers from database
-     */
-    public function getAllCustomers() {
-        return $this->customermodel->getAllCustomers();
-    }
 
     /**
      * Add a customer to database
@@ -37,7 +31,7 @@ class CustomerModel {
             ':street' => $street,
             ':city' => $city,
             ':zipcode' => $zipcode);
-        return $this->customermodel->addCustomer($table, $parameters);
+        return $this->customermodel->addEntry($table, $parameters);
     }
 
     /**
@@ -47,16 +41,23 @@ class CustomerModel {
      * @param int $customer_id Id of customer
      */
     public function deleteCustomer($table, $customer_id) {
-        $parameters = array(':customer_id' => $customer_id);
-        return $this->customermodel->deleteCustomer($table, $parameters);
+        $parameters = array(':customer_id' => $customer_id);        
+        return $this->customermodel->deleteEntry($table, $parameters);
     }
 
     /**
      * Get a customer from database
      */
+//    public function getCustomer($table, $customer_id) {
+//        
+//        $parameters = array(':customer_id' => $customer_id);
+//        return $this->customermodel->getCustomer($table, $parameters);
+//    }
+    
     public function getCustomer($table, $customer_id) {
-        $parameters = array(':customer_id' => $customer_id);
-        return $this->customermodel->getCustomer($table, $parameters);
+        
+        $target = array(':id' => $customer_id);
+        return $this->customermodel->getEntry($table, $val, $target);      
     }
 
     /**
@@ -72,16 +73,16 @@ class CustomerModel {
      * @param int $customer_id Id
      */
     public function updateCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id) {
-        $parameters = array(':firstname' => $firstname,
+        $val = array(':firstname' => $firstname,
             ':lastname' => $lastname,
             ':email' => $email,
             ':password' => $password,
             ':phone' => $phone,
             ':street' => $street,
             ':city' => $city,
-            ':zipcode' => $zipcode,
-            ':customer_id' => $customer_id);
-        return $this->customermodel->updateCustomer($table, $parameters);
+            ':zipcode' => $zipcode);
+        $target = array(':id' => $customer_id);
+        return $this->customermodel->updateEntry($table, $val, $target);
     }
     
     public function signinCustomer($email, $password) {

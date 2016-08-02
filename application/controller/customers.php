@@ -16,8 +16,7 @@ class Customers extends Controller {
      * This method handles what happens when you move to http://yourproject/customers/index
      */
     public function index() {
-        // getting all customers and amount of customers
-        $customers = $this->customermodel->getAllcustomers();       
+           
         // load views. within the views we can echo out $customers and $amount_of_customers easily
         require APP . 'view/_templates/header.php';
         require APP . 'view/customers/index.php';

@@ -24,7 +24,9 @@ class CartModel {
     }
 
     public function deleteCartItem($uid, $pid) {
-        return $this->cartmodel->deleteCartItem($uid, $pid);
+        $cid = $this->cartmodel->getUserCart($uid);       
+        $pars = array(":cart_id" => $cid, ":product_id" => $pid);
+        return $this->cartmodel->deleteEntry("cart_item", $pars);
     }
 
     public function getCartItems($uid) {
@@ -32,6 +34,7 @@ class CartModel {
     }
 
     public function getCartItemsCID($cid) {
+//        $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
         return $this->cartmodel->getCartItemsCID($cid);
     }
 
@@ -39,8 +42,11 @@ class CartModel {
         return $this->cartmodel->getAmountOfCartItems($cid);
     }
 
-    public function updateCartItem($uid, $pid, $qty) {
-        return $this->cartmodel->updateCartItem($uid, $pid, $qty);
+    public function updateCartItem($uid, $pid, $qty) {        
+        $cid = $this->cartmodel->getUserCart($uid);
+        $tar = array(":cart_id" => $cid, ":product_id" => $pid);
+        $val = array(":item_qty" => $qty);
+        return $this->cartmodel->updateEntry("cart_item", $val, $tar);
     }
 
 }

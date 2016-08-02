@@ -19,39 +19,60 @@ class ProductsModel {
             ':img1' => $img1,
             ':img2' => $img2,
             ':img3' => $img3,
-            ':img4' => $img4);
-        return $this->productsmodel->addProduct($parameters);
+            ':img4' => $img4);        
+        return $this->productsmodel->addEntry("product", $parameters);
     }
 
-    public function deleteProduct($product_id) {
-        $parameters = array(':product_id' => $product_id);
-        return $this->productsmodel->deleteProduct($parameters);
+    public function deleteProduct($table, $product_id) {
+        $parameters = array(':id' => $product_id);      
+        return $this->productsmodel->deleteEntry($table, $parameters);
     }
 
     public function updateProduct($name, $description, $price, $stock_qty, $category_id, $product_id) {
-        $parameters = array(':name' => $name,
+        $val = array(':name' => $name,
+            ':description' => $description,
+            ':price' => $price,
+            ':stock_qty' => $stock_qty,
+            ':category_id' => $category_id);
+        $target = array(':id' => $product_id);
+        return $this->productsmodel->updateEntry("product", $val, $target);
+    }
+
+    public function updateProductImg($imgnumber, $img, $product_id) {        
+        $val = array($imgnumber => $img);
+        $target = array(':id' => $product_id);       
+        return $this->productsmodel->updateEntry("product", $val, $target);
+    }
+    
+    public function updateProductQty($product_id, $new_qty) {    
+        $val = array(':stock_qty' => $new_qty);
+        $target = array(':id' => $product_id);
+        return $this->productsmodel->updateEntry("product", $val, $target);
+    }
+
+    public function getAllProducts() {     
+        $customer_id = "";
+        $name = "";
+        $description = "";
+        $price = "";
+        $stock_qty = "";
+        $category_id = "";
+        $img1 = "";
+        $img2 = "";
+        $img3 = "";
+        $img4 = "";
+        $val = array(':customer_id' => $customer_id,
+            ':name' => $name,
             ':description' => $description,
             ':price' => $price,
             ':stock_qty' => $stock_qty,
             ':category_id' => $category_id,
-            ':product_id' => $product_id);
-
-
-        return $this->productsmodel->updateProduct($parameters);
-    }
-
-    public function updateProductImg($imgnumber, $product_id, $img) {
-        $parameters = array(':product_id' => $product_id, ':img' => $img);
-        return $this->productsmodel->updateProductImg($imgnumber, $parameters);
-    }
-    
-    public function updateProductQty($product_id, $new_qty) {
-        $parameters = array(':product_id' => $product_id, ':stock_qty' => $new_qty);
-        return $this->productsmodel->updateProductQty($parameters);
-    }
-
-    public function getAllProducts() {
-        return $this->productsmodel->getAllProducts();
+            ':img1' => $img1,
+            ':img2' => $img2,
+            ':img3' => $img3,
+            ':img4' => $img4);  
+        $target = array();
+        return $this->productsmodel->getAllEntries("product", $val, $target);
     }
 
     public function getProduct($product_id) {
