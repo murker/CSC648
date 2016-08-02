@@ -4,12 +4,12 @@
         <div class="pull-right">
             <form action="<?php echo URL; ?>home/sort" method="GET" class="nav-form">
                 <label>Sort by</label>
-                <select name='sortby' class="sort-select" onchange='this.form.submit()'>
-                    <option value="best-match">Best match</option>
-                    <option value="date-old-new">Date: Oldest to Newest</option>
-                    <option value="date-new-old">Date: Newest to Oldest</option>
-                    <option value="price-low-high">Price: Lowest to Highest</option>
-                    <option value="price-high-low">Price: Highest to Lowest</option>
+                <select name='sortby' class="sort-select" onchange='this.form.submit()' id="sort_menu">
+                    <option <?php if(isset($_GET['sortby']) && $_GET['sortby'] == "best-match"){echo "selected='selected'";}?> value="best-match">Best match</option>
+                    <option <?php if(isset($_GET['sortby']) && $_GET['sortby'] == "date-old-new"){echo "selected='selected'";}?> value="date-old-new">Date: Oldest to Newest</option>
+                    <option <?php if(isset($_GET['sortby']) && $_GET['sortby'] == "date-new-old"){echo "selected='selected'";}?> value="date-new-old">Date: Newest to Oldest</option>
+                    <option <?php if(isset($_GET['sortby']) && $_GET['sortby'] == "price-low-high"){echo "selected='selected'";}?> value="price-low-high">Price: Lowest to Highest</option>
+                    <option <?php if(isset($_GET['sortby']) && $_GET['sortby'] == "price-high-low"){echo "selected='selected'";}?> value="price-high-low">Price: Highest to Lowest</option>
                 </select>
                 <noscript><input type='submit' name='submit_sort' value="Submit" id="searchButton" /></noscript>
             </form>
