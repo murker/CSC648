@@ -161,10 +161,9 @@ class Sqlcalls {
                 $sql = $sql . " " . ltrim($key, ':') . " like " . $key;
             }
         }
-        $query = $this->db->prepare($sql);
-        $pars = array_merge($target);
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
-        $query->execute($pars);
+        $query = $this->db->prepare($sql);       
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
+        $query->execute($target);
         return $query->fetchAll();
     }
     
@@ -199,9 +198,8 @@ class Sqlcalls {
         
         $sql = $sql  . " ORDER BY " . $column . " " . $order;
         $query = $this->db->prepare($sql);
-        $pars = array_merge($target);
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
-        $query->execute($pars);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
+        $query->execute($target);
         return $query->fetchAll();
     }
         
@@ -312,10 +310,43 @@ class Sqlcalls {
                 $sql = $sql . " " . ltrim($key, ':') . " = " . $key;
             }
         }
+        $query = $this->db->prepare($sql);        
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
+        $query->execute($target);
+        return $query->fetchAll();
+    }
+    
+    public function getAllEntries2($table, $val, $target) {
+        $sql = "SELECT ";
+        //Set values
+        $first = True;
+        foreach ($val as $key) {
+            if ($first) {
+                $first = False;
+            } else {
+                $sql = $sql . ", ";
+            }
+            $sql = $sql . ltrim($key, ':');
+        }
+
+        $sql = $sql . " FROM " . $table;
+
+        if (count($target) > 0) {
+            //Set target
+            $sql = $sql . " WHERE";
+            $first = True;
+            foreach ($target as $key => $value) {
+                if ($first) {
+                    $first = False;
+                } else {
+                    $sql = $sql . " AND";
+                }
+                $sql = $sql . " " . ltrim($key, ':') . " like " . $key;
+            }
+        }
         $query = $this->db->prepare($sql);
-        $pars = array_merge($target);
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
-        $query->execute($pars);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
+        $query->execute($target);
         return $query->fetchAll();
     }
     

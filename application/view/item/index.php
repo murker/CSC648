@@ -88,6 +88,22 @@
                     <?php endif; ?> 
                     <br /><br />
                     <p><?php if (isset($product->description)) echo htmlspecialchars($product->description, ENT_QUOTES, 'UTF-8'); ?></p>
+                    <tbody>
+                    <?php if ($tutors != NULL) : ?>
+                    <p><strong>Recommended Tutors:</strong></p>
+                    <?php foreach ($tutors as $tutor) { ?>
+                        <tr>
+                            <td><a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">                                                            
+                                   <?php
+                                    if (isset($tutor->img1))
+                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($tutor->img1) . '"  height="42" width="42" />';
+                                    ?>                                   
+                                </a></td>
+                            <td><?php if (isset($tutor->name)) echo htmlspecialchars($tutor->name, ENT_QUOTES, 'UTF-8'); ?></td>                                              
+                        </tr>
+                    <?php } ?>
+                    <?php endif; ?>   
+                    </tbody>
                 </form> 
                 <?php if ($product->category_id == 2) : ?>                    
                     <br />

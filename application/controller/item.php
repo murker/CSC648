@@ -36,6 +36,8 @@ class Item extends Controller {
                 $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
             }
             $product = $this->itemmodel->getProduct($product_id);
+            $searchwords = explode(" ", $product->name);      
+            $tutors = $this->itemmodel->getTutors($searchwords[0]);
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
