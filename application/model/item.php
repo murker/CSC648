@@ -24,7 +24,7 @@ class ItemModel {
         $target = array(':id' => $product_id);
         return $this->itemmodel->getEntry("product", $val, $target);
     }
-    public function getTutors($searchword) {
+    public function getTutors($column, $order, $searchword) {
         $searchword = '%' . $searchword . '%';
         $val = array(':customer_id',
             ':product_id',
@@ -33,7 +33,6 @@ class ItemModel {
             ':price',            
             ':img1');            
         $target = array(':name' => $searchword);
-        return $this->itemmodel->getAllEntries2("tutor", $val, $target);
-    }
-
+        return $this->itemmodel->getAllEntriesAdv2("tutor", $val, $target, $column, $order);
+    }    
 }
