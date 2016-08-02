@@ -12,15 +12,7 @@ class CustomerModel {
 
 
     /**
-     * Add a customer to database
-     * TODO put this explanation into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $artist Artist
-     * @param string $track Track
-     * @param string $link Link
+     * Add a customer to database    
      */
     public function addCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode) {
         $parameters = array(':firstname' => $firstname,
@@ -35,9 +27,7 @@ class CustomerModel {
     }
 
     /**
-     * Delete a customer in the database
-     * Please note: this is just an example! In a real application you would not simply let everybody
-     * add/update/delete stuff!
+     * Delete a customer in the database  
      * @param int $customer_id Id of customer
      */
     public function deleteCustomer($table, $customer_id) {
@@ -48,29 +38,23 @@ class CustomerModel {
     /**
      * Get a customer from database
      */
-//    public function getCustomer($table, $customer_id) {
-//        
-//        $parameters = array(':customer_id' => $customer_id);
-//        return $this->customermodel->getCustomer($table, $parameters);
-//    }
     
     public function getCustomer($table, $customer_id) {
-        
+        $val = array(':id',
+            ':firstname',
+            ':lastname',
+            ':email',
+            ':password',
+            ':phone',
+            ':street',
+            ':city',
+            ':zipcode');
         $target = array(':id' => $customer_id);
         return $this->customermodel->getEntry($table, $val, $target);      
     }
 
     /**
-     * Update a customer in database
-     * // TODO put this explaination into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $artist Artist
-     * @param string $track Track
-     * @param string $link Link
-     * @param int $customer_id Id
+     * Update a customer in database     
      */
     public function updateCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id) {
         $val = array(':firstname' => $firstname,
@@ -84,10 +68,5 @@ class CustomerModel {
         $target = array(':id' => $customer_id);
         return $this->customermodel->updateEntry($table, $val, $target);
     }
-    
-    public function signinCustomer($email, $password) {
-        $parameters = array(':email' => $email, ':password' => $password);
-        return $this->customermodel->signinCustomer($parameters);
-    }
-
+        
 }

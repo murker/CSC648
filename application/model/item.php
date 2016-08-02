@@ -10,8 +10,19 @@ class ItemModel {
     }
 
     public function getProduct($product_id) {
-        $parameters = array(':product_id' => $product_id);
-        return $this->itemmodel->getProduct($parameters);
+         $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1',
+            ':img2',
+            ':img3',
+            ':img4');  
+        $target = array(':id' => $product_id);
+        return $this->itemmodel->getEntry("product", $val, $target);
     }
 
 }

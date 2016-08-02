@@ -50,33 +50,35 @@ class ProductsModel {
         return $this->productsmodel->updateEntry("product", $val, $target);
     }
 
-    public function getAllProducts() {     
-        $customer_id = "";
-        $name = "";
-        $description = "";
-        $price = "";
-        $stock_qty = "";
-        $category_id = "";
-        $img1 = "";
-        $img2 = "";
-        $img3 = "";
-        $img4 = "";
-        $val = array(':customer_id' => $customer_id,
-            ':name' => $name,
-            ':description' => $description,
-            ':price' => $price,
-            ':stock_qty' => $stock_qty,
-            ':category_id' => $category_id,
-            ':img1' => $img1,
-            ':img2' => $img2,
-            ':img3' => $img3,
-            ':img4' => $img4);  
+    public function getAllProducts() {             
+        $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1',
+            ':img2',
+            ':img3',
+            ':img4');  
         $target = array();
         return $this->productsmodel->getAllEntries("product", $val, $target);
     }
 
     public function getProduct($product_id) {
-        $parameters = array(':product_id' => $product_id);
-        return $this->productsmodel->getProduct($parameters);
+         $val = array(':id', 
+            ':customer_id',
+            ':name',
+            ':description',
+            ':price',
+            ':stock_qty',
+            ':category_id',
+            ':img1',
+            ':img2',
+            ':img3',
+            ':img4');  
+        $target = array(':id' => $product_id);
+        return $this->productsmodel->getEntry("product", $val, $target);
     }
 }
