@@ -68,22 +68,7 @@ class Sqlcalls {
      * @param string $track Track
      * @param string $link Link
      */
-    public function addCustomer($table, $parameters) {
-        $sql = "INSERT INTO " . $table . " (firstname, lastname, email, password, phone, street, city, zipcode) VALUES (:firstname, :lastname, :email, :password, :phone, :street, :city, :zipcode)";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
-    public function addProduct($parameters) {
-        $sql = "INSERT INTO product (customer_id, name, description, price, stock_qty, category_id, img1, img2, img3, img4) VALUES (:customer_id, :name, :description, :price, :stock_qty, :category_id, :img1, :img2, :img3, :img4)";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
+   
     public function addEntry($table, $pars) {
         $first = True;
         $values = "(";
@@ -116,38 +101,7 @@ class Sqlcalls {
      * @param string $track Track
      * @param string $link Link
      * @param int $customer_id Id
-     */
-    public function updateCustomer($table, $parameters) {
-        $sql = "UPDATE " . $table . " SET firstname = :firstname, lastname = :lastname, email = :email , password = :password, phone = :phone, street = :street, city = :city, zipcode = :zipcode WHERE id = :customer_id";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
-    public function updateProduct($parameters) {
-        $sql = "UPDATE product SET name = :name, description = :description, price = :price , stock_qty = :stock_qty, category_id = :category_id  WHERE id = :product_id";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
-    public function updateProductImg($imgnumber, $parameters) {
-        $sql = "UPDATE product SET img" . $imgnumber . " = :img WHERE id = :product_id";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
-    public function updateProductQty($parameters) {
-        $sql = "UPDATE product SET stock_qty = :stock_qty WHERE id = :product_id";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
+     */    
 
     public function updateCartItem($uid, $pid, $qty) {
         $cid = $this->getUserCart($uid);
@@ -183,6 +137,7 @@ class Sqlcalls {
         }
         $query = $this->db->prepare($sql);
         $pars = array_merge($val, $target);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
         $query->execute($pars);
     }
 
@@ -235,16 +190,7 @@ class Sqlcalls {
         // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         return $query->fetchAll();
-    }
-
-    public function signinCustomer($parameters) {
-        $sql = "SELECT id, email, firstname FROM customer WHERE email = :email AND password = :password";
-        $query = $this->db->prepare($sql);
-        $query->execute($parameters);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        return $query->fetch();
-    }
+    }    
 
     public function sortbyCategory($parameters) {
         $sql = "SELECT id, name, description, price, stock_qty, category_id, img1 FROM product where category_id = :category";
@@ -355,20 +301,7 @@ class Sqlcalls {
         // fetch() is the PDO method that get exactly one result
         return $query->fetch();
     }
-
-    /**
-     * Get a customer from database
-     */
-    public function getCustomer($table, $parameters) {
-        $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM " . $table . " WHERE id = :customer_id LIMIT 1";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
-    }
-
+    
     public function getCartItemsCID($cid) {
         $sql = "SELECT cart_id, product_id, item_qty FROM cart_item WHERE cart_id = :cid";
         $query = $this->db->prepare($sql);
@@ -412,20 +345,29 @@ class Sqlcalls {
         return $query->fetchAll();
     }
 
-    /**
-     * Get all customers from database
-     */
-    public function getAllCustomers() {
-        $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM customer";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        return $query->fetchAll();
-    }
+    public function getEntry($table, $target) {
+        $sql = "SELECT *";        
+        $sql = $sql . " FROM " . $table;
 
+        if (count($target) > 0) {
+            //Set target
+            $sql = $sql . " WHERE";
+            $first = True;
+            foreach ($target as $key => $value) {
+                if ($first) {
+                    $first = False;
+                } else {
+                    $sql = $sql . " AND";
+                }
+                $sql = $sql . " " . ltrim($key, ':') . " = " . $key;
+            }
+        }
+                 
+        $query = $this->db->prepare($sql);
+        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
+        $query->execute($target);
+        return $query->fetch();
+    }
     public function getAllEntries($table, $val, $target) {
         $sql = "SELECT ";
         //Set values
@@ -439,7 +381,7 @@ class Sqlcalls {
             $sql = $sql . ltrim($key, ':');
         }
 
-        $sql = "FROM " . $table;
+        $sql = $sql . " FROM " . $table;
 
         if (count($target) > 0) {
             //Set target
@@ -456,40 +398,20 @@ class Sqlcalls {
         }
         $query = $this->db->prepare($sql);
         $pars = array_merge($val, $target);
+        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
         $query->execute($pars);
+        return $query->fetchAll();
     }
+    
 
     //DELETE
-    public function deleteCartItem($uid, $pid) {
-        $cid = $this->getUserCart($uid);
-        $sql = "DELETE FROM cart_item WHERE cart_id = :cid AND product_id = :pid";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':cid' => $cid, ':pid' => $pid);
-        //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
-    public function deleteProduct($parameters) {
-        $sql = "DELETE FROM product WHERE id = :product_id";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
-
+    
     /**
-     * Delete a customer in the database
+     * Delete a row in the database
      * Please note: this is just an example! In a real application you would not simply let everybody
      * add/update/delete stuff!
-     * @param int $customer_id Id of customer
+     * @param string $table, array $pars
      */
-    public function deleteCustomer($table, $parameters) {
-        $sql = "DELETE FROM " . $table . " WHERE id = :customer_id";
-        $query = $this->db->prepare($sql);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-        $query->execute($parameters);
-    }
 
     public function deleteEntry($table, $pars) {
         $sql = "DELETE FROM " . $table . " WHERE";
