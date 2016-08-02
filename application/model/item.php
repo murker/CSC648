@@ -1,31 +1,17 @@
 <?php
 
-class ItemModel
-{
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
+class ItemModel {
+
+    public $itemmodel = null;
+
+    function __construct() {
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->itemmodel = new Sqlcalls();
     }
- 
-    public function getProduct($product_id)
-    {
-        $sql = "SELECT id, name, description, price, stock_qty, img1, img2, img3, img4, category_id FROM product WHERE id = :product_id LIMIT 1";
-        $query = $this->db->prepare($sql);
+
+    public function getProduct($product_id) {
         $parameters = array(':product_id' => $product_id);
-
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-        $query->execute($parameters);
-
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
+        return $this->itemmodel->getProduct($parameters);
     }
+
 }

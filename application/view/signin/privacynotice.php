@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Books and Tutors SFSU Privacy Notice</h2>                 
+    <h3 class="title">Books and Tutors SFSU Privacy Notice</h3>                 
     <div class="box">
         <style>
             #body

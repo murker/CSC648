@@ -1,33 +1,20 @@
 <?php
 
-class CustomerModel
-{
-    /**
-     * @param object $db A PDO database connection
-     */
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
+class CustomerModel {
+
+    public $customermodel = null;
+
+    function __construct() {
+
+        include_once APP . 'dbcalls/sqlcalls.php';
+        $this->customermodel = new Sqlcalls();
     }
 
-     /**
+    /**
      * Get all customers from database
      */
-    public function getAllCustomers()
-    {
-        $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM customer";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-
-        // fetchAll() is the PDO method that gets all result rows, here in object-style because we defined this in
-        // core/controller.php! If you prefer to get an associative array as the result, then do
-        // $query->fetchAll(PDO::FETCH_ASSOC); or change core/controller.php's PDO options to
-        // $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ...
-        return $query->fetchAll();
+    public function getAllCustomers() {
+        return $this->customermodel->getAllCustomers();
     }
 
     /**
@@ -41,16 +28,16 @@ class CustomerModel
      * @param string $track Track
      * @param string $link Link
      */
-    public function addCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode)
-    {
-        $sql = "INSERT INTO customer (firstname, lastname, email, password, phone, street, city, zipcode) VALUES (:firstname, :lastname, :email, :password, :phone, :street, :city, :zipcode)";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email, ':password' => $password, ':phone' => $phone, ':street' => $street, ':city' => $city, ':zipcode' => $zipcode );
-
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-        $query->execute($parameters);
+    public function addCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode) {
+        $parameters = array(':firstname' => $firstname,
+            ':lastname' => $lastname,
+            ':email' => $email,
+            ':password' => $password,
+            ':phone' => $phone,
+            ':street' => $street,
+            ':city' => $city,
+            ':zipcode' => $zipcode);
+        return $this->customermodel->addCustomer($table, $parameters);
     }
 
     /**
@@ -59,34 +46,18 @@ class CustomerModel
      * add/update/delete stuff!
      * @param int $customer_id Id of customer
      */
-    public function deleteCustomer($customer_id)
-    {
-        $sql = "DELETE FROM customer WHERE id = :customer_id";
-        $query = $this->db->prepare($sql);
+    public function deleteCustomer($table, $customer_id) {
         $parameters = array(':customer_id' => $customer_id);
-
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-        $query->execute($parameters);
+        //return $this->customermodel->deleteCustomer($table, $parameters);
+        return $this->customermodel->deleteEntry($table, $parameters);
     }
 
     /**
      * Get a customer from database
      */
-    public function getCustomer($customer_id)
-    {
-        $sql = "SELECT id, firstname, lastname, email, password, phone, street, city, zipcode FROM customer WHERE id = :customer_id LIMIT 1";
-        $query = $this->db->prepare($sql);
+    public function getCustomer($table, $customer_id) {
         $parameters = array(':customer_id' => $customer_id);
-
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-        $query->execute($parameters);
-
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch();
+        return $this->customermodel->getCustomer($table, $parameters);
     }
 
     /**
@@ -101,41 +72,22 @@ class CustomerModel
      * @param string $link Link
      * @param int $customer_id Id
      */
-    public function updateCustomer($firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id)
-    {
-        $sql = "UPDATE customer SET firstname = :firstname, lastname = :lastname, email = :email , password = :password, phone = :phone, street = :street, city = :city, zipcode = :zipcode WHERE id = :customer_id";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email,':password' => $password, ':phone' => $phone, ':street' => $street, ':city' => $city, ':zipcode' => $zipcode, ':customer_id' => $customer_id);
-
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-        $query->execute($parameters);
+    public function updateCustomer($table, $firstname, $lastname, $email, $password, $phone, $street, $city, $zipcode, $customer_id) {
+        $parameters = array(':firstname' => $firstname,
+            ':lastname' => $lastname,
+            ':email' => $email,
+            ':password' => $password,
+            ':phone' => $phone,
+            ':street' => $street,
+            ':city' => $city,
+            ':zipcode' => $zipcode,
+            ':customer_id' => $customer_id);
+        return $this->customermodel->updateCustomer($table, $parameters);
     }
-
-    /**
-     * Get simple "stats". This is just a simple demo to show
-     * how to use more than one model in a controller (see application/controller/customers.php for more)
-     */
-    public function getAmountOfCustomers()
-    {
-        $sql = "SELECT COUNT(id) AS amount_of_customers FROM customer";
-        $query = $this->db->prepare($sql);
-        $query->execute();
-
-        // fetch() is the PDO method that get exactly one result
-        return $query->fetch()->amount_of_customers;
-    }
-    public function signinCustomer($email, $password)
-    {
-        $sql = "SELECT email FROM customer WHERE email = :email AND password = :password";
-        $query = $this->db->prepare($sql);
-        $parameters = array(':email' => $email, ':password' => $password );
-        $query->execute($parameters);
-        // useful for debugging: you can see the SQL behind above construction by using:
-        // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
-
-       return $query->fetch();
+    
+    public function signinCustomer($email, $password) {
+        $parameters = array(':email' => $email, ':password' => $password);
+        return $this->customermodel->signinCustomer($parameters);
     }
 
 }
