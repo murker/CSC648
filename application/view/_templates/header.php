@@ -64,7 +64,7 @@ if (!isset($_SESSION)) {
                                 <script>
                                     document.getElementById('category').value = <?php echo htmlspecialchars($_SESSION['category_id']); ?>; 
                                 </script>
-                                <input type="text" class="col-xs-6" name="searchinput" placeholder="Search for books, tutors and more!" value="<?php echo htmlspecialchars(str_replace("%", "", $_SESSION['searchword'])) ?>"/>
+                                <input type="text" class="col-xs-6" name="searchinput" placeholder="Search" value="<?php echo htmlspecialchars(str_replace("%", "", $_SESSION['searchword'])) ?>"/>
                                 <div class="col-xs-2"></div>
                                 <button action class="btn col-xs-1" type="submit">
                                     <span class="glyphicon glyphicon-search"></span>
