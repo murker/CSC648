@@ -63,11 +63,10 @@ class Products extends Controller {
                 $image4 = NULL;
             }
             $this->productsmodel->addProduct($_POST["customer_id"], $_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $image1, $image2, $image3, $image4);
-            if ($_POST["category_id"] == 2){
-            $product_id = $this->productsmodel->getProductbyname($_POST["name"]);
-            $this->productsmodel->addTutor($_POST["customer_id"], $product_id->id, $_POST["name"], $_POST["description"], $_POST["price"], $image1);  
-            }                        
-            
+            if ($_POST["category_id"] == 2) {
+                $product_id = $this->productsmodel->getProductbyname($_POST["name"]);
+                $this->productsmodel->addTutor($_POST["customer_id"], $product_id->id, $_POST["name"], $_POST["description"], $_POST["price"], $image1);
+            }
         }
 
         // where to go after product has been added
@@ -109,7 +108,7 @@ class Products extends Controller {
         // if we have an id of a product that should be edited
         if (isset($product_id)) {
             // do getProduct() in model/model.php
-            $product = $this->productsmodel->getProduct($product_id);            
+            $product = $this->productsmodel->getProduct($product_id);
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
