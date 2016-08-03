@@ -23,6 +23,7 @@ class Home extends Controller {
      */
     public function index() {
         $products = $this->homemodel->getAllProducts();
+        $products = $this->homemodel->sortby('id', 'DESC');
         $_SESSION['searchword'] = "";
         $_SESSION['category_id'] = 0;
         // load views
