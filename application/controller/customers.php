@@ -2,7 +2,6 @@
 
 /**
  * Class Customers
- * This is a demo class.
  *
  * Please note:
  * Don't use the same name for class and method, as this might trigger an (unintended) __construct of the class.
