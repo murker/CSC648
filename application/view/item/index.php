@@ -94,13 +94,13 @@
                         <tbody>
                             <?php foreach ($tutors as $tutor) { ?>
                                 <tr class="tutor-image">
-                                    <td style="padding-bottom: 10px; text-align: center"><a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">                                                            
+                                    <td style="text-align: center"><a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">                                                            
                                             <?php
                                             if (isset($tutor->img1))
                                                 echo '<img src="data:image/jpeg;base64,' . base64_encode($tutor->img1) . '"  />';
                                             ?>                                   
                                         </a></td>
-                                    <td style="padding-bottom:10px;">
+                                    <td>
                                         <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">
                                             <?php if (isset($tutor->name)) echo htmlspecialchars($tutor->name, ENT_QUOTES, 'UTF-8'); ?>
                                         </a>

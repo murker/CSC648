@@ -51,6 +51,11 @@ body {
 .tutor-image a{
     font-weight:bold;
 }
+
+.tutor-image td{
+    padding-bottom:10px;
+}
+
 .title{
     text-align:center;
     font-weight:bold;
