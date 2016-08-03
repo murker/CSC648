@@ -25,7 +25,7 @@ class ItemModel {
         return $this->itemmodel->getEntry("product", $val, $target);
     }
     public function getTutors($column, $order, $searchword) {
-        $searchword = '%' . $searchword . '%';
+        $searchword = '%' . $searchword . '%';        
         $val = array(':customer_id',
             ':product_id',
             ':name',

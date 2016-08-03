@@ -47,6 +47,13 @@ class ProductsModel {
         $target = array(':id' => $product_id);
         return $this->productsmodel->updateEntry("product", $val, $target);
     }
+    public function updateTutor($name, $description, $price, $product_id) {
+        $val = array(':name' => $name,
+            ':description' => $description,
+            ':price' => $price);
+        $target = array(':product_id' => $product_id);
+        return $this->productsmodel->updateEntry("tutor", $val, $target);
+    }
 
     public function updateProductImg($imgnumber, $img, $product_id) {        
         $val = array($imgnumber => $img);

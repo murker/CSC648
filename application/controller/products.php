@@ -109,7 +109,7 @@ class Products extends Controller {
         // if we have an id of a product that should be edited
         if (isset($product_id)) {
             // do getProduct() in model/model.php
-            $product = $this->productsmodel->getProduct($product_id);
+            $product = $this->productsmodel->getProduct($product_id);            
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
@@ -135,6 +135,7 @@ class Products extends Controller {
         // if we have POST data to create a new Product entry
         if (isset($_POST["submit_update_product"])) {
             $this->productsmodel->updateProduct($_POST["name"], $_POST["description"], $_POST["price"], $_POST["stock_qty"], $_POST["category_id"], $_POST["product_id"]);
+            $this->productsmodel->updateTutor($_POST["name"], $_POST["description"], $_POST["price"], $_POST["product_id"]);
         }
 
         // where to go after product has been added

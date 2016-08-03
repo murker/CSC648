@@ -36,8 +36,23 @@ class Item extends Controller {
                 $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
             }
             $product = $this->itemmodel->getProduct($product_id);
-            $searchwords = explode(" ", $product->name);      
-            $tutors = $this->itemmodel->getTutors('customer_id', 'ASC', $searchwords[0]);
+            $searchwords = explode(" ", $product->description);  
+            $match = "";
+            foreach ($searchwords as $word){                
+                $found = strpos($word, "CSC");
+                if ($found === FALSE){                    
+                }else{
+                    $match = $word;
+                    break;
+                }                 
+            }  
+            $match = rtrim($match, '.');
+            $match = rtrim($match, ',');
+            if ($match != ""){
+            $tutors = $this->itemmodel->getTutors('customer_id', 'ASC', $match);
+            }else{
+                $tutors = NULL;
+            }
 
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
