@@ -58,7 +58,7 @@ class CartModel {
     }
 
     public function deleteCartItem($uid, $pid) {
-        $cid = $this->cartmodel->getUserCart($uid);
+        $cid = $this->getUserCart($uid);
         $pars = array(":cart_id" => $cid, ":product_id" => $pid);
         return $this->cartmodel->deleteEntry("cart_item", $pars);
     }
