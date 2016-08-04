@@ -31,13 +31,13 @@
                     <label for='name' class="col-sm-2 control-label">Category</label>
                     <div class="col-sm-10">
                         <select name='category_id' class="sell-category" required>
-                            <option value="1">Books</option>
-                            <option value="2">Tutors</option>
-                            <option value="3">Electronics</option>
-                            <option value="4">Entertainment</option>
-                            <option value="5">Clothing</option>
-                            <option value="6">Furniture</option>
-                            <option value="7">Other</option>
+                            <option value="1" <?php if ($product->category_id == 1) echo 'selected' ?>>Books</option>
+                            <option value="2" <?php if ($product->category_id == 2) echo 'selected' ?>>Tutors</option>
+                            <option value="3" <?php if ($product->category_id == 3) echo 'selected' ?>>Electronics</option>
+                            <option value="4" <?php if ($product->category_id == 4) echo 'selected' ?>>Entertainment</option>
+                            <option value="5" <?php if ($product->category_id == 5) echo 'selected' ?>>Clothing</option>
+                            <option value="6" <?php if ($product->category_id == 6) echo 'selected' ?>>Furniture</option>
+                            <option value="7" <?php if ($product->category_id == 7) echo 'selected' ?>>Other</option>
                         </select>
                     </div>
                 </div>
