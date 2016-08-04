@@ -8,6 +8,7 @@ class Payment extends Controller {
         if (!isset($_SESSION)) {
             session_start();
         }
+        $categories = $this->homemodel->getAllCategories();
         $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
         $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']);
         $products = $this->getProducts($cart_items);
@@ -72,8 +73,9 @@ class Payment extends Controller {
                 $this->cartmodel->createInvoice($_SESSION['CurrentUser'], $invoiceData);
             }
         }
-        
+
         header('location: ' . URL . 'invoice/index');
     }
+
 }
 ?>

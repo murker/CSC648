@@ -29,11 +29,10 @@ class Sqlcalls {
     //INSERT       
 
     /**
-     * Add a customer to database    
+     * Add a row of values to a table in the database    
      * @param string $table table name
      * @param array $pars parameters  
      */
-   
     public function addEntry($table, $pars) {
         $first = True;
         $values = "(";
@@ -55,14 +54,13 @@ class Sqlcalls {
     }
 
     //UPDATE
-    
-     /**
+
+    /**
      * Update a table in database
      * @param string $table table name
      * @param array $val values
      * @param array $target    
-     */    
-
+     */
     public function updateEntry($table, $val, $target) {
         $sql = "UPDATE " . $table . " SET ";
         //Set values
@@ -91,7 +89,7 @@ class Sqlcalls {
         //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $pars);  exit();
         $query->execute($pars);
     }
-    
+
     //SELECT       
 
     public function getAllEntriesAdv($table, $val, $target) {
@@ -122,12 +120,12 @@ class Sqlcalls {
                 $sql = $sql . " " . ltrim($key, ':') . " like " . $key;
             }
         }
-        $query = $this->db->prepare($sql);       
+        $query = $this->db->prepare($sql);
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
         $query->execute($target);
         return $query->fetchAll();
     }
-    
+
     public function getAllEntriesAdv2($table, $val, $target, $column, $order) {
         $sql = "SELECT ";
         //Set values
@@ -156,14 +154,14 @@ class Sqlcalls {
                 $sql = $sql . " " . ltrim($key, ':') . " like " . $key;
             }
         }
-        
-        $sql = $sql  . " ORDER BY " . $column . " " . $order;
+
+        $sql = $sql . " ORDER BY " . $column . " " . $order;
         $query = $this->db->prepare($sql);
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
         $query->execute($target);
         return $query->fetchAll();
     }
-        
+
     public function getInvoice($parameters) {
 
         $sql = "SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total FROM invoice WHERE customer_id = :customer_id ORDER BY cart_id DESC LIMIT 1";
@@ -171,10 +169,10 @@ class Sqlcalls {
         //echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();
         $query->execute($parameters);
         return $query->fetch();
-    }            
+    }
 
     public function getEntry($table, $val, $target) {
-        $sql = "SELECT ";                
+        $sql = "SELECT ";
         //Set values
         $first = True;
         foreach ($val as $key) {
@@ -201,13 +199,13 @@ class Sqlcalls {
                 $sql = $sql . " " . ltrim($key, ':') . " = " . $key;
             }
         }
-                 
+
         $query = $this->db->prepare($sql);
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
         $query->execute($target);
         return $query->fetch();
     }
-    
+
     public function getAllEntries($table, $val, $target) {
         $sql = "SELECT ";
         //Set values
@@ -236,14 +234,14 @@ class Sqlcalls {
                 $sql = $sql . " " . ltrim($key, ':') . " = " . $key;
             }
         }
-        $query = $this->db->prepare($sql);        
+        $query = $this->db->prepare($sql);
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $target);  exit();
         $query->execute($target);
         return $query->fetchAll();
     }
-    
+
     //DELETE
-    
+
     public function deleteEntry($table, $pars) {
         $sql = "DELETE FROM " . $table . " WHERE";
         $first = True;
@@ -258,4 +256,5 @@ class Sqlcalls {
         $query = $this->db->prepare($sql);
         $query->execute($pars);
     }
+
 }

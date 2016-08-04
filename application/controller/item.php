@@ -23,6 +23,7 @@ class Item extends Controller {
      * This method handles what happens when you move to http://yourproject/products/index
      */
     public function index() {
+        $categories = $this->homemodel->getAllCategories();
         require APP . 'view/_templates/header.php';
         require APP . 'view/item/index.php';
         require APP . 'view/_templates/footer.php';
@@ -36,21 +37,22 @@ class Item extends Controller {
                 $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
             }
             $product = $this->itemmodel->getProduct($product_id);
-            $searchwords = explode(" ", $product->description);  
+            $searchwords = explode(" ", $product->description);
             $match = "";
-            foreach ($searchwords as $word){                
+            foreach ($searchwords as $word) {
                 $found = strpos($word, "CSC");
-                if ($found === FALSE){                    
-                }else{
+                if ($found === FALSE) {
+                    
+                } else {
                     $match = $word;
                     break;
-                }                 
-            }  
+                }
+            }
             $match = rtrim($match, '.');
             $match = rtrim($match, ',');
-            if ($match != ""){
-            $tutors = $this->itemmodel->getTutors('customer_id', 'ASC', $match);
-            }else{
+            if ($match != "") {
+                $tutors = $this->itemmodel->getTutors('customer_id', 'ASC', $match);
+            } else {
                 $tutors = NULL;
             }
 

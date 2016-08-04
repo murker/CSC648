@@ -5,7 +5,6 @@
  *
  * For more info about constants please @see http://php.net/manual/en/function.define.php
  */
-
 /**
  * Configuration for: Error reporting
  * Useful to show every little problem during development, but only show hard errors in production
@@ -39,7 +38,6 @@ if (ENVIRONMENT == 'development' || ENVIRONMENT == 'dev') {
  * The final, auto-detected URL (build via the segments above). If you don't want to use auto-detection,
  * then replace this line with full URL (and sub-folder) and a trailing slash.
  */
-
 define('URL_PUBLIC_FOLDER', 'public');
 define('URL_PROTOCOL', 'http://');
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);

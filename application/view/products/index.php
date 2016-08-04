@@ -31,13 +31,13 @@
                     <label  class="col-sm-2 control-label">Category</label>
                     <div class="col-sm-10">
                         <select name='category_id' class="sell-category" required>
-                            <option value="1">Books</option>
-                            <option value="2">Tutors</option>
-                            <option value="3">Electronics</option>
-                            <option value="4">Entertainment</option>
-                            <option value="5">Clothing</option>
-                            <option value="6">Furniture</option>
-                            <option value="7">Other</option>
+                            <?php
+                            foreach ($categories as $category) {
+                                if (isset($category->name)) {
+                                    echo "<option value =" . htmlspecialchars($category->id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8') . "</option>";
+                                }
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>

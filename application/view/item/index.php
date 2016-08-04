@@ -11,12 +11,12 @@
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                     <!--                    
                     <?php if ((isset($product->img2) && $product->img2 != "") || (isset($product->img3) && $product->img3 != "") || (isset($product->img4) && $product->img4 != "")) : ?>
-                                                    <a class="left" href="#carousel-example-generic" data-slide="prev">
-                                                        <span class="glyphicon glyphicon-chevron-left"></span>
-                                                    </a>
-                                                    <a class="right pull-right" href="#carousel-example-generic" data-slide="next">
-                                                        <span class="glyphicon glyphicon-chevron-right"></span>
-                                                    </a>
+                                                            <a class="left" href="#carousel-example-generic" data-slide="prev">
+                                                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                                            </a>
+                                                            <a class="right pull-right" href="#carousel-example-generic" data-slide="next">
+                                                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                                            </a>
                     <?php endif; ?> 
                     -->
                     <ol class="carousel-indicators">
@@ -91,25 +91,25 @@
                     <?php if (($tutors != NULL) && $product->category_id != 2): ?>
                         <p><strong>Recommended Tutors:</strong></p>
                         <table>
-                        <tbody>
-                            <?php foreach ($tutors as $tutor) { ?>
-                                <tr class="tutor-image">
-                                    <td style="text-align: center"><a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">                                                            
-                                            <?php
-                                            if (isset($tutor->img1))
-                                                echo '<img src="data:image/jpeg;base64,' . base64_encode($tutor->img1) . '"  />';
-                                            ?>                                   
-                                        </a></td>
-                                    <td>
-                                        <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">
-                                            <?php if (isset($tutor->name)) echo htmlspecialchars($tutor->name, ENT_QUOTES, 'UTF-8'); ?>
-                                        </a>
-                                    </td>                                              
-                                </tr>
-                            <?php } ?>
-                        <?php endif; ?>   
-                    </tbody>
-                        </table>
+                            <tbody>
+                                <?php foreach ($tutors as $tutor) { ?>
+                                    <tr class="tutor-image">
+                                        <td style="text-align: center"><a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">                                                            
+                                                <?php
+                                                if (isset($tutor->img1))
+                                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($tutor->img1) . '"  />';
+                                                ?>                                   
+                                            </a></td>
+                                        <td>
+                                            <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($tutor->product_id, ENT_QUOTES, 'UTF-8'); ?>">
+                                                <?php if (isset($tutor->name)) echo htmlspecialchars($tutor->name, ENT_QUOTES, 'UTF-8'); ?>
+                                            </a>
+                                        </td>                                              
+                                    </tr>
+                                <?php } ?>
+                            <?php endif; ?>   
+                        </tbody>
+                    </table>
                 </form> 
                 <?php if ($product->category_id == 2) : ?>                    
                     <br />

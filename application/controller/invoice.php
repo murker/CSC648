@@ -7,13 +7,14 @@ if (!isset($_SESSION)) {
 <?php
 
 class Invoice extends Controller {
+
 //SELECT customer_id, cart_id, order_date, total, shipping_cost, tax, grand_total
     public function index() {
-
+        $categories = $this->homemodel->getAllCategories();
         $invoice = $this->invoicemodel->getInvoice($_SESSION['CurrentUser']);
         $customer = $this->customermodel->getCustomer('customer', $_SESSION['CurrentUser']);
         $invoice_items = $this->cartmodel->getCartItemsCID($invoice->cart_id);
-        
+
         $products = array();
         foreach ($invoice_items as $item) {
             $nextProduct = $this->itemmodel->getProduct($item->product_id);
@@ -35,7 +36,7 @@ class Invoice extends Controller {
     }
 
     public function sendbuyerConfirmation() {
-        
+
         $email_from = "izaacg@mail.sfsu.edu";
         $email_to = "izaacg@mail.sfsu.edu";
         $email_subject = "Books and Tutors Invoice";

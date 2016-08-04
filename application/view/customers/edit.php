@@ -45,15 +45,15 @@
                     <div class="col-sm-4">
                         <input class="form-control" type="text" name="city" value="<?php echo htmlspecialchars($customer->city, ENT_QUOTES, 'UTF-8'); ?>" required />
                     </div>
-                        <label for='name' class="col-sm-2 control-label">Zip</label>
-                        <div class="col-sm-4">
-                            <input class="form-control" type="text" name="zipcode" value="<?php echo htmlspecialchars($customer->zipcode, ENT_QUOTES, 'UTF-8'); ?>" required />
-                        </div>
+                    <label for='name' class="col-sm-2 control-label">Zip</label>
+                    <div class="col-sm-4">
+                        <input class="form-control" type="text" name="zipcode" value="<?php echo htmlspecialchars($customer->zipcode, ENT_QUOTES, 'UTF-8'); ?>" required />
                     </div>
-                    <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer->id, ENT_QUOTES, 'UTF-8'); ?>" />
-                    <input type="submit" name="submit_update_customer" value="Update" class="btn btn-primary pull-right"/>
                 </div>
-            </form>
+                <input type="hidden" name="customer_id" value="<?php echo htmlspecialchars($customer->id, ENT_QUOTES, 'UTF-8'); ?>" />
+                <input type="submit" name="submit_update_customer" value="Update" class="btn btn-primary pull-right"/>
         </div>
+        </form>
     </div>
+</div>
 </div>

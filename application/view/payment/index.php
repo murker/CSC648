@@ -42,19 +42,19 @@
                         </tr>
                     <?php } ?> 
 <!--                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td style="font-weight:bold">Subtotal:</td>
-                        <td></td>
-                        <td><?php echo number_format((float) $invoiceData["total"], 2, '.', '') ?></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td style="font-weight:bold">Tax:</td>
-                        <td></td>
-                        <td><?php echo number_format((float) $invoiceData["tax"], 2, '.', '') ?></td>
-                    </tr>-->
+                <td></td>
+                <td></td>
+                <td style="font-weight:bold">Subtotal:</td>
+                <td></td>
+                <td><?php echo number_format((float) $invoiceData["total"], 2, '.', '') ?></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="font-weight:bold">Tax:</td>
+                <td></td>
+                <td><?php echo number_format((float) $invoiceData["tax"], 2, '.', '') ?></td>
+            </tr>-->
                     <tr>
                         <td></td>
                         <td></td>

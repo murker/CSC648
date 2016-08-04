@@ -52,17 +52,16 @@ if (!isset($_SESSION)) {
                         <div class="row">
                             <form action="<?php echo URL; ?>searchproducts/index" method="GET">
                                 <select name='category_id' class="col-xs-3 col-xs-offset-1" id="category">
-                                    <option value="0">All</option>
-                                    <option value="1">Books</option>
-                                    <option value="2">Tutors</option>
-                                    <option value="3">Electronics</option>
-                                    <option value="4">Entertainment</option>
-                                    <option value="5">Clothing</option>
-                                    <option value="6">Furniture</option>
-                                    <option value="7">Other</option>                                        
+                                    <?php
+                                    foreach ($categories as $category) {
+                                        if (isset($category->name)) {
+                                            echo "<option value =" . htmlspecialchars($category->id, ENT_QUOTES, 'UTF-8') . ">" . htmlspecialchars($category->name, ENT_QUOTES, 'UTF-8') . "</option>";                                            
+                                        }
+                                    }
+                                    ?>
                                 </select>
                                 <script>
-                                    document.getElementById('category').value = <?php echo htmlspecialchars($_SESSION['category_id']); ?>; 
+                                    document.getElementById('category').value = <?php echo htmlspecialchars($_SESSION['category_id']); ?>;
                                 </script>
                                 <input type="text" class="col-xs-6" name="searchinput" placeholder="Search" value="<?php echo htmlspecialchars(str_replace("%", "", $_SESSION['searchword'])) ?>"/>
                                 <div class="col-xs-2"></div>
@@ -117,7 +116,7 @@ if (!isset($_SESSION)) {
 
 
                 <div class="header-slogan">Providing students with an easy place to buy and sell books, tutors, and more!
-                    <span class="pull-right">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</span>
-                </div>
+                    <span class="pull-right">SFSU Software Engineering Project, Summer 2016.  For Demonstration Only</span>                  
+                </div>                
             </div>
         </nav>

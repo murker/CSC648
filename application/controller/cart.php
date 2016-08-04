@@ -5,6 +5,7 @@ class Cart extends Controller {
 
     public function index() {
         require APP . 'view/_templates/header.php';
+        $categories = $this->homemodel->getAllCategories();
         $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
         $products = array();
         foreach ($cart_items as $item) {
@@ -76,7 +77,6 @@ class Cart extends Controller {
             //TODO: check if item is out of stock, decriment
             //TODO: need to update shipping cost
             //$invoice_data["shipping"] = 1;
-
             //Add up item costs
             $product = $thisClass->itemmodel->getProduct($item->product_id);
             $invoice_data["total"] += $product->price * $item->item_qty;

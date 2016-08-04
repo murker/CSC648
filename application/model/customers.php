@@ -30,14 +30,13 @@ class CustomerModel {
      * @param int $customer_id Id of customer
      */
     public function deleteCustomer($table, $customer_id) {
-        $parameters = array(':customer_id' => $customer_id);        
+        $parameters = array(':customer_id' => $customer_id);
         return $this->customermodel->deleteEntry($table, $parameters);
     }
 
     /**
      * Get a customer from database
      */
-    
     public function getCustomer($table, $customer_id) {
         $val = array(':id',
             ':firstname',
@@ -49,7 +48,7 @@ class CustomerModel {
             ':city',
             ':zipcode');
         $target = array(':id' => $customer_id);
-        return $this->customermodel->getEntry($table, $val, $target);      
+        return $this->customermodel->getEntry($table, $val, $target);
     }
 
     /**
@@ -67,5 +66,5 @@ class CustomerModel {
         $target = array(':id' => $customer_id);
         return $this->customermodel->updateEntry($table, $val, $target);
     }
-        
+
 }

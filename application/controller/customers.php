@@ -15,7 +15,7 @@ class Customers extends Controller {
      * This method handles what happens when you move to http://yourproject/customers/index
      */
     public function index() {
-           
+        $categories = $this->homemodel->getAllCategories();
         // load views. within the views we can echo out $customers and $amount_of_customers easily
         require APP . 'view/_templates/header.php';
         require APP . 'view/customers/index.php';
@@ -112,4 +112,5 @@ class Customers extends Controller {
         // where to go after customer has been added
         header('location: ' . URL . 'home/index');
     }
+
 }

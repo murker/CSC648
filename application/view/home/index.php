@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div>
-            <?php if ((isset($_GET["searchinput"]) != "") xor (isset($_GET["sortby"]) != "")) : ?>
+            <?php if ((isset($_GET["searchinput"]) != "") xor ( isset($_GET["sortby"]) != "")) : ?>
                 <label class='home-label'>Showing results for <span style="color:#E2AF2D">"<?php echo htmlspecialchars(str_replace("%", "", $_SESSION['searchword'])) ?>"</span></label>
                 <form action="<?php echo URL; ?>home/sort" method="GET" class="nav-form pull-right">
                     <label class='home-label'>Sort by</label>
