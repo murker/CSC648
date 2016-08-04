@@ -87,7 +87,7 @@
                                                 <br />
                                                 <input type="hidden" name="pid" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />
                                                 <input type="hidden" name="qty" value= 1 />
-                                                <input type="submit" name="submit_buyitnow" value="Buy It Now" class = "btn btn-warning"/>
+                                                <input type="submit" name="submit_buyitnow" value="Add to Cart" class = "btn btn-warning"/>
                                             </form>
                                         <?php endif; ?>
                                 </div>
