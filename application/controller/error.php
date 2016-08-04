@@ -15,6 +15,7 @@ class Error extends Controller {
      * This method handles the error page that will be shown when a page is not found
      */
     public function index() {
+        $categories = $this->homemodel->getAllCategories();
         // load views
         require APP . 'view/_templates/header.php';
         require APP . 'view/error/index.php';

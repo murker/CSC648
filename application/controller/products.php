@@ -25,6 +25,7 @@ class Products extends Controller {
      */
     public function index() {
 
+        $categories = $this->homemodel->getAllCategories();
         $products = $this->productsmodel->getAllProducts();
 
         /// load views. within the views we can echo out $products and $amount_of_customers easily
@@ -109,7 +110,7 @@ class Products extends Controller {
         if (isset($product_id)) {
             // do getProduct() in model/model.php
             $product = $this->productsmodel->getProduct($product_id);
-
+            $categories = $this->homemodel->getAllCategories();
             // in a real application we would also check if this db entry exists and therefore show the result or
             // redirect the user to an error page or similar
             // load views. within the views we can echo out $customer easily

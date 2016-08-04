@@ -22,6 +22,7 @@ class Home extends Controller {
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
      */
     public function index() {
+        $categories = $this->homemodel->getAllCategories();
         $products = $this->homemodel->getAllProducts();
         $products = $this->homemodel->sortby('id', 'DESC');
         $_SESSION['searchword'] = "";
@@ -33,6 +34,7 @@ class Home extends Controller {
     }
 
     public function sort() {
+        $categories = $this->homemodel->getAllCategories();
         $searchword = $_SESSION['searchword'];
         $category_id = $_SESSION['category_id'];
         $sortby = $_GET["sortby"];
@@ -82,29 +84,6 @@ class Home extends Controller {
                 $products = $this->homemodel->sortbyWc('price', 'DESC', $searchword, $category_id);
             }
         }
-        require APP . 'view/_templates/header.php';
-        require APP . 'view/home/index.php';
-        require APP . 'view/_templates/footer.php';
-    }
-
-    public function sortbyCategory() {
-        $category = 0;
-        if (isset($_GET["submit_sortbyBooks"])) {
-            $category = 1;
-        } else if (isset($_GET["submit_sortbyTutors"])) {
-            $category = 2;
-        } else if (isset($_GET["submit_sortbyElectronics"])) {
-            $category = 3;
-        } else if (isset($_GET["submit_sortbyEntertainment"])) {
-            $category = 4;
-        } else if (isset($_GET["submit_sortbyClothing"])) {
-            $category = 5;
-        } else if (isset($_GET["submit_sortbyFurniture"])) {
-            $category = 6;
-        } else if (isset($_GET["submit_sortbyOther"])) {
-            $category = 7;
-        }
-        $products = $this->homemodel->sortbyCategory($category);
         require APP . 'view/_templates/header.php';
         require APP . 'view/home/index.php';
         require APP . 'view/_templates/footer.php';

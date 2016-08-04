@@ -15,7 +15,7 @@ class Customers extends Controller {
      * This method handles what happens when you move to http://yourproject/customers/index
      */
     public function index() {
-           
+        $categories = $this->homemodel->getAllCategories();
         // load views. within the views we can echo out $customers and $amount_of_customers easily
         require APP . 'view/_templates/header.php';
         require APP . 'view/customers/index.php';
@@ -76,6 +76,7 @@ class Customers extends Controller {
      * @param int $customer_id Id of the to-edit customer
      */
     public function editCustomer($customer_id) {
+        $categories = $this->homemodel->getAllCategories();
         // if we have an id of a customer that should be edited
         if (isset($customer_id)) {
             // do getCustomer() in model/customerModel.php
@@ -100,7 +101,7 @@ class Customers extends Controller {
      * the user back to customers/index via the last line: header(...)
      * This is an example of how to handle a POST request.
      */
-    public function updateCustomer() {
+    public function updateCustomer() {       
         // if we have POST data to create a new Customer entry
         if (isset($_POST["submit_update_customer"])) {
             $salt = "saltedpass4team4";
@@ -112,4 +113,5 @@ class Customers extends Controller {
         // where to go after customer has been added
         header('location: ' . URL . 'home/index');
     }
+
 }

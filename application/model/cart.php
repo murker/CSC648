@@ -11,7 +11,6 @@ class CartModel {
     }
 
     public function createInvoice($usr_id, $invoice_data) {
-
         $cid = $this->getUserCart($usr_id);
 
         //add an invoice entry to the invoice table                
@@ -29,7 +28,7 @@ class CartModel {
         $val = array(':name' => "invoice");
         return $this->cartmodel->updateEntry("cart", $val, $tar);
     }
-    
+
     public function getUserCart($usr_id) {
         $val = array(":id");
         $target = array(":name" => "current", ":customer_id" => $usr_id);
@@ -39,11 +38,8 @@ class CartModel {
             $val2 = array(":id");
             $target2 = array();
             $max_cid = count($this->cartmodel->getAllEntries("cart", $val2, $target2));
-            
             $cid = $max_cid + 1;
-
             $parameters3 = array(':id' => $cid, ':customer_id' => $usr_id, ':name' => "current");
-            
             $this->cartmodel->addEntry("cart", $parameters3);
             return $cid;
         } else {
@@ -62,7 +58,7 @@ class CartModel {
         $pars = array(":cart_id" => $cid, ":product_id" => $pid);
         return $this->cartmodel->deleteEntry("cart_item", $pars);
     }
-    
+
     public function getCartItems($uid) {
         $cid = $this->getUserCart($uid);
         $val = array(":cart_id", ":product_id", ":item_qty");
@@ -86,4 +82,5 @@ class CartModel {
         $val = array(":item_qty" => $qty);
         return $this->cartmodel->updateEntry("cart_item", $val, $target);
     }
+
 }

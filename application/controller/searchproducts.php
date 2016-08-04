@@ -22,6 +22,7 @@ class Searchproducts extends Controller {
      * This method handles what happens when you move to http://yourproject/home/index (which is the default page btw)
      */
     public function index() {
+        $categories = $this->homemodel->getAllCategories();
         $searchword = '%' . $_GET["searchinput"] . '%';
         $category_id = $_GET["category_id"];
         $_SESSION['searchword'] = '%' . $_GET["searchinput"] . '%';
@@ -40,6 +41,7 @@ class Searchproducts extends Controller {
     }
 
     public function getuserProducts($customer_id) {
+        $categories = $this->homemodel->getAllCategories();
         $products = $this->searchproductsmodel->getuserProducts($customer_id);
         // load views
         require APP . 'view/_templates/header.php';

@@ -1,7 +1,7 @@
 <?php
 
-class Application
-{
+class Application {
+
     /** @var null The controller */
     private $url_controller = null;
 
@@ -15,8 +15,7 @@ class Application
      * "Start" the application:
      * Analyze the URL elements and calls the according controller/method or the fallback
      */
-    public function __construct()
-    {
+    public function __construct() {
         // create array with URL parts in $url
         $this->splitUrl();
 
@@ -26,10 +25,8 @@ class Application
             require APP . 'controller/home.php';
             $page = new Home();
             $page->index();
-
         } elseif (file_exists(APP . 'controller/' . $this->url_controller . '.php')) {
             // here we did check for controller: does such a controller exist ?
-
             // if so, then load this file and create this controller
             // example: if controller would be "car", then this line would translate into: $this->car = new car();
             require APP . 'controller/' . $this->url_controller . '.php';
@@ -45,13 +42,11 @@ class Application
                     // If no parameters are given, just call the method without parameters, like $this->home->method();
                     $this->url_controller->{$this->url_action}();
                 }
-
             } else {
                 if (strlen($this->url_action) == 0) {
                     // no action defined: call the default index() method of a selected controller
                     $this->url_controller->index();
-                }
-                else {
+                } else {
                     header('location: ' . URL . 'error');
                 }
             }
@@ -63,8 +58,7 @@ class Application
     /**
      * Get and split the URL
      */
-    private function splitUrl()
-    {
+    private function splitUrl() {
         if (isset($_GET['url'])) {
 
             // split URL
@@ -90,4 +84,5 @@ class Application
             //echo 'Parameters: ' . print_r($this->url_params, true) . '<br>';
         }
     }
+
 }

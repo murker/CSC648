@@ -24,6 +24,7 @@ class SignIn extends Controller {
      * This method handles what happens when you move to http://yourproject/customers/index
      */
     public function index() {
+        $categories = $this->homemodel->getAllCategories();
         require APP . 'view/_templates/header.php';
         require APP . 'view/signin/index.php';
         require APP . 'view/_templates/footer.php';
