@@ -1,11 +1,11 @@
         
 <?php
 
-class Cart extends Controller {
+class Cart extends Controller {    
 
     public function index() {
-        require APP . 'view/_templates/header.php';
         $categories = $this->homemodel->getAllCategories();
+        require APP . 'view/_templates/header.php';        
         $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
         $products = array();
         foreach ($cart_items as $item) {

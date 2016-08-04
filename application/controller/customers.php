@@ -76,6 +76,7 @@ class Customers extends Controller {
      * @param int $customer_id Id of the to-edit customer
      */
     public function editCustomer($customer_id) {
+        $categories = $this->homemodel->getAllCategories();
         // if we have an id of a customer that should be edited
         if (isset($customer_id)) {
             // do getCustomer() in model/customerModel.php
@@ -100,7 +101,7 @@ class Customers extends Controller {
      * the user back to customers/index via the last line: header(...)
      * This is an example of how to handle a POST request.
      */
-    public function updateCustomer() {
+    public function updateCustomer() {       
         // if we have POST data to create a new Customer entry
         if (isset($_POST["submit_update_customer"])) {
             $salt = "saltedpass4team4";

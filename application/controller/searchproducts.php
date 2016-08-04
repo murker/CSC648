@@ -41,6 +41,7 @@ class Searchproducts extends Controller {
     }
 
     public function getuserProducts($customer_id) {
+        $categories = $this->homemodel->getAllCategories();
         $products = $this->searchproductsmodel->getuserProducts($customer_id);
         // load views
         require APP . 'view/_templates/header.php';
