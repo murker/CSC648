@@ -77,7 +77,7 @@ class CartModel {
     }
 
     public function updateCartItem($uid, $pid, $qty) {
-        $cid = $this->cartmodel->getUserCart($uid);
+        $cid = $this->getUserCart($uid);
         $target = array(":cart_id" => $cid, ":product_id" => $pid);
         $val = array(":item_qty" => $qty);
         return $this->cartmodel->updateEntry("cart_item", $val, $target);
