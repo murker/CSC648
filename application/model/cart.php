@@ -49,8 +49,19 @@ class CartModel {
 
     public function addCartItem($uid, $pid, $qty) {
         $cid = $this->getUserCart($uid);
-        $parameters = array(':cart_id' => $cid, ':product_id' => $pid, ':item_qty' => $qty);
-        $this->cartmodel->addEntry("cart_item", $parameters);
+
+        $val = array(":cart_id", ":product_id", ":item_qty");
+        $target = array(":cart_id" => $cid, ":product_id" => $pid);
+        $checkforprod_incart = $this->cartmodel->getEntry("cart_item", $val, $target);
+        if (isset($checkforprod_incart->cart_id)) {
+            $newqty = $checkforprod_incart->item_qty + $qty;
+            $target = array(":cart_id" => $cid, ":product_id" => $pid);
+            $val = array(":item_qty" => $newqty);
+            return $this->cartmodel->updateEntry("cart_item", $val, $target);            
+        } else {            
+            $parameters = array(':cart_id' => $cid, ':product_id' => $pid, ':item_qty' => $qty);
+            return $this->cartmodel->addEntry("cart_item", $parameters);
+        }
     }
 
     public function deleteCartItem($uid, $pid) {
