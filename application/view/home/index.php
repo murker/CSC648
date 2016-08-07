@@ -43,15 +43,24 @@
     </div>
     <div class="row">
         <?php
-        foreach ($products as $product) {
+        if (isset($_GET["s"])) {
+            $s = $_GET["s"];
+        } else {
+            $s = 0;
+        }
+        $f = $s + 14;
+        $len = count($products);
+        foreach (array_slice($products, $s) as $product) {
+            if ($s > $f)
+                break;
             if ($product->stock_qty > 0) {
                 ?>
                 <div class="col-sm-6 col-lg-4">
-                    <?php if ($product->category_id != 2) : ?>
+                        <?php if ($product->category_id != 2) : ?>
                         <div class="thumbnail">    
-                        <?php else : ?>
+                            <?php else : ?>
                             <div class="thumbnail tutor-back">  
-                            <?php endif; ?>
+        <?php endif; ?>
                             <div class="caption">
                                 <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">                            
                                     <div class="search-image">
@@ -63,7 +72,7 @@
                                 <div class="search-data">
                                     <a href="<?php echo URL . 'item/showitem/' . htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>">
                                         <h5>
-                                            <?php if ($product->category_id == 2) : ?>
+        <?php if ($product->category_id == 2) : ?>
                                                 <span class="tutor-tag">
                                                     Tutor: 
                                                 </span>
@@ -74,30 +83,48 @@
                                             ?></a></h5>
                                     <h5>
                                         <?php if (isset($product->price)) echo "$" . htmlspecialchars($product->price, ENT_QUOTES, 'UTF-8'); ?>
-                                        <?php if ($product->category_id == 2) : ?>
+                                    <?php if ($product->category_id == 2) : ?>
                                             / hour</h5>
-                                    <?php else : ?>
+        <?php else : ?>
                                         </h5>
                                         <span class = "quantity"><?php if (isset($product->stock_qty)) echo htmlspecialchars($product->stock_qty, ENT_QUOTES, 'UTF-8'); ?> available</span>
-                                        <?php if (isset($_SESSION['CurrentUser'])) : ?>
+                                            <?php if (isset($_SESSION['CurrentUser'])) : ?>
                                             <form action="<?php echo URL; ?>cart/additem" method="POST">
-                                            <?php else : ?>
+                                                <?php else : ?>
                                                 <form action="<?php echo URL; ?>signin">
-                                                <?php endif; ?>
+            <?php endif; ?>
                                                 <br />
                                                 <input type="hidden" name="pid" value="<?php echo htmlspecialchars($product->id, ENT_QUOTES, 'UTF-8'); ?>" />
                                                 <input type="hidden" name="qty" value= 1 />
                                                 <input type="submit" name="submit_buyitnow" value="Add to Cart" class = "btn btn-warning"/>
                                             </form>
-                                        <?php endif; ?>
+        <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <?php
                 }
+                $s++;
             }
             ?>
         </div>
         <br />
-    </div>
+    </div>   
+    <div class="text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination"> 
+                
+                 <?php
+                 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                for ($x = 0; $x < ceil($len/15); $x++) {
+                    echo "<li class='page-item'><a class='page-link'";
+                    echo " href='" . $actual_link . "&s=" . $x*15 . "'>";
+                    echo $x+1;
+                    echo "</a></li>";            
+                }
+                ?>                                               
+            </ul>
+        </nav>                
+    </div
+   
