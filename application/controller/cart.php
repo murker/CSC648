@@ -6,7 +6,7 @@ class Cart extends Controller {
     public function index() {
         $categories = $this->homemodel->getAllCategories();
         require APP . 'view/_templates/header.php';        
-        $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); //$cid Hardcoded to 666
+        $cart_items = $this->cartmodel->getCartItems($_SESSION['CurrentUser']); 
         $products = array();
         foreach ($cart_items as $item) {
             $nextProduct = $this->itemmodel->getProduct($item->product_id);
