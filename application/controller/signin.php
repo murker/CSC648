@@ -59,12 +59,14 @@ class SignIn extends Controller {
     }
 
     public function privacyNotice() {
+        $categories = $this->homemodel->getAllCategories();
         require APP . 'view/_templates/header.php';
         require APP . 'view/signin/privacynotice.php';
         require APP . 'view/_templates/footer.php';
     }
 
     public function userAgreement() {
+        $categories = $this->homemodel->getAllCategories();
         require APP . 'view/_templates/header.php';
         require APP . 'view/signin/useragreement.php';
         require APP . 'view/_templates/footer.php';
