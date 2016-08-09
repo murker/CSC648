@@ -106,6 +106,7 @@ class Products extends Controller {
      * @param int $product_id Id of the to-edit customer
      */
     public function editProduct($product_id) {
+        $categories = $this->homemodel->getAllCategories();
         // if we have an id of a product that should be edited
         if (isset($product_id)) {
             // do getProduct() in model/model.php

@@ -48,7 +48,7 @@
         } else {
             $s = 0;
         }
-        $f = $s + 14;
+        $f = $s + 11;
         $activepage = $s;
         $len = count($products);
         foreach (array_slice($products, $s) as $product) {
@@ -118,15 +118,15 @@
                 
                  <?php
                  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                for ($x = 0; $x < ceil($len/15); $x++) {                    
-                    if ($x == $activepage/15){  
+                for ($x = 0; $x < ceil($len/12); $x++) {                    
+                    if ($x == $activepage/12){  
                         echo "<li class='page-item active";
                         echo "'><a class='page-link'";
                     }else{
                         echo "<li class='page-item";
                         echo "'><a class='page-link'";
                     }
-                    echo " href='" . $actual_link . "&s=" . $x*15 . "'>";
+                    echo " href='" . $actual_link . "&s=" . $x*12 . "'>";
                     echo $x+1;
                     echo "</a></li>";            
                 }
